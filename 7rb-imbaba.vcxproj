@@ -132,6 +132,7 @@
   <ItemGroup>
     <ClInclude Include="DS\PriorityQueue\priNode.h" />
     <ClInclude Include="DS\PriorityQueue\priQueue.h" />
+    <ClInclude Include="DS\Queues\DEndedQueue.h" />
     <ClInclude Include="DS\Queues\DoubleNode.h" />
     <ClInclude Include="DS\Queues\LinkedQueue.h" />
     <ClInclude Include="DS\Queues\Node.h" />

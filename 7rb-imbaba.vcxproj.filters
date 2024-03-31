@@ -56,5 +56,8 @@
     <ClInclude Include="DS\Queues\DoubleNode.h">
       <Filter>DS\Queues</Filter>
     </ClInclude>
+    <ClInclude Include="DS\Queues\DEndedQueue.h">
+      <Filter>DS\Queues</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

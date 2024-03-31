@@ -104,9 +104,9 @@ bool LinkedQueue<T>::dequeue(T& frntEntry)
 	if(frontPtr)
 		frontPtr->setPrevious(nullptr);
 
-	// Queue is not empty; remove frontPtr
 	if (nodeToDeletePtr == backPtr)	 // Special case: last DoubleNode in the queue
 		backPtr = nullptr;	
+
 	// Free memory reserved for the dequeued DoubleNode
 	delete nodeToDeletePtr;
 
