@@ -128,13 +128,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="7rb-imbaba.cpp" />
+    <ClCompile Include="DoubleNode.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="DS\PriorityQueue\LinkedQueue.h" />
-    <ClInclude Include="DS\PriorityQueue\Node.h" />
+    <ClInclude Include="DoubleNode.h" />
     <ClInclude Include="DS\PriorityQueue\priNode.h" />
     <ClInclude Include="DS\PriorityQueue\priQueue.h" />
-    <ClInclude Include="DS\PriorityQueue\QueueADT.h" />
     <ClInclude Include="DS\Queues\LinkedQueue.h" />
     <ClInclude Include="DS\Queues\Node.h" />
     <ClInclude Include="DS\Queues\QueueADT.h" />

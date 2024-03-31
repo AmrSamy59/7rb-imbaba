@@ -30,6 +30,9 @@
     <ClCompile Include="7rb-imbaba.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="DoubleNode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DS\Stacks\ArrayStack.h">
@@ -47,20 +50,14 @@
     <ClInclude Include="DS\Queues\QueueADT.h">
       <Filter>DS\Queues</Filter>
     </ClInclude>
-    <ClInclude Include="DS\PriorityQueue\LinkedQueue.h">
-      <Filter>DS\PriorityQueue</Filter>
-    </ClInclude>
-    <ClInclude Include="DS\PriorityQueue\Node.h">
-      <Filter>DS\PriorityQueue</Filter>
-    </ClInclude>
     <ClInclude Include="DS\PriorityQueue\priNode.h">
       <Filter>DS\PriorityQueue</Filter>
     </ClInclude>
     <ClInclude Include="DS\PriorityQueue\priQueue.h">
       <Filter>DS\PriorityQueue</Filter>
     </ClInclude>
-    <ClInclude Include="DS\PriorityQueue\QueueADT.h">
-      <Filter>DS\PriorityQueue</Filter>
+    <ClInclude Include="DoubleNode.h">
+      <Filter>DS\Queues</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

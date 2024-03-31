@@ -1,56 +1,17 @@
 
-/*
-This is a program that implements the queue abstract data type using a linked list.
-The queue is implemented as a chain of linked nodes that has two pointers, 
-a frontPtr pointer for the front of the queue and a backPtr pointer for the back of the queue.
-*/
-
-/*
-
-				The Node: item of type T and a "next" pointer
-					------------- 
-					| item| next | --->
-					-------------
-General Queue case:
-
-                 frontPtr																backPtr
-					\											   						/		
-					 \											  					   /		
-					------------- 	  ------------- 	  ------------- 	  ------------- 	  	  
-					| item| next |--->| item| next |--->  | item| next |--->  | item| next |---> NULL
-					------------- 	  ------------- 	  ------------- 	  -------------	  
-		
-Empty Case:
-
-                 frontptr	 backptr
-						\	 /				
-						 \	/				
-					---- NULL ------
-
-
-Single Node Case:
-                 frontPtr	 backPtr
-					\		/	
-					 \	   /			
-					----------- 	
-					|item| next| -->NULL
-					-----------	
-
-*/
 
 #ifndef LINKED_QUEUE_
 #define LINKED_QUEUE_
 
-
-#include "Node.h"
+#include "../../DoubleNode.h"
 #include "QueueADT.h"
-
+using namespace std;
 template <typename T>
 class LinkedQueue:public QueueADT<T>
 {
 private :
-	Node<T>* backPtr;
-	Node<T>* frontPtr;
+	DoubleNode<T>* tail; // rear (tail)
+	DoubleNode<T>* head; // head (front)
 public :
 	LinkedQueue();	
 	bool isEmpty() const ;
@@ -70,8 +31,8 @@ The constructor of the Queue class.
 template <typename T>
 LinkedQueue<T>::LinkedQueue()
 {
-	backPtr=nullptr;
-	frontPtr=nullptr;
+	tail=nullptr;
+	head=nullptr;
 
 }
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -86,7 +47,7 @@ Output: True if the queue is empty; otherwise false.
 template <typename T>
 bool LinkedQueue<T>::isEmpty() const
 {
-	return (frontPtr==nullptr);
+	return (head==nullptr);
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -101,14 +62,23 @@ Output: True if the operation is successful; otherwise false.
 template <typename T>
 bool LinkedQueue<T>::enqueue( const T& newEntry)
 {
-	Node<T>* newNodePtr = new Node<T>(newEntry);
-	// Insert the new node
-	if (isEmpty())	//special case if this is the first node to insert
-		frontPtr = newNodePtr; // The queue is empty
-	else
-		backPtr->setNext(newNodePtr); // The queue was not empty
+	DoubleNode<T>* newNodePtr = new DoubleNode<T>(newEntry);
+	// Insert the new DoubleNode
+	if (isEmpty())	//special case if this is the first DoubleNode to insert
+	{
+		head = newNodePtr; // The queue is empty
+		newNodePtr->setPrevious(NULL);
 
-	backPtr = newNodePtr; // New node is the last node now
+	}
+	else
+	{
+		tail->setNext(newNodePtr);
+		newNodePtr->setPrevious(tail);
+
+		
+		// The queue was not empty
+	}
+	tail = newNodePtr; // New DoubleNode is the last DoubleNode now
 	return true ;
 } // end enqueue
 
@@ -129,14 +99,14 @@ bool LinkedQueue<T>:: dequeue(T& frntEntry)
 	if(isEmpty())
 		return false;
 
-	Node<T>* nodeToDeletePtr = frontPtr;
-	frntEntry = frontPtr->getItem();
-	frontPtr = frontPtr->getNext();
+	DoubleNode<T>* nodeToDeletePtr = head;
+	frntEntry = head->getItem();
+	head = head->getNext();
+	head->setPrevious(NULL);
 	// Queue is not empty; remove front
-	if (nodeToDeletePtr == backPtr)	 // Special case: last node in the queue
-		backPtr = nullptr ;	
-		
-	// Free memory reserved for the dequeued node
+	if (nodeToDeletePtr == tail)	 // Special case: last DoubleNode in the queue
+		tail = nullptr ;	
+	// Free memory reserved for the dequeued DoubleNode
 	delete nodeToDeletePtr;
 
 	return true;
@@ -160,7 +130,7 @@ bool LinkedQueue<T>:: peek(T& frntEntry) const
 	if(isEmpty())
 		return false;
 
-	frntEntry = frontPtr->getItem();
+	frntEntry = head->getItem();
 	return true;
 
 }
