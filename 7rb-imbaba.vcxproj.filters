@@ -30,9 +30,6 @@
     <ClCompile Include="7rb-imbaba.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="DoubleNode.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DS\Stacks\ArrayStack.h">

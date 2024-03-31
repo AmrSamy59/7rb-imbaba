@@ -128,7 +128,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="7rb-imbaba.cpp" />
-    <ClCompile Include="DoubleNode.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DoubleNode.h" />
