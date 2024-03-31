@@ -128,7 +128,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="7rb-imbaba.cpp" />
-    <ClCompile Include="PriorityQueue\Source.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PriorityQueue\LinkedQueue.h" />
@@ -136,6 +135,11 @@
     <ClInclude Include="PriorityQueue\priNode.h" />
     <ClInclude Include="PriorityQueue\priQueue.h" />
     <ClInclude Include="PriorityQueue\QueueADT.h" />
+    <ClInclude Include="Queues\LinkedQueue.h" />
+    <ClInclude Include="Queues\Node.h" />
+    <ClInclude Include="Queues\QueueADT.h" />
+    <ClInclude Include="Stacks\ArrayStack.h" />
+    <ClInclude Include="Stacks\StackADT.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

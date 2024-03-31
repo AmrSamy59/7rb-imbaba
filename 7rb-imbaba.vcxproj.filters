@@ -19,13 +19,13 @@
     <Filter Include="Queue">
       <UniqueIdentifier>{63c0904a-75a3-4c10-be68-21ff10a36e64}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Stacks">
+      <UniqueIdentifier>{8d0fb741-2847-4017-b0bc-e22ecef04604}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="7rb-imbaba.cpp">
       <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="PriorityQueue\Source.cpp">
-      <Filter>PriorityQueue</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -43,6 +43,21 @@
     </ClInclude>
     <ClInclude Include="PriorityQueue\QueueADT.h">
       <Filter>PriorityQueue</Filter>
+    </ClInclude>
+    <ClInclude Include="Queues\LinkedQueue.h">
+      <Filter>Queue</Filter>
+    </ClInclude>
+    <ClInclude Include="Queues\Node.h">
+      <Filter>Queue</Filter>
+    </ClInclude>
+    <ClInclude Include="Queues\QueueADT.h">
+      <Filter>Queue</Filter>
+    </ClInclude>
+    <ClInclude Include="Stacks\ArrayStack.h">
+      <Filter>Stacks</Filter>
+    </ClInclude>
+    <ClInclude Include="Stacks\StackADT.h">
+      <Filter>Stacks</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
