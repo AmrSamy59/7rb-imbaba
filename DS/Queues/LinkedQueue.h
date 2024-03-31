@@ -3,7 +3,7 @@
 #ifndef LINKED_QUEUE_
 #define LINKED_QUEUE_
 
-#include "../../DoubleNode.h"
+#include "DoubleNode.h"
 #include "QueueADT.h"
 using namespace std;
 template <typename T>
