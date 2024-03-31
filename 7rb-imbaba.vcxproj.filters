@@ -53,7 +53,7 @@
     <ClInclude Include="DS\PriorityQueue\priQueue.h">
       <Filter>DS\PriorityQueue</Filter>
     </ClInclude>
-    <ClInclude Include="DoubleNode.h">
+    <ClInclude Include="DS\Queues\DoubleNode.h">
       <Filter>DS\Queues</Filter>
     </ClInclude>
   </ItemGroup>

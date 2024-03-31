@@ -1,11 +1,10 @@
 #pragma once
-#include"DS/Queues/Node.h"
-template<class T>
-class DoubleNode:public Node<T>
+#include "Node.h"
+
+template <typename T>
+class DoubleNode : public Node<T>
 {
 private:
-	T item; // A data item
-	DoubleNode<T>* next; // Pointer to next DoubleNode
 	DoubleNode<T>* prev; // Pointer to previous DoubleNode
 public:
 	DoubleNode();
@@ -15,51 +14,32 @@ public:
 	DoubleNode<T>* getPrevious() const;
 };
 
-template < typename T>
-DoubleNode<T>::DoubleNode()
+template <typename T>
+DoubleNode<T>::DoubleNode() : Node<T>()
 {
-	next = nullptr;
 	prev = nullptr;
 }
 
-/////////////////////////////////////////////////////////////
-///
-/////////////////////////////////////////////////////////////
-
-template < typename T>
-DoubleNode<T>::DoubleNode(const T& r_Item)
+template <typename T>
+DoubleNode<T>::DoubleNode(const T& r_Item) : Node<T>(r_Item)
 {
-	item = r_Item;
-	next = nullptr;
 	prev = nullptr;
 }
 
-/////////////////////////////////////////////////////////////
-///
-/////////////////////////////////////////////////////////////
-
-template < typename T>
-DoubleNode<T>::DoubleNode(const T& r_Item, DoubleNode<T>* nextNodePtr, DoubleNode<T>* previousNodePtr)
+template <typename T>
+DoubleNode<T>::DoubleNode(const T& r_Item, DoubleNode<T>* nextNodePtr, DoubleNode<T>* previousNodePtr) : Node<T>(r_Item, nextNodePtr)
 {
-	item = r_Item;
-	next = nextNodePtr;
 	prev = previousNodePtr;
 }
 
-/////////////////////////////////////////////////////////////
-///
-/////////////////////////////////////////////////////////////
 
-template < typename T>
+template <typename T>
 void DoubleNode<T>::setPrevious(DoubleNode<T>* previousNodePtr)
 {
 	prev = previousNodePtr;
 }
 
-/////////////////////////////////////////////////////////////
-///
-/////////////////////////////////////////////////////////////
-template < typename T>
+template <typename T>
 DoubleNode<T>* DoubleNode<T>::getPrevious() const
 {
 	return prev;

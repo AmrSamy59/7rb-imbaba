@@ -10,8 +10,8 @@ template <typename T>
 class LinkedQueue:public QueueADT<T>
 {
 private :
-	DoubleNode<T>* tail; // rear (tail)
-	DoubleNode<T>* head; // head (front)
+	DoubleNode<T>* backPtr; // rear (backPtr)
+	DoubleNode<T>* frontPtr; // frontPtr (frontPtr)
 public :
 	LinkedQueue();	
 	bool isEmpty() const ;
@@ -31,8 +31,8 @@ The constructor of the Queue class.
 template <typename T>
 LinkedQueue<T>::LinkedQueue()
 {
-	tail=nullptr;
-	head=nullptr;
+	backPtr=nullptr;
+	frontPtr=nullptr;
 
 }
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -47,16 +47,16 @@ Output: True if the queue is empty; otherwise false.
 template <typename T>
 bool LinkedQueue<T>::isEmpty() const
 {
-	return (head==nullptr);
+	return (frontPtr==nullptr);
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////
 
 /*Function:enqueue
-Adds newEntry at the back of this queue.
+Adds newEntry to the backPtr of the queue.
 
 Input: newEntry .
-Output: True if the operation is successful; otherwise false.
+Output: True if the operation is successful; false otherwise.
 */
 
 template <typename T>
@@ -66,27 +66,25 @@ bool LinkedQueue<T>::enqueue( const T& newEntry)
 	// Insert the new DoubleNode
 	if (isEmpty())	//special case if this is the first DoubleNode to insert
 	{
-		head = newNodePtr; // The queue is empty
-		newNodePtr->setPrevious(NULL);
-
+		frontPtr = newNodePtr; // The queue is empty
+		newNodePtr->setPrevious(nullptr);
 	}
 	else
 	{
-		tail->setNext(newNodePtr);
-		newNodePtr->setPrevious(tail);
-
-		
+		backPtr->setNext(newNodePtr);
+		newNodePtr->setPrevious(backPtr);
 		// The queue was not empty
 	}
-	tail = newNodePtr; // New DoubleNode is the last DoubleNode now
-	return true ;
+	backPtr = newNodePtr; // New DoubleNode is the last DoubleNode now
+
+	return true;
 } // end enqueue
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /*Function: dequeue
-Removes the front of this queue. That is, removes the item that was added
+Removes the frontPtr of this queue. That is, removes the item that was added
 earliest.
 
 Input: None.
@@ -94,18 +92,21 @@ Output: True if the operation is successful; otherwise false.
 */
 
 template <typename T>
-bool LinkedQueue<T>:: dequeue(T& frntEntry)  
+bool LinkedQueue<T>::dequeue(T& frntEntry)  
 {
 	if(isEmpty())
 		return false;
 
-	DoubleNode<T>* nodeToDeletePtr = head;
-	frntEntry = head->getItem();
-	head = head->getNext();
-	head->setPrevious(NULL);
-	// Queue is not empty; remove front
-	if (nodeToDeletePtr == tail)	 // Special case: last DoubleNode in the queue
-		tail = nullptr ;	
+	DoubleNode<T>* nodeToDeletePtr = frontPtr;
+	frntEntry = frontPtr->getItem();
+	frontPtr = frontPtr->getNext();
+
+	if(frontPtr)
+		frontPtr->setPrevious(nullptr);
+
+	// Queue is not empty; remove frontPtr
+	if (nodeToDeletePtr == backPtr)	 // Special case: last DoubleNode in the queue
+		backPtr = nullptr;	
 	// Free memory reserved for the dequeued DoubleNode
 	delete nodeToDeletePtr;
 
@@ -118,19 +119,19 @@ bool LinkedQueue<T>:: dequeue(T& frntEntry)
 
 /*
 Function: peek
-copies the front of this queue to the passed param. The operation does not modify the queue.
+copies the frontPtr of this queue to the passed param. The operation does not modify the queue.
 
 Input: None.
-Output: The front of the queue.
+Output: The frontPtr of the queue.
 */
 
 template <typename T>
-bool LinkedQueue<T>:: peek(T& frntEntry) const 
+bool LinkedQueue<T>::peek(T& frntEntry) const 
 {
 	if(isEmpty())
 		return false;
 
-	frntEntry = head->getItem();
+	frntEntry = frontPtr->getItem();
 	return true;
 
 }

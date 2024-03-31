@@ -1,5 +1,5 @@
 #pragma once
-template < typename T>
+template <typename T>
 class priNode
 {
 private :
