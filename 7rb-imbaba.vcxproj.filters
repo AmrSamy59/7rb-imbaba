@@ -13,14 +13,17 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="PriorityQueue">
+    <Filter Include="DS">
+      <UniqueIdentifier>{9c3fef60-40cb-4396-a546-8454a30b8988}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DS\PriorityQueue">
       <UniqueIdentifier>{30f29e56-6c80-43ea-aa2b-4137fb62ed93}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Queue">
-      <UniqueIdentifier>{63c0904a-75a3-4c10-be68-21ff10a36e64}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Stacks">
+    <Filter Include="DS\Stacks">
       <UniqueIdentifier>{8d0fb741-2847-4017-b0bc-e22ecef04604}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DS\Queues">
+      <UniqueIdentifier>{63c0904a-75a3-4c10-be68-21ff10a36e64}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -29,35 +32,35 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="PriorityQueue\LinkedQueue.h">
-      <Filter>PriorityQueue</Filter>
+    <ClInclude Include="DS\Stacks\ArrayStack.h">
+      <Filter>DS\Stacks</Filter>
     </ClInclude>
-    <ClInclude Include="PriorityQueue\Node.h">
-      <Filter>PriorityQueue</Filter>
+    <ClInclude Include="DS\Stacks\StackADT.h">
+      <Filter>DS\Stacks</Filter>
     </ClInclude>
-    <ClInclude Include="PriorityQueue\priNode.h">
-      <Filter>PriorityQueue</Filter>
+    <ClInclude Include="DS\Queues\LinkedQueue.h">
+      <Filter>DS\Queues</Filter>
     </ClInclude>
-    <ClInclude Include="PriorityQueue\priQueue.h">
-      <Filter>PriorityQueue</Filter>
+    <ClInclude Include="DS\Queues\Node.h">
+      <Filter>DS\Queues</Filter>
     </ClInclude>
-    <ClInclude Include="PriorityQueue\QueueADT.h">
-      <Filter>PriorityQueue</Filter>
+    <ClInclude Include="DS\Queues\QueueADT.h">
+      <Filter>DS\Queues</Filter>
     </ClInclude>
-    <ClInclude Include="Queues\LinkedQueue.h">
-      <Filter>Queue</Filter>
+    <ClInclude Include="DS\PriorityQueue\LinkedQueue.h">
+      <Filter>DS\PriorityQueue</Filter>
     </ClInclude>
-    <ClInclude Include="Queues\Node.h">
-      <Filter>Queue</Filter>
+    <ClInclude Include="DS\PriorityQueue\Node.h">
+      <Filter>DS\PriorityQueue</Filter>
     </ClInclude>
-    <ClInclude Include="Queues\QueueADT.h">
-      <Filter>Queue</Filter>
+    <ClInclude Include="DS\PriorityQueue\priNode.h">
+      <Filter>DS\PriorityQueue</Filter>
     </ClInclude>
-    <ClInclude Include="Stacks\ArrayStack.h">
-      <Filter>Stacks</Filter>
+    <ClInclude Include="DS\PriorityQueue\priQueue.h">
+      <Filter>DS\PriorityQueue</Filter>
     </ClInclude>
-    <ClInclude Include="Stacks\StackADT.h">
-      <Filter>Stacks</Filter>
+    <ClInclude Include="DS\PriorityQueue\QueueADT.h">
+      <Filter>DS\PriorityQueue</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

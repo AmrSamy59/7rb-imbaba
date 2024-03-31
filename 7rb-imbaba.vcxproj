@@ -130,16 +130,16 @@
     <ClCompile Include="7rb-imbaba.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="PriorityQueue\LinkedQueue.h" />
-    <ClInclude Include="PriorityQueue\Node.h" />
-    <ClInclude Include="PriorityQueue\priNode.h" />
-    <ClInclude Include="PriorityQueue\priQueue.h" />
-    <ClInclude Include="PriorityQueue\QueueADT.h" />
-    <ClInclude Include="Queues\LinkedQueue.h" />
-    <ClInclude Include="Queues\Node.h" />
-    <ClInclude Include="Queues\QueueADT.h" />
-    <ClInclude Include="Stacks\ArrayStack.h" />
-    <ClInclude Include="Stacks\StackADT.h" />
+    <ClInclude Include="DS\PriorityQueue\LinkedQueue.h" />
+    <ClInclude Include="DS\PriorityQueue\Node.h" />
+    <ClInclude Include="DS\PriorityQueue\priNode.h" />
+    <ClInclude Include="DS\PriorityQueue\priQueue.h" />
+    <ClInclude Include="DS\PriorityQueue\QueueADT.h" />
+    <ClInclude Include="DS\Queues\LinkedQueue.h" />
+    <ClInclude Include="DS\Queues\Node.h" />
+    <ClInclude Include="DS\Queues\QueueADT.h" />
+    <ClInclude Include="DS\Stacks\ArrayStack.h" />
+    <ClInclude Include="DS\Stacks\StackADT.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
