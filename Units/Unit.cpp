@@ -36,11 +36,14 @@ float Unit::Gethealth() const
 	return Health;
 }
 
-bool Unit::Health_decrease(float d)
-{if(Health<=0)
-	return false;
-else 
+void Unit::Health_decrease(float d)
+{
+	if (Health <= 0)
+		return;
+else {
 	Health = Health - d;
+
+}
 }
 
 void Unit::Setpower(float p)
@@ -63,8 +66,18 @@ int Unit::get_AC() const
 	return Attack_capacity;
 }
 
+
 void Unit::print() const
 {
 	cout << "ID : " << ID << " " << "Tj : " << Join_time << " " << "Health : " << Health << " " << " Power : " << Power << endl;
+}
+
+bool Unit::Isdead() const
+{
+	if (Health <= 0) {
+		return true;
+	}
+	else
+	return false;
 }
 

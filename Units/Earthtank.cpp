@@ -7,8 +7,10 @@ Earthtank::Earthtank():Unit()
 
 void Earthtank::Attack(Unit*AM)
 {
-	// nothing till now please wait 
-	//AM.Sethealth(AM.Gethealth() - this->Getpower());
+	float Damage = ((this->Getpower()) * (this->Gethealth() / 100)) / sqrt(AM->Gethealth());
+	// nothing till now please wait
+	AM->Health_decrease(Damage);
+
 }
 
 int Earthtank::getcount()

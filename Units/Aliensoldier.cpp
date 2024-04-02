@@ -8,7 +8,9 @@ Aliensoldier::Aliensoldier() :Unit()
 
 void Aliensoldier::Attack(Unit*ES)
 {
+	float Damage = ((this->Getpower()) * (this->Gethealth() / 100)) / sqrt(ES->Gethealth());
 	// nothing till now please wait
+	ES->Health_decrease(Damage);
 	
 
 }

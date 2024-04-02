@@ -18,12 +18,13 @@ public:
 	void Sethealth(int h);
 	float Gethealth() const;
 	//bool Health_increase();
-	bool Health_decrease(float d);
+	void Health_decrease(float d);
 	void Setpower(float p);
 	float Getpower() const;
 	void Set_AC(int ac);
 	int get_AC() const;
 	void print() const;
+	bool Isdead() const;
 	virtual void Attack(Unit*ptr)= 0 ;
 	
 
