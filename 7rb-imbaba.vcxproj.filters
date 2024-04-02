@@ -25,10 +25,40 @@
     <Filter Include="DS\Queues">
       <UniqueIdentifier>{63c0904a-75a3-4c10-be68-21ff10a36e64}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Units">
+      <UniqueIdentifier>{fcd5d5dd-a422-4e33-9295-a8472608be08}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Units\Earth units">
+      <UniqueIdentifier>{1782d4c8-01a6-4489-a218-e7a1ae4a30e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Units\Alien units">
+      <UniqueIdentifier>{b3b1febb-df0f-4fbb-b6d5-1d9cf9bcba96}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="7rb-imbaba.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Units\Unit.cpp">
+      <Filter>Units</Filter>
+    </ClCompile>
+    <ClCompile Include="Units\Aliendrones.cpp">
+      <Filter>Units\Alien units</Filter>
+    </ClCompile>
+    <ClCompile Include="Units\Alienmonster.cpp">
+      <Filter>Units\Alien units</Filter>
+    </ClCompile>
+    <ClCompile Include="Units\Aliensoldier.cpp">
+      <Filter>Units\Alien units</Filter>
+    </ClCompile>
+    <ClCompile Include="Units\Earthsoldier.cpp">
+      <Filter>Units\Earth units</Filter>
+    </ClCompile>
+    <ClCompile Include="Units\Earthtank.cpp">
+      <Filter>Units\Earth units</Filter>
+    </ClCompile>
+    <ClCompile Include="Units\Earthgunnery.cpp">
+      <Filter>Units\Earth units</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -58,6 +88,27 @@
     </ClInclude>
     <ClInclude Include="DS\Queues\DEndedQueue.h">
       <Filter>DS\Queues</Filter>
+    </ClInclude>
+    <ClInclude Include="Units\Unit.h">
+      <Filter>Units</Filter>
+    </ClInclude>
+    <ClInclude Include="Units\Aliendrones.h">
+      <Filter>Units\Alien units</Filter>
+    </ClInclude>
+    <ClInclude Include="Units\Alienmonster.h">
+      <Filter>Units\Alien units</Filter>
+    </ClInclude>
+    <ClInclude Include="Units\Aliensoldier.h">
+      <Filter>Units\Alien units</Filter>
+    </ClInclude>
+    <ClInclude Include="Units\Earthsoldier.h">
+      <Filter>Units\Earth units</Filter>
+    </ClInclude>
+    <ClInclude Include="Units\Earthtank.h">
+      <Filter>Units\Earth units</Filter>
+    </ClInclude>
+    <ClInclude Include="Units\Earthgunnery.h">
+      <Filter>Units\Earth units</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

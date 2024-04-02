@@ -128,6 +128,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="7rb-imbaba.cpp" />
+    <ClCompile Include="Units\Aliendrones.cpp" />
+    <ClCompile Include="Units\Alienmonster.cpp" />
+    <ClCompile Include="Units\Aliensoldier.cpp" />
+    <ClCompile Include="Units\Earthgunnery.cpp" />
+    <ClCompile Include="Units\Earthtank.cpp" />
+    <ClCompile Include="Units\Earthsoldier.cpp" />
+    <ClCompile Include="Units\Unit.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DS\PriorityQueue\priNode.h" />
@@ -139,6 +146,13 @@
     <ClInclude Include="DS\Queues\QueueADT.h" />
     <ClInclude Include="DS\Stacks\ArrayStack.h" />
     <ClInclude Include="DS\Stacks\StackADT.h" />
+    <ClInclude Include="Units\Aliendrones.h" />
+    <ClInclude Include="Units\Alienmonster.h" />
+    <ClInclude Include="Units\Aliensoldier.h" />
+    <ClInclude Include="Units\Earthgunnery.h" />
+    <ClInclude Include="Units\Earthtank.h" />
+    <ClInclude Include="Units\Earthsoldier.h" />
+    <ClInclude Include="Units\Unit.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
