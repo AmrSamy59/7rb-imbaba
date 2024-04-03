@@ -1,13 +1,13 @@
 #pragma once
 #include"Unit.h"
-class Aliensoldier:public Unit
+class AlienSoldier:public Unit
 {
 public:
 	static int countAS;
-	Aliensoldier();
+	AlienSoldier();
 	 void Attack(Unit* ES);
-	int getcount();
-	~Aliensoldier();
+	int GetCount();
+	~AlienSoldier();
 
 };
 

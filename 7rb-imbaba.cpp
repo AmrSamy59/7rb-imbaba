@@ -1,11 +1,11 @@
 #include <iostream>
 
-#include"../7rb-imbaba/Units/Earthsoldier.h"
+#include"../7rb-imbaba/Units/EarthSoldier.h"
 using namespace std;
 int main()
 {
   
-    Earthsoldier s1;
-    s1.print();
+    EarthSoldier s1;
+    s1.PrintInfo();
     cout << "Hello 7rb-imbaba engineers \n";
 }

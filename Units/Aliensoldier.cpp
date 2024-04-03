@@ -1,26 +1,26 @@
-#include "Aliensoldier.h"
-int Aliensoldier::countAS = 0;
-Aliensoldier::Aliensoldier() :Unit()
+#include "AlienSoldier.h"
+int AlienSoldier::countAS = 0;
+AlienSoldier::AlienSoldier() :Unit()
 {
 	countAS++;
 
 }
 
-void Aliensoldier::Attack(Unit*ES)
+void AlienSoldier::Attack(Unit*ES)
 {
-	float Damage = ((this->Getpower()) * (this->Gethealth() / 100)) / sqrt(ES->Gethealth());
-	ES->Health_decrease(Damage);
+	float Damage = ((this->GetPower()) * (this->GetHealth() / 100)) / sqrt(ES->GetHealth());
+	ES->TakeDamage(Damage);
 	
 
 }
 
 
-int Aliensoldier::getcount()
+int AlienSoldier::GetCount()
 {
 	return countAS;
 }
 
-Aliensoldier::~Aliensoldier()
+AlienSoldier::~AlienSoldier()
 {
 	--countAS;
 }

@@ -3,81 +3,82 @@
 Unit::Unit(int id , int Tj , float health , float power , int AC )
 {
 	ID = id;
-	Join_time = Tj;
-	Health = health;
-	Power = power;
-	Attack_capacity = AC;
+	joinTime = Tj;
+	health = health;
+	power = power;
+	attackCapacity = AC;
 }
 
-void Unit::Setid(int id)
-{
-	// don't change the id after you get it from file and used this function
-	ID = id;
-}
+//void Unit::SetID(int id)
+//{
+//	// don't change the id after you get it from file and used this function
+//	ID = id;
+//}
 
-int Unit::Getid() const
+int Unit::GetID() const
 {
 	return ID;
 }
 
-void Unit::Set_Tj(int t)
+void Unit::SetJoinTime(int t)
 {
-	Join_time = t;
+	joinTime = t;
 }
 
-int Unit::Get_Tj() const
+int Unit::GetJoinTime() const
 {
-	return Join_time;
+	return joinTime;
 }
 
 void Unit::Sethealth(int h)
 {
-	Health = h;
+	health = h;
 }
 
-float Unit::Gethealth() const
+float Unit::GetHealth() const
 {
-	return Health;
+	return health;
 }
 
-void Unit::Health_decrease(float d)
+void Unit::TakeDamage(float d)
 {
-	if (Health <= 0)
+	if (health <= 0)
 		return;
 else {
-	Health = Health - d;
+	health = health - d;
 }
 }
 
-void Unit::Setpower(float p)
+
+void Unit::SetPower(float p)
 {
-	Power = p;
+	power = p;
 }
 
-float Unit::Getpower() const
+float Unit::GetPower() const
 {
-	return Power;
+	return power;
 }
 
-void Unit::Set_AC(int ac)
+void Unit::SetAttackCapacity(int ac)
 {
-	Attack_capacity = ac;
+	attackCapacity = ac;
 }
 
-int Unit::get_AC() const
+int Unit::GetAttackCapacity() const
 {
-	return Attack_capacity;
+	return attackCapacity;
 }
 
 
-void Unit::print() const
+void Unit::PrintInfo() const
 {
-	cout << "ID : " << ID << " | " << "Tj : " << Join_time << " | " << "Health : " << Health << " | " << " Power : " << Power << endl;
+	cout << "ID : " << ID << " | " << "Tj : " << joinTime << " | " << "health : " << health << " | " << " power : " << power << endl;
 }
 
-bool Unit::Isdead() const
+bool Unit::IsDead() const
 {
-	if (Health <= 0) {
+	if (health <= 0) {
 		return true;
 	}
 	else

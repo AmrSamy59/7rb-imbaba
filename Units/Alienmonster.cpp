@@ -1,23 +1,23 @@
-#include "Alienmonster.h"
-int Alienmonster::countAM = 0;
-Alienmonster::Alienmonster() :Unit()
+#include "AlienMonster.h"
+int AlienMonster::countAM = 0;
+AlienMonster::AlienMonster() :Unit()
 {
 	countAM++;
 }
 
-void Alienmonster::Attack(Unit* EM)
+void AlienMonster::Attack(Unit* EM)
 {
-	float Damage = ((this->Getpower()) * (this->Gethealth() / 100)) / sqrt(EM->Gethealth());
-	EM->Health_decrease(Damage);
+	float Damage = ((this->GetPower()) * (this->GetHealth() / 100)) / sqrt(EM->GetHealth());
+	EM->TakeDamage(Damage);
 
 }
 
-int Alienmonster::getcount() const
+int AlienMonster::GetCount() const
 {
 	return countAM;
 }
 
-Alienmonster::~Alienmonster()
+AlienMonster::~AlienMonster()
 {
 	--countAM;
 }

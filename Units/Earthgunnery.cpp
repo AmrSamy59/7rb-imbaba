@@ -1,24 +1,24 @@
-#include "Earthgunnery.h"
-int Earthgunnery::countEG = 0;
-Earthgunnery::Earthgunnery() :Unit()
+#include "EarthGunnery.h"
+int EarthGunnery::countEG = 0;
+EarthGunnery::EarthGunnery() :Unit()
 {
 	countEG++;
 }
 
-void Earthgunnery::Attack(Unit* AD)
+void EarthGunnery::Attack(Unit* AD)
 {
 
-	float Damage = ((this->Getpower()) * (this->Gethealth() / 100)) / sqrt(AD->Gethealth());	
-	AD->Health_decrease(Damage);
+	float Damage = ((this->GetPower()) * (this->GetHealth() / 100)) / sqrt(AD->GetHealth());	
+	AD->TakeDamage(Damage);
 
 }
 
-int Earthgunnery::getcount()
+int EarthGunnery::GetCount()
 {
 	return countEG ;
 }
 
-Earthgunnery::~Earthgunnery()
+EarthGunnery::~EarthGunnery()
 {
 	--countEG;
 }

@@ -1,13 +1,13 @@
 #pragma once
 #include"Unit.h"
 
-class Earthtank:public Unit
+class EarthTank:public Unit
 {
 public:
 	static int countET;
-	Earthtank();
+	EarthTank();
 	 void Attack(Unit*AM);
-	int getcount();
-	~Earthtank();
+	int GetCount();
+	~EarthTank();
 };
 

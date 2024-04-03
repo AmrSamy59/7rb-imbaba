@@ -1,25 +1,25 @@
-#include "Earthsoldier.h"
-int Earthsoldier::countES = 0;
-Earthsoldier::Earthsoldier():Unit()
+#include "EarthSoldier.h"
+int EarthSoldier::countES = 0;
+EarthSoldier::EarthSoldier():Unit()
 {
 	++countES;
 
 }
 
-void Earthsoldier::Attack(Unit*AS)
+void EarthSoldier::Attack(Unit*AS)
 {
 	
-	float Damage = ((this->Getpower()) * (this->Gethealth() / 100)) / sqrt(AS->Gethealth());
-	AS->Health_decrease(Damage);
+	float Damage = ((this->GetPower()) * (this->GetHealth() / 100)) / sqrt(AS->GetHealth());
+	AS->TakeDamage(Damage);
 
 }
 
-int Earthsoldier::getcount()
+int EarthSoldier::GetCount()
 {
 	return countES;
 }
 
-Earthsoldier::~Earthsoldier()
+EarthSoldier::~EarthSoldier()
 {
 	--countES;
 }

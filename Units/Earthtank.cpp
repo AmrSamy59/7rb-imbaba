@@ -1,23 +1,23 @@
-#include "Earthtank.h"
-int Earthtank::countET = 0;
-Earthtank::Earthtank():Unit()
+#include "EarthTank.h"
+int EarthTank::countET = 0;
+EarthTank::EarthTank():Unit()
 {
 	++countET;
 }
 
-void Earthtank::Attack(Unit*AM)
+void EarthTank::Attack(Unit*AM)
 {
-	float Damage = ((this->Getpower()) * (this->Gethealth() / 100)) / sqrt(AM->Gethealth());
-	AM->Health_decrease(Damage);
+	float Damage = ((this->GetPower()) * (this->GetHealth() / 100)) / sqrt(AM->GetHealth());
+	AM->TakeDamage(Damage);
 
 }
 
-int Earthtank::getcount()
+int EarthTank::GetCount()
 {
 	return countET;
 }
 
-Earthtank::~Earthtank()
+EarthTank::~EarthTank()
 {
 	--countET;
 }
