@@ -1,13 +1,17 @@
 #include "Unit.h"
 
-Unit::Unit()
+Unit::Unit(int id , int Tj , float health , float power , int AC )
 {
-
+	ID = id;
+	Join_time = Tj;
+	Health = health;
+	Power = power;
+	Attack_capacity = AC;
 }
 
 void Unit::Setid(int id)
 {
-	// don't change the id after you get it from file and use this function
+	// don't change the id after you get it from file and used this function
 	ID = id;
 }
 
@@ -42,7 +46,6 @@ void Unit::Health_decrease(float d)
 		return;
 else {
 	Health = Health - d;
-
 }
 }
 
@@ -69,7 +72,7 @@ int Unit::get_AC() const
 
 void Unit::print() const
 {
-	cout << "ID : " << ID << " " << "Tj : " << Join_time << " " << "Health : " << Health << " " << " Power : " << Power << endl;
+	cout << "ID : " << ID << " | " << "Tj : " << Join_time << " | " << "Health : " << Health << " | " << " Power : " << Power << endl;
 }
 
 bool Unit::Isdead() const

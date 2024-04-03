@@ -8,7 +8,6 @@ Earthtank::Earthtank():Unit()
 void Earthtank::Attack(Unit*AM)
 {
 	float Damage = ((this->Getpower()) * (this->Gethealth() / 100)) / sqrt(AM->Gethealth());
-	// nothing till now please wait
 	AM->Health_decrease(Damage);
 
 }

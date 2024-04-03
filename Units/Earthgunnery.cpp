@@ -7,10 +7,8 @@ Earthgunnery::Earthgunnery() :Unit()
 
 void Earthgunnery::Attack(Unit* AD)
 {
-	// nothing till now please wait 
-	//AD.Sethealth(AD.Gethealth() - this->Getpower());
-	float Damage = ((this->Getpower()) * (this->Gethealth() / 100)) / sqrt(AD->Gethealth());
-	// nothing till now please wait
+
+	float Damage = ((this->Getpower()) * (this->Gethealth() / 100)) / sqrt(AD->Gethealth());	
 	AD->Health_decrease(Damage);
 
 }

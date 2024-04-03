@@ -10,14 +10,14 @@ private:
 	float Power;
 	int Attack_capacity; // AC
 public:
-	Unit();
+	Unit(int id=0,int Tj=0, float health=0.0,float power= 0.0,int AC=0);  
 	void Setid(int i);
 	int Getid() const;
 	void Set_Tj(int t);
 	int Get_Tj() const;
 	void Sethealth(int h);
 	float Gethealth() const;
-	//bool Health_increase();
+   //bool Health_increase();
 	void Health_decrease(float d);
 	void Setpower(float p);
 	float Getpower() const;

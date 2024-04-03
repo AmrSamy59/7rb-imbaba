@@ -7,9 +7,7 @@ Alienmonster::Alienmonster() :Unit()
 
 void Alienmonster::Attack(Unit* EM)
 {
-	// nothing till now please wait
 	float Damage = ((this->Getpower()) * (this->Gethealth() / 100)) / sqrt(EM->Gethealth());
-	// nothing till now please wait
 	EM->Health_decrease(Damage);
 
 }
