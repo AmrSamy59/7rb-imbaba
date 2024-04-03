@@ -1,10 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
     <Filter Include="Header Files">
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
@@ -34,6 +30,16 @@
     <Filter Include="Units\Alien units">
       <UniqueIdentifier>{b3b1febb-df0f-4fbb-b6d5-1d9cf9bcba96}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Utils">
+      <UniqueIdentifier>{8712223f-df8a-4973-92e7-57b50da732ff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Armies">
+      <UniqueIdentifier>{a7643ac1-6672-49a9-937d-5d4ec2a8e2ea}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="7rb-imbaba.cpp">
@@ -42,23 +48,35 @@
     <ClCompile Include="Units\Unit.cpp">
       <Filter>Units</Filter>
     </ClCompile>
-    <ClCompile Include="Units\Aliendrones.cpp">
+    <ClCompile Include="Units\AlienDrone.cpp">
       <Filter>Units\Alien units</Filter>
     </ClCompile>
-    <ClCompile Include="Units\Alienmonster.cpp">
+    <ClCompile Include="Units\AlienMonster.cpp">
       <Filter>Units\Alien units</Filter>
     </ClCompile>
-    <ClCompile Include="Units\Aliensoldier.cpp">
+    <ClCompile Include="Units\AlienSoldier.cpp">
       <Filter>Units\Alien units</Filter>
     </ClCompile>
-    <ClCompile Include="Units\Earthsoldier.cpp">
+    <ClCompile Include="Units\EarthSoldier.cpp">
       <Filter>Units\Earth units</Filter>
     </ClCompile>
-    <ClCompile Include="Units\Earthtank.cpp">
+    <ClCompile Include="Units\EarthTank.cpp">
       <Filter>Units\Earth units</Filter>
     </ClCompile>
-    <ClCompile Include="Units\Earthgunnery.cpp">
+    <ClCompile Include="Units\EarthGunnery.cpp">
       <Filter>Units\Earth units</Filter>
+    </ClCompile>
+    <ClCompile Include="Utils\randGen.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="Armies\AlienArmy.cpp">
+      <Filter>Armies</Filter>
+    </ClCompile>
+    <ClCompile Include="Armies\EarthArmy.cpp">
+      <Filter>Armies</Filter>
+    </ClCompile>
+    <ClCompile Include="Armies\Army.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -92,23 +110,35 @@
     <ClInclude Include="Units\Unit.h">
       <Filter>Units</Filter>
     </ClInclude>
-    <ClInclude Include="Units\Aliendrones.h">
+    <ClInclude Include="Units\AlienDrone.h">
       <Filter>Units\Alien units</Filter>
     </ClInclude>
-    <ClInclude Include="Units\Alienmonster.h">
+    <ClInclude Include="Units\AlienMonster.h">
       <Filter>Units\Alien units</Filter>
     </ClInclude>
-    <ClInclude Include="Units\Aliensoldier.h">
+    <ClInclude Include="Units\AlienSoldier.h">
       <Filter>Units\Alien units</Filter>
     </ClInclude>
-    <ClInclude Include="Units\Earthsoldier.h">
+    <ClInclude Include="Units\EarthSoldier.h">
       <Filter>Units\Earth units</Filter>
     </ClInclude>
-    <ClInclude Include="Units\Earthtank.h">
+    <ClInclude Include="Units\EarthTank.h">
       <Filter>Units\Earth units</Filter>
     </ClInclude>
-    <ClInclude Include="Units\Earthgunnery.h">
+    <ClInclude Include="Units\EarthGunnery.h">
       <Filter>Units\Earth units</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils\randGen.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Armies\AlienArmy.h">
+      <Filter>Armies</Filter>
+    </ClInclude>
+    <ClInclude Include="Armies\EarthArmy.h">
+      <Filter>Armies</Filter>
+    </ClInclude>
+    <ClInclude Include="Armies\Army.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

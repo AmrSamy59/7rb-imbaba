@@ -128,15 +128,21 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="7rb-imbaba.cpp" />
-    <ClCompile Include="Units\Aliendrones.cpp" />
-    <ClCompile Include="Units\Alienmonster.cpp" />
-    <ClCompile Include="Units\Aliensoldier.cpp" />
-    <ClCompile Include="Units\Earthgunnery.cpp" />
-    <ClCompile Include="Units\Earthtank.cpp" />
-    <ClCompile Include="Units\Earthsoldier.cpp" />
+    <ClCompile Include="Armies\AlienArmy.cpp" />
+    <ClCompile Include="Armies\EarthArmy.cpp" />
+    <ClCompile Include="Armies\Army.cpp" />
+    <ClCompile Include="Utils\randGen.cpp" />
+    <ClCompile Include="Units\AlienDrone.cpp" />
+    <ClCompile Include="Units\AlienMonster.cpp" />
+    <ClCompile Include="Units\AlienSoldier.cpp" />
+    <ClCompile Include="Units\EarthGunnery.cpp" />
+    <ClCompile Include="Units\EarthTank.cpp" />
+    <ClCompile Include="Units\EarthSoldier.cpp" />
     <ClCompile Include="Units\Unit.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Armies\AlienArmy.h" />
+    <ClInclude Include="Armies\Army.h" />
     <ClInclude Include="DS\PriorityQueue\priNode.h" />
     <ClInclude Include="DS\PriorityQueue\priQueue.h" />
     <ClInclude Include="DS\Queues\DEndedQueue.h" />
@@ -146,12 +152,14 @@
     <ClInclude Include="DS\Queues\QueueADT.h" />
     <ClInclude Include="DS\Stacks\ArrayStack.h" />
     <ClInclude Include="DS\Stacks\StackADT.h" />
-    <ClInclude Include="Units\Aliendrones.h" />
-    <ClInclude Include="Units\Alienmonster.h" />
-    <ClInclude Include="Units\Aliensoldier.h" />
-    <ClInclude Include="Units\Earthgunnery.h" />
-    <ClInclude Include="Units\Earthtank.h" />
-    <ClInclude Include="Units\Earthsoldier.h" />
+    <ClInclude Include="Armies\EarthArmy.h" />
+    <ClInclude Include="Utils\randGen.h" />
+    <ClInclude Include="Units\AlienDrone.h" />
+    <ClInclude Include="Units\AlienMonster.h" />
+    <ClInclude Include="Units\AlienSoldier.h" />
+    <ClInclude Include="Units\EarthGunnery.h" />
+    <ClInclude Include="Units\EarthTank.h" />
+    <ClInclude Include="Units\EarthSoldier.h" />
     <ClInclude Include="Units\Unit.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
