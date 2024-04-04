@@ -32,6 +32,7 @@ public:
 	virtual void Attack(Unit*ptr) = 0 ;
 	virtual string UnitType() = 0;
 	bool operator==(Unit* unit);
+	friend ostream& operator<<(ostream& COUT, const Unit* obj);
 	
 
 };

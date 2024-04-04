@@ -24,6 +24,7 @@ public :
 	bool dequeue_back(T& backEntry);
 	bool peek_back(T& backEntry)  const;
 	bool enqueue_front(const T& newEntry);
+	void Print();
 	~DEndedQueue();
 };
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -149,9 +150,9 @@ bool DEndedQueue<T>::dequeue_back(T& backEntry)
 
 	DoubleNode<T>* nodeToDeletePtr = backPtr;
 	backEntry = backPtr->getItem();
-	backEntry = backPtr->getPrevious();
+	backPtr = backPtr->getPrevious();
 
-	if (backEntry)
+	if (backPtr)
 		backPtr->setNext(nullptr);
 
 	if (nodeToDeletePtr == frontPtr)	 // Special case: last DoubleNode in the queue
@@ -191,6 +192,25 @@ inline bool DEndedQueue<T>::enqueue_front(const T& newEntry)
 
 	return true;
 }
+
+template<typename T>
+ void DEndedQueue<T>::Print()
+ {
+	 if (frontPtr == NULL) {
+		 return;
+ }
+	 else
+	 {
+		 DoubleNode<T>* temp = frontPtr;
+		 while (temp) {
+			 cout << temp->getItem()<< " , ";
+			 temp = temp->getNext();
+		 }
+		 cout << endl;
+	 }
+
+}
+
 
 template <typename T>
 DEndedQueue<T>::~DEndedQueue()

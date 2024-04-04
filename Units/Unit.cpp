@@ -91,3 +91,8 @@ bool Unit::operator==(Unit* unit)
 	return this->ID == unit->ID;
 }
 
+ostream& operator<<(std::ostream& COUT, const Unit* obj)
+{
+	COUT << obj->GetID();
+	return COUT;
+}

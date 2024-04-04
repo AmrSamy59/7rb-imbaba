@@ -3,7 +3,7 @@
 AlienArmy::AlienArmy()
 {
 
-	SolidersCount = MonstersCount = DronesCount = 0;
+	SoldiersCount = MonstersCount = DronesCount = 0;
 
 	Monsters = new AlienMonster * [1000];
 	for (int i = 0; i < 1000; ++i) {
@@ -14,10 +14,10 @@ AlienArmy::AlienArmy()
 void AlienArmy::AddAS(AlienSoldier* unit, bool toFront)
 {
 	if (toFront)
-		Soliders.enqueue_front(unit);
+		Soldiers.enqueue_front(unit);
 	else
-		Soliders.enqueue(unit);
-	SolidersCount++;
+		Soldiers.enqueue(unit);
+	SoldiersCount++;
 }
 
 void AlienArmy::AddAM(AlienMonster* unit)
@@ -36,8 +36,8 @@ void AlienArmy::AddAD(AlienDrone* unit, bool toFront)
 
 void AlienArmy::RemoveAS(AlienSoldier*& unit, bool fromFront)
 {
-	Soliders.dequeue(unit);
-	SolidersCount--;
+	Soldiers.dequeue(unit);
+	SoldiersCount--;
 }
 
 void AlienArmy::RemoveAM(AlienMonster*& unit) // please rag3
@@ -58,11 +58,28 @@ void AlienArmy::RemoveAD(AlienDrone*& unit, bool fromFront)
 	Drones.dequeue(unit);
 	DronesCount--;
 }
-
+void AlienArmy::Print()
+{
+	cout << "============================== Alien Army Alive Units ==============================" << endl;
+	cout << SoldiersCount << " AS [";
+	Soldiers.Print();
+	cout << " ] " << endl;
+	cout << MonstersCount << " AM [";
+	 for (int i = 0; i < MonstersCount; i++) {
+		 cout << Monsters[i] << " , ";
+	 }
+	 cout << " ] " << endl;
+	 cout << DronesCount << " AD [";
+	 Drones.Print();
+	 cout << " ] " << endl;
+	
+}
+/*
 void AlienArmy::Attack()
 {
-
 }
+*/
+
 
 AlienArmy::~AlienArmy()
 {

@@ -17,13 +17,15 @@ class ArrayStack : public StackADT<T>
 	enum { MAX_SIZE = 100 };
 private:
 	T items[MAX_SIZE];		// Array of stack items
-	int top;                   // Index to top of stack
+	int top; // Index to top of stack 
+	
 	
 public:
 
 	ArrayStack()
 	{
 		top = -1;
+		
 	}  // end default constructor
 
 	bool isEmpty() const
@@ -36,7 +38,8 @@ public:
 		if( top == MAX_SIZE-1 ) return false;	//Stack is FULL
 
 		top++;
-		items[top] = newEntry;   
+		items[top] = newEntry;
+		
 		return true;
 	}  // end push
 
@@ -46,6 +49,7 @@ public:
 		
 		TopEntry = items[top];		 
 		top--;
+		
 		return true;
 	}  // end pop
 	
@@ -56,6 +60,14 @@ public:
 		TopEntry = items[top];		 
 		return true;
 	}  // end peek
+	void Print() {
+		if (top == -1)
+			return;
+		for (int i = 0; i <= top; i++) {
+			cout<<items[i]<<" ";
+		}
+		cout << endl;
+	}
 
 }; // end ArrayStack
 

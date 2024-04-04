@@ -2,6 +2,6 @@
 class Army
 {
 public:
-	virtual void Attack() = 0;
+	//virtual void Attack() = 0;
 };
 

@@ -10,10 +10,10 @@
 class AlienArmy : public Army
 {
 private:
-	DEndedQueue<AlienSoldier*> Soliders;
+	DEndedQueue<AlienSoldier*> Soldiers;
 	AlienMonster** Monsters;
 	DEndedQueue<AlienDrone*> Drones;
-	int SolidersCount;
+	int SoldiersCount;
 	int MonstersCount;
 	int DronesCount;
 public:
@@ -26,9 +26,9 @@ public:
 	void RemoveAS(AlienSoldier*& unit, bool fromFront = false);
 	void RemoveAM(AlienMonster*& unit);
 	void RemoveAD(AlienDrone*& unit, bool fromFront = false);
-
+	void Print();
 	// Attack the other army
-	void Attack();
+	//void Attack();
 	~AlienArmy();
 };
 

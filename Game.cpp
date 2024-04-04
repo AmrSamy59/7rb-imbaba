@@ -13,6 +13,6 @@ void Game::NextTimeStep()
 {
 	timeStep++;
 	randGenerator->generateUnits();
-	earthArmy->Attack();
-	alienArmy->Attack();
+	//earthArmy->Attack();
+	//alienArmy->Attack();
 }
