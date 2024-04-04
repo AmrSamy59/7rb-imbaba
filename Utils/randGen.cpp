@@ -6,6 +6,10 @@ randGen::randGen(string input_file, EarthArmy* eArmy, AlienArmy* aArmy)
 	alienArmy = aArmy;
 }
 
+void randGen::generateUnits()
+{
+}
+
 int randGen::randInt()
 {
 	return 0;
