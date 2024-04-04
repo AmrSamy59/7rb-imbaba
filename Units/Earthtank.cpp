@@ -1,8 +1,8 @@
 #include "EarthTank.h"
-int EarthTank::countET = 0;
+
 EarthTank::EarthTank():Unit()
 {
-	++countET;
+	
 }
 
 void EarthTank::Attack(Unit*AM)
@@ -12,12 +12,9 @@ void EarthTank::Attack(Unit*AM)
 
 }
 
-int EarthTank::GetCount()
+string EarthTank::UnitType()
 {
-	return countET;
+	return "EarthTank";
 }
 
-EarthTank::~EarthTank()
-{
-	--countET;
-}
+

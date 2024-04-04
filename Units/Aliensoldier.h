@@ -3,11 +3,10 @@
 class AlienSoldier:public Unit
 {
 public:
-	static int countAS;
+	string UnitType();
 	AlienSoldier();
 	 void Attack(Unit* ES);
-	int GetCount();
-	~AlienSoldier();
+	
 
 };
 
