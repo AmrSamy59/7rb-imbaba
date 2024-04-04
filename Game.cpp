@@ -2,8 +2,8 @@
 
 Game::Game(char _mode)
 {
-	earthArmy = new EarthArmy(this);
-	alienArmy = new AlienArmy(this);
+	earthArmy = new EarthArmy();
+	alienArmy = new AlienArmy();
 	randGenerator = new randGen("", earthArmy, alienArmy);
 	mode = _mode;
 	timeStep = 0;

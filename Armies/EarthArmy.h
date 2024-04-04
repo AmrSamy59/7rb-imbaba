@@ -9,10 +9,9 @@
 
 class EarthArmy : public Army
 {
-private:
-	Game* GamePtr;
+
 public:
-	EarthArmy(Game* gPtr);
+	EarthArmy();
 	void Attack();
 };
 

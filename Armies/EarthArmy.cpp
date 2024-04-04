@@ -1,8 +1,7 @@
 #include "EarthArmy.h"
 
-EarthArmy::EarthArmy(Game* gPtr)
+EarthArmy::EarthArmy()
 {
-	GamePtr = gPtr;
 }
 
 void EarthArmy::Attack()

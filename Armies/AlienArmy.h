@@ -17,9 +17,8 @@ private:
 	int SolidersCount;
 	int MonstersCount;
 	int DronesCount;
-	Game* GamePtr;
 public:
-	AlienArmy(Game* gPtr);
+	AlienArmy();
 	// Add Alien Units
 	void AddAS(AlienSoldier* unit, bool toFront = false);
 	void AddAM(AlienMonster* unit);

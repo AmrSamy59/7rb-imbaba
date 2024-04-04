@@ -1,6 +1,6 @@
 #include "randGen.h"
 
-randGen::randGen(string input_file = "input_data.txt", EarthArmy* eArmy, AlienArmy* aArmy)
+randGen::randGen(string input_file, EarthArmy* eArmy, AlienArmy* aArmy)
 {
 	earthArmy = eArmy;
 	alienArmy = aArmy;

@@ -1,6 +1,6 @@
 #include "Unit.h"
 
-Unit::Unit(int id , int Tj , float health , float power , int AC, Game* gPtr)
+Unit::Unit(Game* gPtr, int id , int Tj , float health , float power , int AC)
 {
 	ID = id;
 	joinTime = Tj;

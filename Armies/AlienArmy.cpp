@@ -1,8 +1,7 @@
 #include "AlienArmy.h"
 
-AlienArmy::AlienArmy(Game* gPtr)
+AlienArmy::AlienArmy()
 {
-	GamePtr = gPtr;
 
 	SolidersCount = MonstersCount = DronesCount = 0;
 
