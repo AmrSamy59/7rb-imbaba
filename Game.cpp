@@ -50,9 +50,10 @@ Game::~Game()
 	alienArmy->~AlienArmy();
 	Temp.~LinkedQueue();
 	Killed.~LinkedQueue();
-	delete earthArmy;
-	delete alienArmy;
+	//delete earthArmy;
+	//delete alienArmy;
 	delete randGenerator;
+	cout << "delete done";
 	// clear from amr hany 
 
 
