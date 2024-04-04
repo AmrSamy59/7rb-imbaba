@@ -66,11 +66,13 @@ public:
         }
         else {
             priNode<T>* temp = head;
-            while (temp) {
+            while (temp->getNext()) {
                 int pri = 0; // dummey var for the get item fun 
                 cout << (temp->getItem(pri))<<" , ";
                 temp = temp->getNext();
             }
+            int pri = 0; // dummey var for the get item fun 
+            cout << (temp->getItem(pri));
         
         }
     }

@@ -2,17 +2,17 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include "../Armies/EarthArmy.h"
-#include "../Armies/AlienArmy.h"
+#include "../Game.h"
 using namespace std;
 class randGen
 {
 private:
-	EarthArmy* earthArmy;
-	AlienArmy* alienArmy;
+	Game* pGame;
+	int N, Prob, ES, ET, EG,EsC,EtC,EgC;
 public:
-	randGen(string input_file, EarthArmy* eArmy, AlienArmy* aArmy);
-	void generateUnits();
-	int randInt(); // generate random int from 0 to 100
+	randGen(Game*);
+	void generateUnits(int,int,int);
+	void execute(int,int,int,int,int);
+	int randInt(int ceil, int floor); // generate random int from 0 to 100
 };
 

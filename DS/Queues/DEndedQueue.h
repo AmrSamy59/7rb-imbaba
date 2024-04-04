@@ -202,11 +202,11 @@ template<typename T>
 	 else
 	 {
 		 DoubleNode<T>* temp = frontPtr;
-		 while (temp) {
+		 while (temp->getNext()) {
 			 cout << temp->getItem()<< " , ";
 			 temp = temp->getNext();
 		 }
-		 cout << endl;
+		 cout << temp->getItem();
 	 }
 
 }

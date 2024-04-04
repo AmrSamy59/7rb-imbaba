@@ -4,8 +4,11 @@
 #include "DS/Queues/LinkedQueue.h"
 #include "Armies/EarthArmy.h"
 #include "Armies/AlienArmy.h"
+#include "Units/EarthSoldier.h"
+#include "Units/EarthTank.h"
+#include "Units/EarthGunnery.h"
 #include "Utils/randGen.h"
-
+class randGen;
 class Game
 {
 private:
@@ -19,4 +22,7 @@ private:
 public:
 	Game(char _mode ='a');
 	void NextTimeStep();
+	void addEarthUnits(int, int, int);
+	void addAlienUnits(int, int, int);
+	~Game();
 };

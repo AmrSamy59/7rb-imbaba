@@ -63,10 +63,10 @@ public:
 	void Print() {
 		if (top == -1)
 			return;
-		for (int i = 0; i <= top; i++) {
-			cout<<items[i]<<" ";
+		for (int i = 0; i < top; i++) {
+			cout<<items[i]<<" , ";
 		}
-		cout << endl;
+		cout << items[top];
 	}
 
 }; // end ArrayStack

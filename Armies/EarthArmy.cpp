@@ -26,6 +26,7 @@ void EarthArmy::AddEG(EarthGunnery* Unit)
 {
 	int pri = Unit->GetHealth() + Unit->GetPower();
 	Gunneries.enqueue(Unit,pri);
+	GunneryCount++;
 }
 
 void EarthArmy::RemoveES(EarthSoldier*& Unit, bool fromFront)
