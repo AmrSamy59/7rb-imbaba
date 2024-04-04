@@ -42,7 +42,7 @@ void AlienArmy::RemoveAS(AlienSoldier*& unit, bool fromFront)
 
 void AlienArmy::RemoveAM(AlienMonster*& unit) // please rag3
 {
-	int rand_index = 0;
+	int rand_index = std::rand() %  MonstersCount ;
 	
 	unit = Monsters[rand_index];
 	Monsters[rand_index] = nullptr;
