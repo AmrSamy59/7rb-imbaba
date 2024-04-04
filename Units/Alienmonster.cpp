@@ -1,6 +1,6 @@
 #include "AlienMonster.h"
 int AlienMonster::countAM = 0;
-AlienMonster::AlienMonster() :Unit()
+AlienMonster::AlienMonster() : Unit()
 {
 	countAM++;
 }

@@ -1,7 +1,9 @@
 #include "AlienArmy.h"
 
-AlienArmy::AlienArmy()
+AlienArmy::AlienArmy(Game* gPtr)
 {
+	GamePtr = gPtr;
+
 	SolidersCount = MonstersCount = DronesCount = 0;
 
 	Monsters = new AlienMonster * [1000];
@@ -10,33 +12,57 @@ AlienArmy::AlienArmy()
 	}
 }
 
-void AlienArmy::AddUnit(AlienSoldier* unit)
+void AlienArmy::AddAS(AlienSoldier* unit, bool toFront)
 {
-	Soliders.enqueue(unit);
+	if (toFront)
+		Soliders.enqueue_front(unit);
+	else
+		Soliders.enqueue(unit);
+	SolidersCount++;
 }
 
-void AlienArmy::AddUnit(AlienMonster* unit)
+void AlienArmy::AddAM(AlienMonster* unit)
 {
 	Monsters[MonstersCount++] = unit;
 }
 
-void AlienArmy::AddUnit(AlienDrone* unit)
+void AlienArmy::AddAD(AlienDrone* unit, bool toFront)
 {
-	Drones.enqueue(unit);
+	if (toFront)
+		Drones.enqueue_front(unit);
+	else
+		Drones.enqueue(unit);
+	DronesCount++;
 }
 
-void AlienArmy::RemoveUnit(AlienSoldier* unit)
+void AlienArmy::RemoveAS(AlienSoldier*& unit, bool fromFront)
 {
 	Soliders.dequeue(unit);
+	SolidersCount--;
 }
 
-void AlienArmy::RemoveUnit(AlienMonster* unit)
+void AlienArmy::RemoveAM(AlienMonster*& unit) // please rag3
 {
+	int rand_index = 0;
+	
+	unit = Monsters[rand_index];
+	Monsters[rand_index] = nullptr;
+
+	for (int i = rand_index + 1; i < MonstersCount; ++i) {
+		Monsters[i - 1] = Monsters[i];
+	}
+	MonstersCount--;
 }
 
-void AlienArmy::RemoveUnit(AlienDrone* unit)
+void AlienArmy::RemoveAD(AlienDrone*& unit, bool fromFront)
 {
 	Drones.dequeue(unit);
+	DronesCount--;
+}
+
+void AlienArmy::Attack()
+{
+
 }
 
 AlienArmy::~AlienArmy()

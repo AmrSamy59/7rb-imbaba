@@ -3,12 +3,11 @@
 
 class AlienMonster:public Unit
 {
-	
 public:
 	static int countAM;
 	AlienMonster();
-	 void Attack(Unit* ET);
-	 int GetCount()const;
-	 ~AlienMonster();
+	void Attack(Unit* ET);
+	int GetCount() const;
+	~AlienMonster();
 };
 

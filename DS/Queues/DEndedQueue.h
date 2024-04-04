@@ -15,6 +15,7 @@ public :
 	DEndedQueue() : LinkedQueue() {};
 	bool dequeue_back(T& backEntry);
 	bool peek_back(T& backEntry)  const;
+	bool enqueue_front(const T& newEntry);
 };
 /////////////////////////////////////////////////////////////////////////////////////////
 
@@ -51,5 +52,24 @@ bool DEndedQueue<T>::peek_back(T& backEntry) const
 		return false;
 
 	backEntry = backPtr->getItem();
+	return true;
+}
+
+template<typename T>
+inline bool DEndedQueue<T>::enqueue_front(const T& newEntry)
+{
+	DoubleNode<T>* newNodePtr = new DoubleNode<T>(newEntry);
+	// Insert the new DoubleNode
+	if (!isEmpty())	//special case if this is the first DoubleNode to insert
+	{
+		frontPtr->setPrevious(newNodePtr);
+	}
+
+	newNodePtr->setNext(frontPtr);
+
+	newNodePtr->setPrevious(nullptr);
+	frontPtr = newNodePtr; // The queue is empty
+
+
 	return true;
 }

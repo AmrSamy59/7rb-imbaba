@@ -1,12 +1,13 @@
 #include "Unit.h"
 
-Unit::Unit(int id , int Tj , float health , float power , int AC )
+Unit::Unit(int id , int Tj , float health , float power , int AC, Game* gPtr)
 {
 	ID = id;
 	joinTime = Tj;
 	health = health;
 	power = power;
 	attackCapacity = AC;
+	GamePtr = gPtr;
 }
 
 //void Unit::SetID(int id)
@@ -83,5 +84,10 @@ bool Unit::IsDead() const
 	}
 	else
 	return false;
+}
+
+bool Unit::operator==(Unit* unit)
+{
+	return this->ID == unit->ID;
 }
 

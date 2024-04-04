@@ -6,26 +6,31 @@
 #include "../Units/AlienDrone.h"
 #include "../Units/AlienMonster.h"
 #include "../Units/AlienSoldier.h"
+#include "Army.h"
 
-class AlienArmy
+class AlienArmy : public Army
 {
 private:
-	LinkedQueue<AlienSoldier*> Soliders;
+	DEndedQueue<AlienSoldier*> Soliders;
 	AlienMonster** Monsters;
 	DEndedQueue<AlienDrone*> Drones;
 	int SolidersCount;
 	int MonstersCount;
 	int DronesCount;
+	Game* GamePtr;
 public:
-	AlienArmy();
+	AlienArmy(Game* gPtr);
 	// Add Alien Units
-	void AddUnit(AlienSoldier* unit);
-	void AddUnit(AlienMonster* unit);
-	void AddUnit(AlienDrone* unit);
+	void AddAS(AlienSoldier* unit, bool toFront = false);
+	void AddAM(AlienMonster* unit);
+	void AddAD(AlienDrone* unit, bool toFront = false);
 	// remove Alien Units
-	void RemoveUnit(AlienSoldier* unit);
-	void RemoveUnit(AlienMonster* unit);
-	void RemoveUnit(AlienDrone* unit);
+	void RemoveAS(AlienSoldier*& unit, bool fromFront = false);
+	void RemoveAM(AlienMonster*& unit);
+	void RemoveAD(AlienDrone*& unit, bool fromFront = false);
+
+	// Attack the other army
+	void Attack();
 	~AlienArmy();
 };
 

@@ -42,7 +42,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="7rb-imbaba.cpp">
+    <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Units\Unit.cpp">
@@ -75,7 +75,7 @@
     <ClCompile Include="Armies\EarthArmy.cpp">
       <Filter>Armies</Filter>
     </ClCompile>
-    <ClCompile Include="Armies\Army.cpp">
+    <ClCompile Include="Game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -138,6 +138,9 @@
       <Filter>Armies</Filter>
     </ClInclude>
     <ClInclude Include="Armies\Army.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
