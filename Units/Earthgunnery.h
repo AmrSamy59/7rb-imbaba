@@ -3,10 +3,8 @@
 class EarthGunnery:public Unit
 {
 public:
-	static int countEG;
+	string UnitType();
 	EarthGunnery();
 	 void Attack(Unit*AD);
-	int GetCount();
-	~EarthGunnery();
 };
 

@@ -1,8 +1,13 @@
 #include "AlienSoldier.h"
-int AlienSoldier::countAS = 0;
+
+string AlienSoldier::UnitType()
+{
+	return "AlienSoldier";
+}
+
 AlienSoldier::AlienSoldier() :Unit()
 {
-	countAS++;
+
 
 }
 
@@ -14,13 +19,3 @@ void AlienSoldier::Attack(Unit*ES)
 
 }
 
-
-int AlienSoldier::GetCount()
-{
-	return countAS;
-}
-
-AlienSoldier::~AlienSoldier()
-{
-	--countAS;
-}

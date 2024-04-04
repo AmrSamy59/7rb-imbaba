@@ -4,10 +4,9 @@
 class AlienMonster:public Unit
 {
 public:
-	static int countAM;
+	string UnitType();
 	AlienMonster();
 	void Attack(Unit* ET);
-	int GetCount() const;
-	~AlienMonster();
+
 };
 

@@ -3,10 +3,9 @@
 class EarthSoldier:public Unit
 {
 public:
-	static int countES;
+	string UnitType();
 	EarthSoldier() ;
 	 void Attack(Unit*AS) ;
-	int GetCount();
-	~EarthSoldier();
+
 };
 

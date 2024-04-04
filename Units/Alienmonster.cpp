@@ -1,8 +1,13 @@
 #include "AlienMonster.h"
-int AlienMonster::countAM = 0;
+
+string AlienMonster::UnitType()
+{
+	return "AlienMonster";
+}
+
 AlienMonster::AlienMonster() : Unit()
 {
-	countAM++;
+	
 }
 
 void AlienMonster::Attack(Unit* EM)
@@ -12,13 +17,5 @@ void AlienMonster::Attack(Unit* EM)
 
 }
 
-int AlienMonster::GetCount() const
-{
-	return countAM;
-}
 
-AlienMonster::~AlienMonster()
-{
-	--countAM;
-}
 

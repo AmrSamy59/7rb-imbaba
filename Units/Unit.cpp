@@ -3,10 +3,10 @@
 Unit::Unit(Game* gPtr, int id , int Tj , float health , float power , int AC)
 {
 	ID = id;
-	joinTime = Tj;
-	health = health;
-	power = power;
-	attackCapacity = AC;
+	JoinTime = Tj;
+	Health = health;
+	Power = power;
+	AttackCapacity = AC;
 	GamePtr = gPtr;
 }
 
@@ -23,63 +23,63 @@ int Unit::GetID() const
 
 void Unit::SetJoinTime(int t)
 {
-	joinTime = t;
+	JoinTime = t;
 }
 
 int Unit::GetJoinTime() const
 {
-	return joinTime;
+	return JoinTime;
 }
 
-void Unit::Sethealth(int h)
+void Unit::Sethealth(float h)
 {
-	health = h;
+	Health = h;
 }
 
 float Unit::GetHealth() const
 {
-	return health;
+	return Health;
 }
 
 void Unit::TakeDamage(float d)
 {
-	if (health <= 0)
+	if (Health <= 0)
 		return;
 else {
-	health = health - d;
+	Health = Health - d;
 }
 }
 
 
 void Unit::SetPower(float p)
 {
-	power = p;
+	Power = p;
 }
 
 float Unit::GetPower() const
 {
-	return power;
+	return Power;
 }
 
 void Unit::SetAttackCapacity(int ac)
 {
-	attackCapacity = ac;
+	AttackCapacity = ac;
 }
 
 int Unit::GetAttackCapacity() const
 {
-	return attackCapacity;
+	return AttackCapacity;
 }
 
 
 void Unit::PrintInfo() const
 {
-	cout << "ID : " << ID << " | " << "Tj : " << joinTime << " | " << "health : " << health << " | " << " power : " << power << endl;
+	cout << "ID : " << ID << " | " << "Tj : " << JoinTime << " | " << "health : " << Health << " | " << " power : " << Power << endl;
 }
 
 bool Unit::IsDead() const
 {
-	if (health <= 0) {
+	if (Health <= 0) {
 		return true;
 	}
 	else

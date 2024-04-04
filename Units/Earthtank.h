@@ -4,10 +4,10 @@
 class EarthTank:public Unit
 {
 public:
-	static int countET;
+	
 	EarthTank();
 	 void Attack(Unit*AM);
-	int GetCount();
-	~EarthTank();
+	 string UnitType();
+	
 };
 

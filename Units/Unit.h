@@ -8,10 +8,10 @@ class Unit
 {
 private:
 	int ID;
-	int joinTime; // Tj
-	float health;
-	float power;
-	int attackCapacity; // AC
+	int JoinTime; // Tj
+	float Health;
+	float Power;
+	int AttackCapacity; // AC
 	Game* GamePtr;
 public:
 	Unit(Game* gPtr=nullptr, int id=0,int Tj=0, float health=0.0,float power= 0.0,int AC=0);
@@ -19,7 +19,7 @@ public:
 	int GetID() const;
 	void SetJoinTime(int t);
 	int GetJoinTime() const;
-	void Sethealth(int h);
+	void Sethealth(float h);
 	float GetHealth() const;
    //bool Heal();
 	void TakeDamage(float d);
@@ -30,7 +30,7 @@ public:
 	void PrintInfo() const;
 	bool IsDead() const;
 	virtual void Attack(Unit*ptr) = 0 ;
-
+	virtual string UnitType() = 0;
 	bool operator==(Unit* unit);
 	
 
