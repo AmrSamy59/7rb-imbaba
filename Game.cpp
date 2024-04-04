@@ -15,7 +15,7 @@ void Game::NextTimeStep()
 	//handling files
 	// then execute rand gen
 	randGenerator->execute(7,100,30,30,40);//this is sample, delete it after files
-	earthArmy->Print();
+	//earthArmy->Print(); // for the test anas magdy
 	//earthArmy->Attack();
 	//alienArmy->Attack();
 }
@@ -26,7 +26,7 @@ void Game::addEarthUnits(int ES, int EG, int ET)
 	for (int i = 0; i < ES; i++) {
 		EarthSoldier* soldier_ptr = new EarthSoldier();
 		earthArmy->AddES(soldier_ptr);
-		soldier_ptr->PrintInfo();
+		//soldier_ptr->PrintInfo();
 	}
 	for (int i = 0; i < ET; i++) {
 		EarthTank* tank_ptr = new EarthTank();
@@ -42,9 +42,25 @@ void Game::addEarthUnits(int ES, int EG, int ET)
 
 Game::~Game()
 {
-	//delete lists
-	//armies pointers
-	//randgen
+	//delete lists done
+	//armies pointers done 
+	// 	randgen done ;
+	// clear from amr hany 
+	earthArmy->~EarthArmy();
+	alienArmy->~AlienArmy();
+	Temp.~LinkedQueue();
+	Killed.~LinkedQueue();
+	delete earthArmy;
+	delete alienArmy;
+	delete randGenerator;
+	// clear from amr hany 
+
+
+
+
+
+
+
 }
 
 

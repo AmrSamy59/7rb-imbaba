@@ -68,6 +68,9 @@ public:
 		}
 		cout << items[top];
 	}
+	~ArrayStack() {
+		
+	}
 
 }; // end ArrayStack
 

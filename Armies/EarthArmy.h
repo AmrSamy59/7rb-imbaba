@@ -25,6 +25,8 @@ public:
 	void RemoveET(EarthTank*& unit);
 	void RemoveEG(EarthGunnery*& unit);
 	void Print();
+	
+	~EarthArmy();
 	//void Attack();
 };
 

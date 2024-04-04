@@ -66,6 +66,12 @@ void EarthArmy::Print()
 	Gunneries.Print();
 	cout << " ] " << endl;
 }
+EarthArmy::~EarthArmy()
+{
+	Soldiers.~DEndedQueue();
+	Tanks.~ArrayStack();
+	Gunneries.~priQueue();
+}
 /*
 void EarthArmy::Attack()
 {

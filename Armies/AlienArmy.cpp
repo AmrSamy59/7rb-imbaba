@@ -83,6 +83,8 @@ void AlienArmy::Attack()
 
 AlienArmy::~AlienArmy()
 {
+	Soldiers.~DEndedQueue();
+	Drones.~DEndedQueue();
 	delete[] Monsters;
 }
 
