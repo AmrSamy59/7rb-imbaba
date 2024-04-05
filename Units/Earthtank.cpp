@@ -1,6 +1,6 @@
 #include "EarthTank.h"
 
-EarthTank::EarthTank():Unit()
+EarthTank::EarthTank(Game* gPtr, int id, int Tj, float health, float power, int AC) :Unit(gPtr, id, Tj, health, power, AC)
 {
 	
 }

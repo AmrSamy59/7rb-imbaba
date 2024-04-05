@@ -3,18 +3,23 @@
 #include <fstream>
 #include <string>
 #include "../Game.h"
+
 using namespace std;
 class randGen
 {
 private:
 	Game* pGame;
-	int N, Prob, ES, ET, EG, AS, AD, AM,
-		ePowCeil, ePowFloor, eHealCeil, eHealFloor, eCapCeil, eCapFloor,
-		aPowCeil, aPowFloor, aHealCeil, aHealFloor, aCapCeil, aCapFloor,
-		EsC, EtC, EgC, AsC, AmC, AdC;
+	EarthArmyParams* eParams;
+	AlienArmyParams* aParams;
+	int N, Prob;
 public:
 	randGen(Game*);
-	void generateUnits(int,int,int, int, int, int);
+	void generateES();
+	void generateET();
+	void generateEG();
+	void generateAS();
+	void generateAD();
+	void generateAM();
 	void execute();
 	void readParams();
 	int randInt(int ceil, int floor); // generate random int from 0 to 100

@@ -5,7 +5,7 @@ string AlienSoldier::UnitType()
 	return "AlienSoldier";
 }
 
-AlienSoldier::AlienSoldier() :Unit()
+AlienSoldier::AlienSoldier(Game* gPtr, int id, int Tj, float health, float power, int AC) :Unit(gPtr, id, Tj, health, power, AC)
 {
 
 

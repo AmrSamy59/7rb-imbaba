@@ -4,6 +4,8 @@
 #include "DS/Queues/LinkedQueue.h"
 #include "Armies/EarthArmy.h"
 #include "Armies/AlienArmy.h"
+#include "Armies/AlienArmyParams.h"
+#include "Armies/EarthArmyParams.h"
 #include "Units/EarthSoldier.h"
 #include "Units/EarthTank.h"
 #include "Units/EarthGunnery.h"
@@ -11,6 +13,7 @@
 #include <string>
 #include <fstream>
 class randGen;
+
 class Game
 {
 private:
@@ -25,20 +28,12 @@ private:
 public:
 	Game(char _mode ='a');
 	void NextTimeStep();
-	void addEarthUnits(int, int, int);
-	void addAlienUnits(int, int, int);
-	void loadFile(int& N, int& Prob, int& ES, int& EG, int& ET, int& AS, int& AD, int& AM,
-		int& ePowRangeCeil,
-		int& ePowRangeFloor,
-		int& eHealRangeCeil,
-		int& eHealRangeFloor,
-		int& eAttackCapCeil,
-		int& eAttackCapFloor,
-		int& aPowRangeCeil,
-		int& aPowRangeFloor,
-		int& aHealRangeCeil,
-		int& aHealRangeFloor,
-		int& aAttackCapCeil,
-		int& aAttackCapFloor);
+	void addEs_Unit(int pow, int health, int Cap);
+	void addEt_Unit(int pow, int health, int Cap);
+	void addEg_Unit(int pow, int health, int Cap);
+	void addAs_Unit(int pow, int health, int Cap);
+	void addAd_Unit(int pow, int health, int Cap);
+	void addAm_Unit(int pow, int health, int Cap);
+	void loadFile(int& N, int& Prob,EarthArmyParams* eParams, AlienArmyParams* aParams);
 	~Game();
 };

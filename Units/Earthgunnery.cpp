@@ -5,7 +5,7 @@ string EarthGunnery::UnitType()
 	return "EarthGunnery";
 }
 
-EarthGunnery::EarthGunnery() :Unit()
+EarthGunnery::EarthGunnery(Game* gPtr, int id, int Tj, float health, float power, int AC) :Unit(gPtr, id, Tj, health, power, AC)
 {
 
 }

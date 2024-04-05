@@ -4,7 +4,7 @@ class AlienDrone:public Unit
 {
 public:
 	
-	AlienDrone();
+	AlienDrone(Game* gPtr, int id, int Tj, float health, float power, int AC);
 	 void Attack(Unit* EG);
 	 string UnitType();
 

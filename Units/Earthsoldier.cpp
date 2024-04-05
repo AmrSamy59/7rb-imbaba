@@ -5,7 +5,7 @@ string EarthSoldier::UnitType()
 	return "EarthSoldier";
 }
 
-EarthSoldier::EarthSoldier():Unit()
+EarthSoldier::EarthSoldier(Game* gPtr, int id, int Tj, float health, float power, int AC) :Unit(gPtr, id, Tj, health, power, AC)
 {
 
 

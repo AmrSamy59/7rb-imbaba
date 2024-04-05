@@ -1,25 +1,74 @@
 #include "randGen.h"
-//
-//randGen::randGen(string input_file, EarthArmy* eArmy, AlienArmy* aArmy)
-//{
-//	earthArmy = eArmy;
-//	alienArmy = aArmy;
-//}
 
 randGen::randGen(Game* GamePtr)
 {
 	srand((unsigned)time(NULL));
-	EgC = 0;
-	EsC = 0;
-	EtC = 0;
 	pGame = GamePtr;
+	eParams = new EarthArmyParams();
+	aParams = new AlienArmyParams();
 	readParams();
 }
 
-void randGen::generateUnits(int es, int et, int eg, int as, int am, int ad)
+//steps of generation
+	//detect ID
+	//randomize health for unit
+	//randomize power for unit
+	//then You can add this unit
+
+void randGen::generateES() 
 {
-	pGame->addEarthUnits(es, et, eg);
-	pGame->addAlienUnits(as, am, ad);
+	int pow = randInt(eParams->ePowCeil,eParams->ePowFloor),
+		health = randInt(eParams->eHealCeil,eParams->eHealFloor),
+		cap = randInt(eParams->eCapCeil, eParams->eCapFloor);
+		pGame->addEs_Unit(pow, health, cap);
+}
+
+void randGen::generateET()
+{
+	int pow = randInt(eParams->ePowCeil, eParams->ePowFloor),
+		health = randInt(eParams->eHealCeil, eParams->eHealFloor),
+		cap = randInt(eParams->eCapCeil, eParams->eCapFloor);
+
+		pGame->addEt_Unit(pow, health, cap);
+}
+
+void randGen::generateEG()
+{
+	int pow = randInt(eParams->ePowCeil, eParams->ePowFloor),
+		health = randInt(eParams->eHealCeil, eParams->eHealFloor),
+		cap = randInt(eParams->eCapCeil, eParams->eCapFloor);
+
+		pGame->addEg_Unit(pow, health, cap);
+
+}
+
+void randGen::generateAS()
+{
+	int pow = randInt(aParams->aPowCeil, aParams->aPowFloor),
+		health = randInt(aParams->aHealCeil, aParams->aHealFloor),
+		cap = randInt(aParams->aCapCeil, aParams->aCapFloor);
+
+		pGame->addAs_Unit(pow, health, cap);
+}
+
+void randGen::generateAD()
+{
+	int pow = randInt(aParams->aPowCeil, aParams->aPowFloor),
+		health = randInt(aParams->aHealCeil, aParams->aHealFloor),
+		cap = randInt(aParams->aCapCeil, aParams->aCapFloor);
+
+		pGame->addAd_Unit(pow, health, cap);
+
+}
+
+void randGen::generateAM()
+{
+	int pow = randInt(aParams->aPowCeil, aParams->aPowFloor),
+		health = randInt(aParams->aHealCeil, aParams->aHealFloor),
+		cap = randInt(aParams->aCapCeil, aParams->aCapFloor);
+
+		pGame->addAm_Unit(pow, health, cap);
+
 }
 
 void randGen::execute()
@@ -29,30 +78,21 @@ void randGen::execute()
 	int B;
 	for (int i = 0; i < N; i++) {
 		B = randInt(1, 100);
-		if (B <= ES) ++EsC; //generate solider
-		else if (B <= ES + ET) ++EtC; // generate tank
-		else ++EgC; //generate Gunnery
+		if (B <= eParams->ES) generateES(); 
+		else if (B <= eParams->ES + eParams->ET) generateET();
+		else generateEG();
 	}
 	for (int i = 0; i < N; i++) {
 		B = randInt(1, 100);
-		if (B <= AS) ++AsC; //generate solider
-		else if (B <= AS + AM) ++AmC; // generate tank
-		else ++AdC; //generate Gunnery
+		if (B <= aParams->AS) generateAS();
+		else if (B <= aParams->AS + aParams->AM) generateAM();
+		else generateAD();
 	}
-	generateUnits(EsC, EtC, EgC, AsC, AmC, AdC);
-	EsC = 0;
-	EtC = 0;
-	EgC = 0;
-	AsC = 0;
-	AmC = 0;
-	AdC = 0;
 }
 
 void randGen::readParams()
 {
-	pGame->loadFile(N, Prob, ES, ET, EG, AS, AD, AM,
-		ePowCeil, ePowFloor, eHealCeil, eHealFloor, eCapCeil, eCapFloor,
-		aPowCeil, aPowFloor, aHealCeil, aHealFloor, aCapCeil, aCapFloor);
+	pGame->loadFile(N, Prob, eParams, aParams);
 }
 
 int randGen::randInt(int ceil, int floor)

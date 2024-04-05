@@ -22,7 +22,7 @@ void Game::NextTimeStep()
 	//earthArmy->Attack();
 	//alienArmy->Attack();
 }
-
+/*
 void Game::addEarthUnits(int ES, int ET, int EG)
 {
 	for (int i = 0; i < ES; i++) {
@@ -60,39 +60,66 @@ void Game::addAlienUnits(int AS, int AM, int AD)
 		//gunnery_ptr->PrintInfo();
 	}
 }
+*/
+void Game::addEs_Unit(int pow, int health, int Cap)
+{
+	EarthSoldier* soldier_ptr = new EarthSoldier(this,id,timeStep,health,pow,Cap);
+	earthArmy->AddES(soldier_ptr);
+}
+
+void Game::addEt_Unit(int pow, int health, int Cap)
+{
+	EarthTank* tank_ptr = new EarthTank(this, id, timeStep, health, pow, Cap);
+	earthArmy->AddET(tank_ptr);
+}
+
+void Game::addEg_Unit(int pow, int health, int Cap)
+{
+	EarthGunnery* gunnery_ptr = new EarthGunnery(this, id, timeStep, health, pow, Cap);
+	earthArmy->AddEG(gunnery_ptr);
+}
+
+void Game::addAs_Unit(int pow, int health, int Cap)
+{
+	AlienSoldier* soldier_ptr = new AlienSoldier(this, id, timeStep, health, pow, Cap);
+	alienArmy->AddAS(soldier_ptr);
+}
+
+void Game::addAd_Unit(int pow, int health, int Cap)
+{
+	AlienDrone* drone_ptr = new AlienDrone(this, id, timeStep, health, pow, Cap);
+	alienArmy->AddAD(drone_ptr);
+}
+
+void Game::addAm_Unit(int pow, int health, int Cap)
+{
+	AlienMonster* monster_ptr = new AlienMonster(this, id, timeStep, health, pow, Cap);
+	alienArmy->AddAM(monster_ptr);
+}
 
 //REPLACE THIS PARAMS WITH NEW OBJECT OF NEW CLASS THAT GROUP ALL THIS PARAMS 
 // AND WRITE A FUNCTION THAT MANAGE ALL OF THIS 
 // DO NOT FORGET!!!!!!!!!!!!!!!
 
-void Game::loadFile(int& N,int& Prob, int& ES, int& EG, int& ET, int& AS, int& AD, int& AM,
-	int& ePowRangeCeil,
-	int& ePowRangeFloor,
-	int& eHealRangeCeil,
-	int& eHealRangeFloor,
-	int& eAttackCapCeil,
-	int& eAttackCapFloor,
-	int& aPowRangeCeil,
-	int& aPowRangeFloor,
-	int& aHealRangeCeil,
-	int& aHealRangeFloor,
-	int& aAttackCapCeil,
-	int& aAttackCapFloor
-	)
+void Game::loadFile(int& N, int& Prob, EarthArmyParams* eParams, AlienArmyParams* aParams)
 {
 	ifstream inFile(file);
 	if (inFile.is_open()) {
 		inFile >> N >> Prob
-			>> ES >> EG >> ET
-			>> AS >> AD >> AM
-			>> ePowRangeCeil >> ePowRangeFloor >> eHealRangeCeil >> eHealRangeFloor >> eAttackCapCeil >> eAttackCapFloor
-			>> aPowRangeCeil >> aPowRangeFloor >> aHealRangeCeil >> aHealRangeFloor >> aAttackCapCeil >> aAttackCapFloor;
-		ePowRangeFloor *= -1;
-		eHealRangeFloor *= -1;
-		eAttackCapFloor *= -1;
-		aPowRangeFloor *= -1;
-		aHealRangeFloor *= -1;
-		aAttackCapFloor *= -1;
+			>> eParams->ES >> eParams->EG >> eParams->ET
+			>> aParams->AS >> aParams->AD >> aParams->AM
+			>> eParams->ePowCeil >> eParams->ePowFloor 
+			>> eParams->eHealCeil >> eParams->eHealFloor 
+			>> eParams->eCapCeil >> eParams->eCapFloor
+			>> aParams->aPowCeil >> aParams->aPowFloor 
+			>> aParams->aHealCeil >> aParams->aHealFloor 
+			>> aParams->aCapCeil >> aParams->aCapFloor;
+		eParams->ePowFloor *= -1;
+		eParams->eHealFloor *= -1;
+		eParams->eCapFloor *= -1;
+		aParams->aPowFloor *= -1;
+		aParams->aHealFloor *= -1;
+		aParams->aCapFloor *= -1;
 	}
 	inFile.close();
 }

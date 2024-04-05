@@ -141,6 +141,7 @@
     <ClCompile Include="Units\Unit.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Armies\AlienArmyParams.h" />
     <ClInclude Include="Armies\AlienArmy.h" />
     <ClInclude Include="Armies\Army.h" />
     <ClInclude Include="DS\PriorityQueue\priNode.h" />
@@ -153,6 +154,7 @@
     <ClInclude Include="DS\Stacks\ArrayStack.h" />
     <ClInclude Include="DS\Stacks\StackADT.h" />
     <ClInclude Include="Armies\EarthArmy.h" />
+    <ClInclude Include="Armies\EarthArmyParams.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Utils\randGen.h" />
     <ClInclude Include="Units\AlienDrone.h" />
