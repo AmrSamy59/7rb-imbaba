@@ -10,7 +10,7 @@ int main()
 {
   // sound over 
    // string v = "War-strated.wav ";
-    //PlaySoundA(v.c_str(), NULL, SND_FILENAME);
+   // PlaySoundA(v.c_str(), NULL, SND_FILENAME);
    //////////////////////////////////////////
     // EarthSoldier s1;
    //// Unit* p;
@@ -21,9 +21,12 @@ int main()
   
     Game* gPtr = new Game('a');
    
-    for(int i = 0;i<10;i++)
+    for (int i = 0; i < 10; i++)
+    {
+        cout << " \n the current time step = " << i+1 << endl;
         gPtr->NextTimeStep();
-
+        
+    }
     delete gPtr;
 
     cout << "\n\nHello 7rb-imbaba engineers \n";

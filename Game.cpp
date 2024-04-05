@@ -144,7 +144,7 @@ Game::~Game()
 	//delete earthArmy;
 	//delete alienArmy;
 	delete randGenerator;
-	cout << "delete done";
+	
 	// clear from amr hany 
 
 
