@@ -1,6 +1,6 @@
 #include "EarthArmy.h"
 
-EarthArmy::EarthArmy() : Army(0)
+EarthArmy::EarthArmy() : Army(1)
 {
 	 SoldierCount=0;
 	 TankCount=0;

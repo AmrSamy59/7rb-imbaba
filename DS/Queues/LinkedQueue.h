@@ -142,12 +142,12 @@ template<typename T>
 	 else
 	 {
 		 Node<T>* temp = frontPtr;
-		 while (temp)
+		 cout << temp->getItem();
+		 while (temp->getNext())
 		 {
-			 cout << temp->getItem() << " , ";
+			 cout <<", "<< temp->getNext()->getItem();
 			 temp = temp->getNext();
 		 }
-		 cout << endl;
 	 }
 
 

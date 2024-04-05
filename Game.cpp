@@ -65,36 +65,42 @@ void Game::addAlienUnits(int AS, int AM, int AD)
 */
 void Game::addEs_Unit(int pow, int health, int Cap)
 {
+	int id = earthArmy->getNextUnitId();
 	EarthSoldier* soldier_ptr = new EarthSoldier(this,id,timeStep,health,pow,Cap);
 	earthArmy->AddES(soldier_ptr);
 }
 
 void Game::addEt_Unit(int pow, int health, int Cap)
 {
+	int id = earthArmy->getNextUnitId();
 	EarthTank* tank_ptr = new EarthTank(this, id, timeStep, health, pow, Cap);
 	earthArmy->AddET(tank_ptr);
 }
 
 void Game::addEg_Unit(int pow, int health, int Cap)
 {
+	int id = earthArmy->getNextUnitId();
 	EarthGunnery* gunnery_ptr = new EarthGunnery(this, id, timeStep, health, pow, Cap);
 	earthArmy->AddEG(gunnery_ptr);
 }
 
 void Game::addAs_Unit(int pow, int health, int Cap)
 {
+	int id = earthArmy->getNextUnitId();
 	AlienSoldier* soldier_ptr = new AlienSoldier(this, id, timeStep, health, pow, Cap);
 	alienArmy->AddAS(soldier_ptr);
 }
 
 void Game::addAd_Unit(int pow, int health, int Cap)
 {
+	int id = alienArmy->getNextUnitId();
 	AlienDrone* drone_ptr = new AlienDrone(this, id, timeStep, health, pow, Cap);
 	alienArmy->AddAD(drone_ptr);
 }
 
 void Game::addAm_Unit(int pow, int health, int Cap)
 {
+	int id = alienArmy->getNextUnitId();
 	AlienMonster* monster_ptr = new AlienMonster(this, id, timeStep, health, pow, Cap);
 	alienArmy->AddAM(monster_ptr);
 }

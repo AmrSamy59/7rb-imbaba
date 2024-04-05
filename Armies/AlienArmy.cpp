@@ -65,9 +65,10 @@ void AlienArmy::Print()
 	Soldiers.Print();
 	cout << " ] " << endl;
 	cout << MonstersCount << " AM [";
-	 for (int i = 0; i < MonstersCount; i++) {
+	 for (int i = 0; i < MonstersCount - 1; i++) {
 		 cout << Monsters[i] << " , ";
 	 }
+	 cout << Monsters[MonstersCount - 1];
 	 cout << " ] " << endl;
 	 cout << DronesCount << " AD [";
 	 Drones.Print();
