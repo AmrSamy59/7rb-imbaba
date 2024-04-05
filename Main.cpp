@@ -10,7 +10,8 @@ int main()
    // s1.PrintInfo();
     /////////////////////SCRIPT TESTING RANDGEN///////////////////////////
     Game* gPtr = new Game('a');
-    gPtr->NextTimeStep();
+    for(int i = 0;i<50;i++)
+        gPtr->NextTimeStep();
     delete gPtr;
     cout << "Hello 7rb-imbaba engineers \n";
 }
