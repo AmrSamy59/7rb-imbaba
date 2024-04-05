@@ -1,7 +1,11 @@
 #pragma once
 class Army
 {
+protected:
+	int nextId;
 public:
-	//virtual void Attack() = 0;
+	Army(int startingId = 0) { nextId = startingId; };
+	int getNextUnitId() { return nextId; };
+	virtual void Attack() = 0;
 };
 

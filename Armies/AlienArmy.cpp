@@ -1,6 +1,6 @@
 #include "AlienArmy.h"
 
-AlienArmy::AlienArmy()
+AlienArmy::AlienArmy() : Army(2000)
 {
 
 	SoldiersCount = MonstersCount = DronesCount = 0;
@@ -11,18 +11,17 @@ AlienArmy::AlienArmy()
 	}
 }
 
-void AlienArmy::AddAS(AlienSoldier* unit, bool toFront)
+void AlienArmy::AddAS(AlienSoldier* unit)
 {
-	if (toFront)
-		Soldiers.enqueue_front(unit);
-	else
-		Soldiers.enqueue(unit);
+	Soldiers.enqueue(unit);
 	SoldiersCount++;
+	nextId++;
 }
 
 void AlienArmy::AddAM(AlienMonster* unit)
 {
 	Monsters[MonstersCount++] = unit;
+	nextId++;
 }
 
 void AlienArmy::AddAD(AlienDrone* unit, bool toFront)
@@ -32,6 +31,7 @@ void AlienArmy::AddAD(AlienDrone* unit, bool toFront)
 	else
 		Drones.enqueue(unit);
 	DronesCount++;
+	nextId++;
 }
 
 void AlienArmy::RemoveAS(AlienSoldier*& unit, bool fromFront)
@@ -74,17 +74,15 @@ void AlienArmy::Print()
 	 cout << " ] " << endl;
 	
 }
-/*
+
 void AlienArmy::Attack()
 {
 }
-*/
+
 
 
 AlienArmy::~AlienArmy()
 {
-	Soldiers.~DEndedQueue();
-	Drones.~DEndedQueue();
 	delete[] Monsters;
 }
 

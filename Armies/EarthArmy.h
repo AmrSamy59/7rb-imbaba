@@ -26,6 +26,8 @@ public:
 	void RemoveEG(EarthGunnery*& unit);
 	void Print();
 	
+	void Attack();
+
 	~EarthArmy();
 	//void Attack();
 };

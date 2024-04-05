@@ -1,7 +1,7 @@
 #pragma once
 
 #include "../DS/Queues/DEndedQueue.h"
-
+#include "../DS/Queues/LinkedQueue.h"
 #include "../Units/AlienDrone.h"
 #include "../Units/AlienMonster.h"
 #include "../Units/AlienSoldier.h"
@@ -10,7 +10,7 @@
 class AlienArmy : public Army
 {
 private:
-	DEndedQueue<AlienSoldier*> Soldiers;
+	LinkedQueue<AlienSoldier*> Soldiers;
 	AlienMonster** Monsters;
 	DEndedQueue<AlienDrone*> Drones;
 	int SoldiersCount;
@@ -19,7 +19,7 @@ private:
 public:
 	AlienArmy();
 	// Add Alien Units
-	void AddAS(AlienSoldier* unit, bool toFront = false);
+	void AddAS(AlienSoldier* unit);
 	void AddAM(AlienMonster* unit);
 	void AddAD(AlienDrone* unit, bool toFront = false);
 	// remove Alien Units
@@ -28,7 +28,7 @@ public:
 	void RemoveAD(AlienDrone*& unit, bool fromFront = false);
 	void Print();
 	// Attack the other army
-	//void Attack();
+	void Attack();
 	~AlienArmy();
 };
 

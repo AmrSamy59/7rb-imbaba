@@ -1,11 +1,7 @@
 #include "AlienMonster.h"
 
-string AlienMonster::UnitType()
-{
-	return "AlienMonster";
-}
 
-AlienMonster::AlienMonster() : Unit()
+AlienMonster::AlienMonster(Game* gPtr, int id, int Tj, float health, float power, int AC) : Unit(AM, gPtr, id, Tj, health, power, AC)
 {
 	
 }

@@ -25,18 +25,19 @@ void Game::NextTimeStep()
 
 void Game::addEarthUnits(int ES, int ET, int EG)
 {
+	int id = earthArmy->getNextUnitId();
 	for (int i = 0; i < ES; i++) {
-		EarthSoldier* soldier_ptr = new EarthSoldier();
+		EarthSoldier* soldier_ptr = new EarthSoldier(this, id);
 		earthArmy->AddES(soldier_ptr);
 		//soldier_ptr->PrintInfo();
 	}
 	for (int i = 0; i < ET; i++) {
-		EarthTank* tank_ptr = new EarthTank();
+		EarthTank* tank_ptr = new EarthTank(this, id);
 		earthArmy->AddET(tank_ptr);
 		//tank_ptr->PrintInfo();
 	}
 	for (int i = 0; i < EG; i++) {
-		EarthGunnery* gunnery_ptr = new EarthGunnery();
+		EarthGunnery* gunnery_ptr = new EarthGunnery(this, id);
 		earthArmy->AddEG(gunnery_ptr);
 		//gunnery_ptr->PrintInfo();
 	}
@@ -44,18 +45,19 @@ void Game::addEarthUnits(int ES, int ET, int EG)
 
 void Game::addAlienUnits(int AS, int AM, int AD)
 {
+	int id = alienArmy->getNextUnitId();
 	for (int i = 0; i < AS; i++) {
-		AlienSoldier* soldier_ptr = new AlienSoldier();
+		AlienSoldier* soldier_ptr = new AlienSoldier(this, id);
 		alienArmy->AddAS(soldier_ptr);
 		//soldier_ptr->PrintInfo();
 	}
 	for (int i = 0; i < AM; i++) {
-		AlienMonster* monster_ptr = new AlienMonster();
+		AlienMonster* monster_ptr = new AlienMonster(this, id);
 		alienArmy->AddAM(monster_ptr);
 		//tank_ptr->PrintInfo();
 	}
 	for (int i = 0; i < AD; i++) {
-		AlienDrone* drone_ptr = new AlienDrone();
+		AlienDrone* drone_ptr = new AlienDrone(this, id);
 		alienArmy->AddAD(drone_ptr);
 		//gunnery_ptr->PrintInfo();
 	}
