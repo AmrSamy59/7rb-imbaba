@@ -1,6 +1,6 @@
 #include "EarthArmy.h"
 
-EarthArmy::EarthArmy()
+EarthArmy::EarthArmy() : Army(0)
 {
 	 SoldierCount=0;
 	 TankCount=0;
@@ -14,12 +14,14 @@ void EarthArmy::AddES(EarthSoldier* Unit, bool toFront)
 	else
 	Soldiers.enqueue(Unit);
 	SoldierCount++;
+	nextId++;
 }
 
 void EarthArmy::AddET(EarthTank* Unit)
 {
 	Tanks.push(Unit);
 	TankCount++;
+	nextId++;
 }
 
 void EarthArmy::AddEG(EarthGunnery* Unit)
@@ -27,6 +29,7 @@ void EarthArmy::AddEG(EarthGunnery* Unit)
 	int pri = Unit->GetHealth() + Unit->GetPower();
 	Gunneries.enqueue(Unit,pri);
 	GunneryCount++;
+	nextId++;
 }
 
 void EarthArmy::RemoveES(EarthSoldier*& Unit, bool fromFront)
@@ -36,14 +39,14 @@ void EarthArmy::RemoveES(EarthSoldier*& Unit, bool fromFront)
 		Soldiers.dequeue(Unit);
 	else
 		Soldiers.dequeue_back(Unit);
-	--SoldierCount;
+	SoldierCount--;
 
 }
 
 void EarthArmy::RemoveET(EarthTank*& Unit)
 {
 	Tanks.pop(Unit);
-	--TankCount;
+	TankCount--;
 
 }
 
@@ -68,12 +71,9 @@ void EarthArmy::Print()
 }
 EarthArmy::~EarthArmy()
 {
-	Soldiers.~DEndedQueue();
-	Tanks.~ArrayStack();
-	Gunneries.~priQueue();
 }
-/*
+
 void EarthArmy::Attack()
 {
 }
-*/
+

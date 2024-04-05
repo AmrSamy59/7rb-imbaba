@@ -23,6 +23,8 @@ int main()
    
     for(int i = 0;i<10;i++)
         gPtr->NextTimeStep();
+
     delete gPtr;
-    cout << "Hello 7rb-imbaba engineers \n";
+
+    cout << "\n\nHello 7rb-imbaba engineers \n";
 }

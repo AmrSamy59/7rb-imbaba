@@ -1,7 +1,8 @@
 #include "Unit.h"
 
-Unit::Unit(Game* gPtr, int id , int Tj , float health , float power , int AC)
+Unit::Unit(UnitType uType, Game* gPtr, int id , int Tj , float health , float power , int AC)
 {
+	type = uType;
 	ID = id;
 	JoinTime = Tj;
 	Health = health;
@@ -84,6 +85,11 @@ bool Unit::IsDead() const
 	}
 	else
 	return false;
+}
+
+Unit::UnitType Unit::getType()
+{
+	return type;
 }
 
 bool Unit::operator==(Unit* unit)

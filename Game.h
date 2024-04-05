@@ -17,7 +17,6 @@ class randGen;
 class Game
 {
 private:
-	LinkedQueue<Unit*> Temp;
 	LinkedQueue<Unit*> Killed;
 	EarthArmy* earthArmy;
 	AlienArmy* alienArmy;

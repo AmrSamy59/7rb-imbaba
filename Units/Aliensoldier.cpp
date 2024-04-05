@@ -1,11 +1,6 @@
 #include "AlienSoldier.h"
 
-string AlienSoldier::UnitType()
-{
-	return "AlienSoldier";
-}
-
-AlienSoldier::AlienSoldier(Game* gPtr, int id, int Tj, float health, float power, int AC) :Unit(gPtr, id, Tj, health, power, AC)
+AlienSoldier::AlienSoldier(Game* gPtr, int id, int Tj, float health, float power, int AC) : Unit(AS, gPtr, id, Tj, health, power, AC)
 {
 
 
