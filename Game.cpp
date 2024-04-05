@@ -134,7 +134,6 @@ Game::~Game()
 	// clear from amr hany 
 	earthArmy->~EarthArmy();
 	alienArmy->~AlienArmy();
-	Temp.~LinkedQueue();
 	Killed.~LinkedQueue();
 	//delete earthArmy;
 	//delete alienArmy;
