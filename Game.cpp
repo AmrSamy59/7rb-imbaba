@@ -3,7 +3,8 @@
 Game::Game(char _mode)
 {
 	//Anas Note: Don't Forget to read the name of the file
-	file = "input_data.txt";
+	cin >> file;
+	file += ".txt";
 	earthArmy = new EarthArmy();
 	alienArmy = new AlienArmy();
 	randGenerator = new randGen(this);
