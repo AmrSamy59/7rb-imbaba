@@ -1,6 +1,6 @@
 #include "EarthSoldier.h"
 
-EarthSoldier::EarthSoldier(Game* gPtr, int id, int Tj, float health, float power, int AC) : Unit(ES, gPtr, id, Tj, health, power, AC)
+EarthSoldier::EarthSoldier(Game* gPtr, int id, int Tj, float health, float power, int AC) : Unit(Unit::ES, gPtr, id, Tj, health, power, AC)
 {
 
 

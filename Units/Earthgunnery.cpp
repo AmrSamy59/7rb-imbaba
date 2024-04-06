@@ -1,6 +1,6 @@
 #include "EarthGunnery.h"
 
-EarthGunnery::EarthGunnery(Game* gPtr, int id, int Tj, float health, float power, int AC) : Unit(EG, gPtr, id, Tj, health, power, AC)
+EarthGunnery::EarthGunnery(Game* gPtr, int id, int Tj, float health, float power, int AC) : Unit(Unit::EG, gPtr, id, Tj, health, power, AC)
 {
 
 }

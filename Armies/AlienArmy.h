@@ -13,19 +13,14 @@ private:
 	LinkedQueue<AlienSoldier*> Soldiers;
 	AlienMonster** Monsters;
 	DEndedQueue<AlienDrone*> Drones;
-	int SoldiersCount;
 	int MonstersCount;
-	int DronesCount;
 public:
 	AlienArmy();
 	// Add Alien Units
-	void AddAS(AlienSoldier* unit);
-	void AddAM(AlienMonster* unit);
-	void AddAD(AlienDrone* unit, bool toFront = false);
+	void AddUnit(Unit* unit);
 	// remove Alien Units
-	void RemoveAS(AlienSoldier*& unit, bool fromFront = false);
-	void RemoveAM(AlienMonster*& unit);
-	void RemoveAD(AlienDrone*& unit, bool fromFront = false);
+	Unit* RemoveUnit(Unit::UnitType type, bool fromBack = false);
+	
 	void Print();
 	// Attack the other army
 	void Attack();

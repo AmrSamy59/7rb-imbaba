@@ -1,11 +1,9 @@
 #pragma once
-class AlienArmyParams
+struct AlienArmyConfig
 {
-public:
 	int AS, AD, AM,
 		aPowCeil, aPowFloor,
 		aHealCeil, aHealFloor,
 		aCapCeil, aCapFloor;
-	AlienArmyParams() {};
 };
 

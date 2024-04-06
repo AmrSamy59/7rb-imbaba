@@ -6,7 +6,7 @@ class Game;
 using namespace std;
 class Unit
 {
-protected:
+public:
 	enum UnitType { AD, AM, AS, EG, ES, ET };
 private:
 	int ID;
@@ -17,14 +17,12 @@ private:
 	UnitType type;
 	Game* GamePtr;
 public:
-	Unit(UnitType uType, Game* gPtr, int id, int Tj=0, float health=0.0, float power= 0.0, int AC=0);
-	//void SetID(int i);
+	Unit(UnitType uType, Game* gPtr, int id, int Tj, float health, float power, int AC);
 	int GetID() const;
 	void SetJoinTime(int t);
 	int GetJoinTime() const;
 	void Sethealth(float h);
 	float GetHealth() const;
-   //bool Heal();
 	void TakeDamage(float d);
 	void SetPower(float p);
 	float GetPower() const;

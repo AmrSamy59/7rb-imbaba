@@ -1,10 +1,8 @@
 #pragma once
-class EarthArmyParams
+struct EarthArmyConfig
 {
-public:
 	int ES, ET, EG,
 		ePowCeil, ePowFloor,
 		eHealCeil, eHealFloor,
 		eCapCeil, eCapFloor;
-	EarthArmyParams() {};
 };

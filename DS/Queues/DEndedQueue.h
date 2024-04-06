@@ -15,6 +15,7 @@ class DEndedQueue
 private:
 	DoubleNode<T>* backPtr; // rear (backPtr)
 	DoubleNode<T>* frontPtr; // frontPtr (frontPtr)
+	int Count;
 public :
 	DEndedQueue();
 	bool isEmpty() const;
@@ -22,9 +23,10 @@ public :
 	bool dequeue(T& frntEntry);
 	bool peek(T& frntEntry)  const;
 	bool dequeue_back(T& backEntry);
-	bool peek_back(T& backEntry)  const;
+	bool peek_back(T& backEntry) const;
 	bool enqueue_front(const T& newEntry);
 	void Print();
+	int GetCount() const;
 	~DEndedQueue();
 };
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -38,6 +40,7 @@ DEndedQueue<T>::DEndedQueue()
 {
 	backPtr = nullptr;
 	frontPtr = nullptr;
+	Count = 0;
 
 }
 
@@ -82,7 +85,7 @@ bool DEndedQueue<T>::enqueue(const T& newEntry)
 		// The queue was not empty
 	}
 	backPtr = newNodePtr; // New DoubleNode is the last DoubleNode now
-
+	++Count;
 	return true;
 } // end enqueue
 
@@ -115,7 +118,7 @@ bool DEndedQueue<T>::dequeue(T& frntEntry)
 
 	// Free memory reserved for the dequeued DoubleNode
 	delete nodeToDeletePtr;
-
+	--Count;
 	return true;
 }
 
@@ -160,7 +163,7 @@ bool DEndedQueue<T>::dequeue_back(T& backEntry)
 
 	// Free memory reserved for the dequeued DoubleNode
 	delete nodeToDeletePtr;
-
+	--Count;
 	return true;
 }
 
@@ -188,7 +191,7 @@ inline bool DEndedQueue<T>::enqueue_front(const T& newEntry)
 
 	newNodePtr->setPrevious(nullptr);
 	frontPtr = newNodePtr; // The queue is empty
-
+	++Count;
 
 	return true;
 }
@@ -211,6 +214,10 @@ template<typename T>
 
 }
 
+ template<typename T>
+ int DEndedQueue<T>::GetCount() const {
+	 return Count;
+ }
 
 template <typename T>
 DEndedQueue<T>::~DEndedQueue()
