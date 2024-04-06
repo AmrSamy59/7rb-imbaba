@@ -9,8 +9,8 @@ class randGen
 {
 private:
 	Game* pGame;
-	EarthArmyParams* eParams;
-	AlienArmyParams* aParams;
+	EarthArmyConfig* eParams;
+	AlienArmyConfig* aParams;
 	int N, Prob;
 public:
 	randGen(Game*);

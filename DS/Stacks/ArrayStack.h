@@ -64,9 +64,12 @@ public:
 		if (top == -1)
 			return;
 		for (int i = 0; i < top; i++) {
-			cout<<items[i]<<" , ";
+			cout<<items[i]<<", ";
 		}
 		cout << items[top];
+	}
+	int GetCount() const  {
+		return top + 1;
 	}
 	~ArrayStack() {
 		

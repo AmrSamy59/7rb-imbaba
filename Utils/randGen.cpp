@@ -4,8 +4,8 @@ randGen::randGen(Game* GamePtr)
 {
 	srand((unsigned)time(NULL));
 	pGame = GamePtr;
-	eParams = new EarthArmyParams();
-	aParams = new AlienArmyParams();
+	eParams = new EarthArmyConfig();
+	aParams = new AlienArmyConfig();
 	readParams();
 }
 

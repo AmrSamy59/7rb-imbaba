@@ -1,6 +1,6 @@
 #include "AlienSoldier.h"
 
-AlienSoldier::AlienSoldier(Game* gPtr, int id, int Tj, float health, float power, int AC) : Unit(AS, gPtr, id, Tj, health, power, AC)
+AlienSoldier::AlienSoldier(Game* gPtr, int id, int Tj, float health, float power, int AC) : Unit(Unit::AS, gPtr, id, Tj, health, power, AC)
 {
 
 

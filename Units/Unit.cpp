@@ -45,10 +45,9 @@ float Unit::GetHealth() const
 void Unit::TakeDamage(float d)
 {
 	if (Health <= 0)
-		return;
-else {
-	Health = Health - d;
-}
+		Health = 0;
+	else
+		Health = Health - d;
 }
 
 
