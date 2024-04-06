@@ -2,10 +2,6 @@
 
 Game::Game(char _mode)
 {
-	cout << "Please, Enter the Name of the file: ";
-	cin >> file;
-	file += ".txt";
-	cin.ignore();
 	earthArmy = new EarthArmy();
 	alienArmy = new AlienArmy();
 	randGenerator = new randGen(this);
@@ -128,6 +124,10 @@ void Game::AddToKilledList(Unit* unit)
 
 void Game::loadFile(int& N, int& Prob, EarthArmyConfig* eParams, AlienArmyConfig* aParams)
 {
+	cout << "Please, Enter the Name of the file: ";
+	cin >> file;
+	file += ".txt";
+	cin.ignore();
 	ifstream inFile(file);
 	while (!inFile.is_open()) {
 		cout << "Couldn't Find it\nPlease Enter Your File name Correctly and Without .txt: ";
@@ -157,14 +157,9 @@ void Game::loadFile(int& N, int& Prob, EarthArmyConfig* eParams, AlienArmyConfig
 
 Game::~Game()
 {
-	
-	
 	delete earthArmy;
 	delete alienArmy;
 	delete randGenerator;
-	Killed.~LinkedQueue();
-
-
 }
 
 

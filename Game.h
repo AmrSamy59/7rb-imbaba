@@ -28,6 +28,7 @@ public:
 	Game(char _mode ='a');
 	void NextTimeStep();
 	void NextTimeStepTest();
+	//These getters for telling randgen which Id and Tj to generate Unit with
 	int getNextUnitId(char army);
 	int getTj();
 	void addUnit(Unit* unit);

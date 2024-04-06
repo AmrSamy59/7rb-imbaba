@@ -2,6 +2,8 @@
 
 randGen::randGen(Game* GamePtr)
 {
+	//The srand(x) function sets the seed of the random number generator algorithm 
+	// used by the function rand( ). 
 	srand((unsigned)time(NULL));
 	pGame = GamePtr;
 	eParams = new EarthArmyConfig();
@@ -11,6 +13,7 @@ randGen::randGen(Game* GamePtr)
 
 //steps of generation
 	//detect ID
+	//get the current time step
 	//randomize health for unit
 	//randomize power for unit
 	//then You can add this unit
