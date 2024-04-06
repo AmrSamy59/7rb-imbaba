@@ -5,6 +5,7 @@ Game::Game(char _mode)
 	cout << "Please, Enter the Name of the file: ";
 	cin >> file;
 	file += ".txt";
+	cin.ignore();
 	earthArmy = new EarthArmy();
 	alienArmy = new AlienArmy();
 	randGenerator = new randGen(this);
@@ -36,10 +37,6 @@ void Game::NextTimeStepTest()
 
 	int x = rand() % 100 + 1;
 	Unit* unit = nullptr;
-	//  print before
-	earthArmy->Print(); 
-	alienArmy->Print();
-	PrintKilledList();
 	cout << endl << "X = " << x << endl;
 	if (x < 10) {
 		unit = earthArmy->RemoveUnit(Unit::ES);
@@ -136,6 +133,7 @@ void Game::loadFile(int& N, int& Prob, EarthArmyConfig* eParams, AlienArmyConfig
 		cout << "Couldn't Find it\nPlease Enter Your File name Correctly and Without .txt: ";
 		cin >> file;
 		file += ".txt";
+		cin.ignore();
 		inFile.open(file);
 	}
 		inFile >> N
