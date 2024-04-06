@@ -10,8 +10,8 @@ using namespace std;
 int main()
 {
   // sound over 
-    string v = "War-strated.wav ";
-    PlaySoundA(v.c_str(), NULL, SND_FILENAME);
+    //string v = "War-strated.wav ";
+    //PlaySoundA(v.c_str(), NULL, SND_FILENAME);
    //////////////////////////////////////////
     // EarthSoldier s1;
    //// Unit* p;
