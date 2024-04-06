@@ -12,10 +12,7 @@ int main()
   // sound over 
     string v = "War-strated.wav ";
     PlaySoundA(v.c_str(), NULL, SND_FILENAME);
-   //////////////////////////////////////////
-    // EarthSoldier s1;
-   //// Unit* p;
-   // s1.PrintInfo();
+ 
     /////////////////////SCRIPT TESTING RANDGEN///////////////////////////
     
   
@@ -27,11 +24,12 @@ int main()
         
         cout << "\nCurrent Timestep " << i+1 << endl;
         gPtr->NextTimeStepTest();
-        cout << "Press Enter to ablkash..." << endl;
+        cout << "Press Enter to continue..." << endl;
         string s;
         getline(cin, s);
+        
     }
     delete gPtr;
 
-    cout << "\n\nHello 7rb-imbaba engineers \n";
+    
 }

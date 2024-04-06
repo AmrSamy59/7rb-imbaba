@@ -2,7 +2,7 @@
 
 Game::Game(char _mode)
 {
-	//Anas Note: Don't Forget to read the name of the file
+	
 	file = "input_data.txt";
 	earthArmy = new EarthArmy();
 	alienArmy = new AlienArmy();
@@ -14,13 +14,10 @@ Game::Game(char _mode)
 void Game::NextTimeStep()
 {
 	timeStep++;
-	//handling files
-	// then execute rand gen
-	randGenerator->execute();//this is sample, delete it after files
-	earthArmy->Print(); // for the test anas magdy
+	randGenerator->execute();
+	earthArmy->Print(); 
 	alienArmy->Print();
-	//earthArmy->Attack();
-	//alienArmy->Attack();
+
 }
 void Game::PrintKilledList() {
 	cout << "============================== Killed/Destructed Units ==============================" << endl;
@@ -29,15 +26,17 @@ void Game::PrintKilledList() {
 	cout << "] " << endl << endl;
 }
 void Game::NextTimeStepTest()
-{
+{ 
+	// for phase 1.2 only
+
 	timeStep++;
-	//handling files
-	// then execute rand gen
-	randGenerator->execute();//this is sample, delete it after files
+	
+	randGenerator->execute();
 
 	int x = rand() % 100 + 1;
 	Unit* unit = nullptr;
-	earthArmy->Print(); // before
+	//  print before
+	earthArmy->Print(); 
 	alienArmy->Print();
 	PrintKilledList();
 	cout << endl << "X = " << x << endl;
@@ -94,51 +93,11 @@ void Game::NextTimeStepTest()
 			}
 		}
 	}
-	earthArmy->Print(); // for the test anas magdy
+	earthArmy->Print(); 
 	alienArmy->Print();
 	PrintKilledList();
 }
-/*
-void Game::addEarthUnits(int ES, int ET, int EG)
-{
-	int id = earthArmy->getNextUnitId();
-	for (int i = 0; i < ES; i++) {
-		EarthSoldier* soldier_ptr = new EarthSoldier(this, id);
-		earthArmy->AddES(soldier_ptr);
-		//soldier_ptr->PrintInfo();
-	}
-	for (int i = 0; i < ET; i++) {
-		EarthTank* tank_ptr = new EarthTank(this, id);
-		earthArmy->AddET(tank_ptr);
-		//tank_ptr->PrintInfo();
-	}
-	for (int i = 0; i < EG; i++) {
-		EarthGunnery* gunnery_ptr = new EarthGunnery(this, id);
-		earthArmy->AddEG(gunnery_ptr);
-		//gunnery_ptr->PrintInfo();
-	}
-}
 
-void Game::addAlienUnits(int AS, int AM, int AD)
-{
-	int id = alienArmy->getNextUnitId();
-	for (int i = 0; i < AS; i++) {
-		AlienSoldier* soldier_ptr = new AlienSoldier(this, id);
-		alienArmy->AddAS(soldier_ptr);
-		//soldier_ptr->PrintInfo();
-	}
-	for (int i = 0; i < AM; i++) {
-		AlienMonster* monster_ptr = new AlienMonster(this, id);
-		alienArmy->AddAM(monster_ptr);
-		//tank_ptr->PrintInfo();
-	}
-	for (int i = 0; i < AD; i++) {
-		AlienDrone* drone_ptr = new AlienDrone(this, id);
-		alienArmy->AddAD(drone_ptr);
-		//gunnery_ptr->PrintInfo();
-	}
-}
-*/
 void Game::addEs_Unit(int pow, int health, int Cap)
 {
 	int id = earthArmy->getNextUnitId();
@@ -181,7 +140,6 @@ void Game::addAm_Unit(int pow, int health, int Cap)
 	alienArmy->AddUnit(monster_ptr);
 }
 
-// TODO: add a check for isDead() in attack function
 void Game::AddToKilledList(Unit* unit)
 {
 	Killed.enqueue(unit);
@@ -216,23 +174,12 @@ void Game::loadFile(int& N, int& Prob, EarthArmyConfig* eParams, AlienArmyConfig
 
 Game::~Game()
 {
-	//delete lists done
-	//armies pointers done 
-	// 	randgen done ;
-	// clear from amr hany 
-	earthArmy->~EarthArmy();
-	alienArmy->~AlienArmy();
-	Killed.~LinkedQueue();
-	//delete earthArmy;
-	//delete alienArmy;
-	delete randGenerator;
 	
-	// clear from amr hany 
-
-
-
-
-
+	
+	delete earthArmy;
+	delete alienArmy;
+	delete randGenerator;
+	Killed.~LinkedQueue();
 
 
 }

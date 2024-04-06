@@ -18,13 +18,11 @@ private:
 	Game* GamePtr;
 public:
 	Unit(UnitType uType, Game* gPtr, int id, int Tj, float health, float power, int AC);
-	//void SetID(int i);
 	int GetID() const;
 	void SetJoinTime(int t);
 	int GetJoinTime() const;
 	void Sethealth(float h);
 	float GetHealth() const;
-   //bool Heal();
 	void TakeDamage(float d);
 	void SetPower(float p);
 	float GetPower() const;

@@ -11,11 +11,7 @@ Unit::Unit(UnitType uType, Game* gPtr, int id , int Tj , float health , float po
 	GamePtr = gPtr;
 }
 
-//void Unit::SetID(int id)
-//{
-//	// don't change the id after you get it from file and used this function
-//	ID = id;
-//}
+
 
 int Unit::GetID() const
 {

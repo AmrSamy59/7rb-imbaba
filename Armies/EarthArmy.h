@@ -15,15 +15,16 @@ private:
 	priQueue<EarthGunnery*>Gunneries;
 public:
 	EarthArmy();
+	// remove Add Units
 	void AddUnit(Unit* unit);
-	// remove Alien Units
+	// remove Earth Units
 	Unit* RemoveUnit(Unit::UnitType type);
-
-	void Print();
 	
+	void Print();
+	//void Attack();
 	void Attack();
 
 	~EarthArmy();
-	//void Attack();
+	
 };
 
