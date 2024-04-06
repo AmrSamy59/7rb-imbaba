@@ -28,12 +28,9 @@ public:
 	Game(char _mode ='a');
 	void NextTimeStep();
 	void NextTimeStepTest();
-	void addEs_Unit(int pow, int health, int Cap);
-	void addEt_Unit(int pow, int health, int Cap);
-	void addEg_Unit(int pow, int health, int Cap);
-	void addAs_Unit(int pow, int health, int Cap);
-	void addAd_Unit(int pow, int health, int Cap);
-	void addAm_Unit(int pow, int health, int Cap);
+	int getNextUnitId(char army);
+	int getTj();
+	void addUnit(Unit* unit);
 	void AddToKilledList(Unit* unit);
 	void PrintKilledList();
 	void loadFile(int& N, int& Prob,EarthArmyConfig* eParams, AlienArmyConfig* aParams);

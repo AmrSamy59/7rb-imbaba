@@ -14,12 +14,7 @@ private:
 	int N, Prob;
 public:
 	randGen(Game*);
-	void generateES();
-	void generateET();
-	void generateEG();
-	void generateAS();
-	void generateAD();
-	void generateAM();
+	void generateUnit(Unit::UnitType UnitType);
 	void execute();
 	void readParams();
 	int randInt(int ceil, int floor); // generate random int from 0 to 100

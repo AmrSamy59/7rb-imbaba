@@ -2,7 +2,7 @@
 
 Game::Game(char _mode)
 {
-	//Anas Note: Don't Forget to read the name of the file
+	cout << "Please, Enter the Name of the file: ";
 	cin >> file;
 	file += ".txt";
 	earthArmy = new EarthArmy();
@@ -99,64 +99,49 @@ void Game::NextTimeStepTest()
 	PrintKilledList();
 }
 
-void Game::addEs_Unit(int pow, int health, int Cap)
+
+int Game::getNextUnitId(char army)
 {
-	int id = earthArmy->getNextUnitId();
-	EarthSoldier* soldier_ptr = new EarthSoldier(this,id,timeStep,health,pow,Cap);
-	earthArmy->AddUnit(soldier_ptr);
+	if (army == 'a')
+		return alienArmy->getNextUnitId();
+	return earthArmy->getNextUnitId();
 }
 
-void Game::addEt_Unit(int pow, int health, int Cap)
+int Game::getTj()
 {
-	int id = earthArmy->getNextUnitId();
-	EarthTank* tank_ptr = new EarthTank(this, id, timeStep, health, pow, Cap);
-	earthArmy->AddUnit(tank_ptr);
+	return timeStep;
 }
 
-void Game::addEg_Unit(int pow, int health, int Cap)
+void Game::addUnit(Unit* unit)
 {
-	int id = earthArmy->getNextUnitId();
-	EarthGunnery* gunnery_ptr = new EarthGunnery(this, id, timeStep, health, pow, Cap);
-	earthArmy->AddUnit(gunnery_ptr);
+	if (!unit) return;
+	if(unit->getType() == Unit::EG || unit->getType() == Unit::ES || unit->getType() == Unit::ET)
+		earthArmy->AddUnit(unit);
+	alienArmy->AddUnit(unit);
 }
 
-void Game::addAs_Unit(int pow, int health, int Cap)
-{
-	int id = earthArmy->getNextUnitId();
-	AlienSoldier* soldier_ptr = new AlienSoldier(this, id, timeStep, health, pow, Cap);
-	alienArmy->AddUnit(soldier_ptr);
-}
 
-void Game::addAd_Unit(int pow, int health, int Cap)
-{
-	int id = alienArmy->getNextUnitId();
-	AlienDrone* drone_ptr = new AlienDrone(this, id, timeStep, health, pow, Cap);
-	alienArmy->AddUnit(drone_ptr);
-}
-
-void Game::addAm_Unit(int pow, int health, int Cap)
-{
-	int id = alienArmy->getNextUnitId();
-	AlienMonster* monster_ptr = new AlienMonster(this, id, timeStep, health, pow, Cap);
-	alienArmy->AddUnit(monster_ptr);
-}
 
 void Game::AddToKilledList(Unit* unit)
 {
 	Killed.enqueue(unit);
 }
 
-//REPLACE THIS PARAMS WITH NEW OBJECT OF NEW CLASS THAT GROUP ALL THIS PARAMS 
-// AND WRITE A FUNCTION THAT MANAGE ALL OF THIS 
-// DO NOT FORGET!!!!!!!!!!!!!!!
+
 
 void Game::loadFile(int& N, int& Prob, EarthArmyConfig* eParams, AlienArmyConfig* aParams)
 {
 	ifstream inFile(file);
-	if (inFile.is_open()) {
-		inFile >> N >> Prob
+	while (!inFile.is_open()) {
+		cout << "Couldn't Find it\nPlease Enter Your File name Correctly and Without .txt: ";
+		cin >> file;
+		file += ".txt";
+		inFile.open(file);
+	}
+		inFile >> N
 			>> eParams->ES >> eParams->EG >> eParams->ET
 			>> aParams->AS >> aParams->AD >> aParams->AM
+			>> Prob
 			>> eParams->ePowCeil >> eParams->ePowFloor 
 			>> eParams->eHealCeil >> eParams->eHealFloor 
 			>> eParams->eCapCeil >> eParams->eCapFloor
@@ -169,7 +154,6 @@ void Game::loadFile(int& N, int& Prob, EarthArmyConfig* eParams, AlienArmyConfig
 		aParams->aPowFloor *= -1;
 		aParams->aHealFloor *= -1;
 		aParams->aCapFloor *= -1;
-	}
 	inFile.close();
 }
 
