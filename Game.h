@@ -31,6 +31,7 @@ public:
 	//These getters for telling randgen which Id and Tj to generate Unit with
 	int getNextUnitId(char army);
 	int getTj();
+	/////////////////////////////////////////////////////////////
 	void addUnit(Unit* unit);
 	void AddToKilledList(Unit* unit);
 	void PrintKilledList();

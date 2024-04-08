@@ -21,7 +21,6 @@ public:
 	Unit* RemoveUnit(Unit::UnitType type);
 	
 	void Print();
-	//void Attack();
 	void Attack();
 
 	~EarthArmy();

@@ -17,12 +17,7 @@ void Game::NextTimeStep()
 	alienArmy->Print();
 
 }
-void Game::PrintKilledList() {
-	cout << "============================== Killed/Destructed Units ==============================" << endl;
-	cout << Killed.GetCount() << " units [";
-	Killed.Print();
-	cout << "] " << endl << endl;
-}
+
 void Game::NextTimeStepTest()
 { 
 	// for phase 1.2 only
@@ -120,6 +115,12 @@ void Game::AddToKilledList(Unit* unit)
 	Killed.enqueue(unit);
 }
 
+void Game::PrintKilledList() {
+	cout << "============================== Killed/Destructed Units ==============================" << endl;
+	cout << Killed.GetCount() << " units [";
+	Killed.Print();
+	cout << "] " << endl << endl;
+}
 
 
 void Game::loadFile(int& N, int& Prob, EarthArmyConfig* eParams, AlienArmyConfig* aParams)
