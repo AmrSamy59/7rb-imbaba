@@ -70,7 +70,13 @@ void randGen::generateUnit(Unit::UnitType UnitType)
 			unit = new EarthTank(pGame, Id, Tj, health, pow, Cap);
 			break;
 		}
+		case Unit::HU:
+		{
+			unit = new HealUnit(pGame, Id, Tj, health, pow, Cap);
+			break;
+		}
 	}
+	if	
 	pGame->addUnit(unit);
 }
 
@@ -85,8 +91,11 @@ void randGen::execute()
 		B = randInt(1, 100);
 		if (B <= eParams->ES) generateUnit(Unit::ES); 
 		else if (B <= eParams->ES + eParams->ET) generateUnit(Unit::ET);
-		else generateUnit(Unit::EG);
+		else if (B <= eParams->ES + eParams->ET + eParams->EG)generateUnit(Unit::EG);
+		else generateUnit(Unit::HU);
 	}
+	A = randInt(1, 100);
+	if (A > Prob) return;
 	for (int i = 0; i < N; i++) {
 		B = randInt(1, 100);
 		if (B <= aParams->AS) generateUnit(Unit::AS);

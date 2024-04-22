@@ -5,7 +5,9 @@ using namespace std;
 class Unit
 {
 public:
-	enum UnitType { AD, AM, AS, EG, ES, ET,HU };
+
+	enum UnitType { AD, AM, AS, EG, ES, ET, HU };
+
 private:
 	int ID;
 	int JoinTime; // Tj
