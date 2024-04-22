@@ -22,6 +22,11 @@ void EarthArmy::AddUnit(Unit* unit)
 			Gunneries.enqueue(dynamic_cast<EarthGunnery*>(unit), pri);
 			break;
 		}
+		case Unit::HU:
+		{
+			Healing.push(dynamic_cast<HealingUnit*>(unit));
+			break;
+		}
 	}
 	nextId++;
 }
@@ -61,6 +66,16 @@ Unit* EarthArmy::RemoveUnit(Unit::UnitType type)
 			unit = eg;
 			break;
 		}
+		case Unit::HU:
+		{
+			if (Healing.GetCount() == 0) {
+				return nullptr;
+			}
+			HealingUnit* hu = nullptr;
+			Healing.pop(hu);
+			unit = hu;
+			break;
+		}
 	}
 	return unit;
 }
@@ -85,5 +100,6 @@ EarthArmy::~EarthArmy()
 
 void EarthArmy::Attack()
 {
+	//ptr->AddToKilledList(this); /// make in the earth army attack pop from stack killed your self
 }
 

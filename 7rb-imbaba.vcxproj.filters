@@ -78,6 +78,9 @@
     <ClCompile Include="Game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Units\HealingUnit.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DS\Stacks\ArrayStack.h">
@@ -143,10 +146,13 @@
     <ClInclude Include="Game.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Armies\EarthArmyParams.h">
+    <ClInclude Include="Armies\AlienArmyConfig.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Armies\AlienArmyParams.h">
+    <ClInclude Include="Armies\EarthArmyConfig.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Units\HealingUnit.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

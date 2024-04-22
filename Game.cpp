@@ -12,6 +12,7 @@ Game::Game(char _mode)
 void Game::NextTimeStep()
 {
 	timeStep++;
+	CheckingUML();
 	randGenerator->execute();
 	earthArmy->Print(); 
 	alienArmy->Print();
@@ -87,6 +88,11 @@ void Game::NextTimeStepTest()
 	PrintKilledList();
 }
 
+int Game::GetCurrentTimeStep() const
+{
+	return timeStep;
+}
+
 
 int Game::getNextUnitId(char army)
 {
@@ -114,6 +120,58 @@ void Game::AddToKilledList(Unit* unit)
 {
 	Killed.enqueue(unit);
 }
+
+Unit* Game::GetFromUML()
+{
+	Unit* p;
+	int x;
+	UML.dequeue(p, x);
+	return p;
+}
+
+void Game::AddToUML(Unit* unit)
+{
+	//// use for tanks and earth solider only //////////
+	if (!unit) return;
+	float pri = 0;
+	if (unit->getType()==Unit::ES) {
+		pri = 100 - unit->GetHealth();
+		unit->SetHealtime(this->GetCurrentTimeStep());
+		UML.enqueue(unit, pri);
+	}
+	if (unit->getType() == Unit::ET) {
+		unit->SetHealtime(this->GetCurrentTimeStep());
+		UML.enqueue(unit, pri);
+	}
+}
+
+void Game::CheckingUML()
+{
+	//// checking for the 10 time step ////////////////
+	/// used when you next time step ///////////////
+	priQueue<Unit*>tempcheck;
+	while (!UML.isEmpty())
+	{
+		int p;
+		Unit* ptr;
+		UML.dequeue(ptr, p);
+		if (abs(ptr->GetHealtime() - this->GetCurrentTimeStep()) >= 10) {
+			AddToKilledList(ptr);
+		}
+		else {
+			tempcheck.enqueue(ptr, p);
+		}
+	}
+
+	while (!tempcheck.isEmpty())
+	{
+		int p;
+		Unit* ptr;
+		tempcheck.dequeue(ptr, p);
+		UML.enqueue(ptr, p);
+	}
+}
+
 
 void Game::PrintKilledList() {
 	cout << "============================== Killed/Destructed Units ==============================" << endl;

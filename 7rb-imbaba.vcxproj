@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Units\HealingUnit.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Armies\AlienArmy.cpp" />
     <ClCompile Include="Armies\EarthArmy.cpp" />
@@ -156,6 +157,7 @@
     <ClInclude Include="Armies\EarthArmy.h" />
     <ClInclude Include="Armies\EarthArmyConfig.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="Units\HealingUnit.h" />
     <ClInclude Include="Utils\randGen.h" />
     <ClInclude Include="Units\AlienDrone.h" />
     <ClInclude Include="Units\AlienMonster.h" />

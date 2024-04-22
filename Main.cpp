@@ -1,6 +1,5 @@
 #include <iostream>
 #include"Game.h"
-#include"../7rb-imbaba/Units/EarthSoldier.h"
 #include<string>
 #include<windows.h>
 #include<mmsystem.h>
