@@ -1,17 +1,19 @@
 #pragma once
 #include<iostream>
-
 class Game;
-
 using namespace std;
 class Unit
 {
 public:
-	enum UnitType { AD, AM, AS, EG, ES, ET, HU};
+
+	enum UnitType { AD, AM, AS, EG, ES, ET, HU };
+
 private:
 	int ID;
 	int JoinTime; // Tj
-	float Health;
+	int HealTime;  /// for healing unit phase 2
+	float IHealth; /// for healing unit phase 2
+	float Health;  
 	float Power;
 	int AttackCapacity; // AC
 	UnitType type;
@@ -30,6 +32,10 @@ public:
 	int GetAttackCapacity() const;
 	void PrintInfo() const;
 	bool IsDead() const;
+	void SetHealtime(int t);
+	int GetHealtime() const;
+	float GetintialHeal() const;
+	Game* Getgameptr();
 	virtual void Attack(Unit*ptr) = 0 ;
 	UnitType getType();
 	bool operator==(Unit* unit);

@@ -1,5 +1,5 @@
 #include "AlienDrone.h"
-
+#include"../Game.h"
 AlienDrone::AlienDrone(Game* gPtr, int id, int Tj, float health, float power, int AC) : Unit(Unit::AD, gPtr, id, Tj, health, power, AC)
 {
 

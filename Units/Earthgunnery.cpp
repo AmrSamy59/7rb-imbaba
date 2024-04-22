@@ -1,5 +1,5 @@
 #include "EarthGunnery.h"
-
+#include"../Game.h"
 EarthGunnery::EarthGunnery(Game* gPtr, int id, int Tj, float health, float power, int AC) : Unit(Unit::EG, gPtr, id, Tj, health, power, AC)
 {
 

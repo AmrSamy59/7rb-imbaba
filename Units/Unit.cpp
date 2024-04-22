@@ -6,6 +6,8 @@ Unit::Unit(UnitType uType, Game* gPtr, int id , int Tj , float health , float po
 	ID = id;
 	JoinTime = Tj;
 	Health = health;
+	IHealth = health;
+	HealTime = Tj;
 	Power = power;
 	AttackCapacity = AC;
 	GamePtr = gPtr;
@@ -30,6 +32,11 @@ int Unit::GetJoinTime() const
 
 void Unit::Sethealth(float h)
 {
+	if (h >= IHealth)
+	{
+		Health = IHealth;
+	}
+	else
 	Health = h;
 }
 
@@ -45,6 +52,7 @@ void Unit::TakeDamage(float d)
 	else
 		Health = Health - d;
 }
+
 
 
 void Unit::SetPower(float p)
@@ -81,6 +89,29 @@ bool Unit::IsDead() const
 	else
 	return false;
 }
+
+void Unit::SetHealtime(int t)
+{
+	HealTime = t;
+}
+
+int Unit::GetHealtime() const
+{
+	return HealTime;
+}
+
+float Unit::GetintialHeal() const
+{
+	return IHealth;
+}
+
+
+
+Game* Unit::Getgameptr()
+{
+	return GamePtr;
+}
+
 
 Unit::UnitType Unit::getType()
 {
