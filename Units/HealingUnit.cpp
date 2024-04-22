@@ -36,6 +36,7 @@ void HealingUnit::Attack(Unit*dummy)
 
 	}
 
+
 	//ptr->AddToKilledList(this); /// make in the earth army attack pop from stack killed your self
 	return;
 }
