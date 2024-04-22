@@ -138,7 +138,7 @@ void Game::loadFile(int& N, int& Prob, EarthArmyConfig* eParams, AlienArmyConfig
 		inFile.open(file);
 	}
 		inFile >> N
-			>> eParams->ES >> eParams->EG >> eParams->ET
+			>> eParams->ES >> eParams->EG >> eParams->ET >> eParams->HU
 			>> aParams->AS >> aParams->AD >> aParams->AM
 			>> Prob
 			>> eParams->ePowCeil >> eParams->ePowFloor 

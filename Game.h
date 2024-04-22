@@ -9,6 +9,7 @@
 #include "Units/EarthSoldier.h"
 #include "Units/EarthTank.h"
 #include "Units/EarthGunnery.h"
+#include "Units/HealUnit.h"
 #include "Utils/randGen.h"
 #include <string>
 #include <fstream>
