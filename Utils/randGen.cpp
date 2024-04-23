@@ -23,7 +23,7 @@ void randGen::generateUnit(Unit::UnitType UnitType)
 {
 	int Id, Tj, pow, health, Cap;
 	Unit* unit = nullptr;
-	if (UnitType == Unit::EG || UnitType == Unit::ES || UnitType == Unit::ET)
+	if (UnitType == Unit::EG || UnitType == Unit::ES || UnitType == Unit::ET || UnitType == Unit::HU)
 	{
 		pow = randInt(eParams->ePowCeil, eParams->ePowFloor),
 			health = randInt(eParams->eHealCeil, eParams->eHealFloor),
@@ -72,11 +72,11 @@ void randGen::generateUnit(Unit::UnitType UnitType)
 		}
 		case Unit::HU:
 		{
-			unit = new HealUnit(pGame, Id, Tj, health, pow, Cap);
+			unit = new HealingUnit(pGame, Id, Tj, health, pow, Cap);
 			break;
 		}
 	}
-	if	
+	
 	pGame->addUnit(unit);
 }
 

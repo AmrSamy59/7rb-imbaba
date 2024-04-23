@@ -6,11 +6,11 @@ AlienMonster::AlienMonster(Game* gPtr, int id, int Tj, float health, float power
 	
 }
 
-void AlienMonster::Attack(Unit* EM)
+bool AlienMonster::Attack(Unit* EM)
 {
 	float Damage = ((this->GetPower()) * (this->GetHealth() / 100)) / sqrt(EM->GetHealth());
 	EM->TakeDamage(Damage);
-
+	return true;
 }
 
 

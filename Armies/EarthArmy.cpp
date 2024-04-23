@@ -1,5 +1,5 @@
 #include "EarthArmy.h"
-
+#include"../Game.h"
 EarthArmy::EarthArmy() : Army(1)
 {}
 
@@ -24,7 +24,7 @@ void EarthArmy::AddUnit(Unit* unit)
 		}
 		case Unit::HU:
 		{
-			Healing.push(dynamic_cast<HealingUnit*>(unit));
+			Healinglist.push(dynamic_cast<HealingUnit*>(unit));
 			break;
 		}
 	}
@@ -68,11 +68,11 @@ Unit* EarthArmy::RemoveUnit(Unit::UnitType type)
 		}
 		case Unit::HU:
 		{
-			if (Healing.GetCount() == 0) {
+			if (Healinglist.GetCount() == 0) {
 				return nullptr;
 			}
 			HealingUnit* hu = nullptr;
-			Healing.pop(hu);
+			Healinglist.pop(hu);
 			unit = hu;
 			break;
 		}
@@ -100,6 +100,22 @@ EarthArmy::~EarthArmy()
 
 void EarthArmy::Attack()
 {
+	Game* gptr=NULL ;
+	gptr =gptr->getgameptr();
 	//ptr->AddToKilledList(this); /// make in the earth army attack pop from stack killed your self
+	while (!Healinglist.isEmpty())
+	{
+		HealingUnit* h;
+		Unit* dummy=NULL;
+		Healinglist.peek(h);
+		bool work;
+	work = h->Attack(dummy);
+	if (work == true) {
+		RemoveUnit(Unit::HU);
+		gptr->AddToKilledList(h);
+	}
+
+	}
+
 }
 

@@ -14,7 +14,7 @@ private:
 	LinkedQueue<EarthSoldier*>Soldiers;
 	ArrayStack<EarthTank*>Tanks;
 	priQueue<EarthGunnery*>Gunneries;
-	ArrayStack<HealingUnit*>Healing;
+	ArrayStack<HealingUnit*>Healinglist;
 public:
 	EarthArmy();
 	// remove Add Units

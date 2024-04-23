@@ -5,7 +5,7 @@ class AlienMonster:public Unit
 {
 public:
 	AlienMonster(Game* gPtr, int id, int Tj, float health, float power, int AC);
-	void Attack(Unit* ET);
+	bool Attack(Unit* ET);
 
 };
 
