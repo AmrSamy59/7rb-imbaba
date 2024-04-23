@@ -106,10 +106,16 @@ int Game::getTj()
 	return timeStep;
 }
 
+Game* Game::getgameptr()
+{
+	
+	return this;
+}
+
 void Game::addUnit(Unit* unit)
 {
 	if (!unit) return;
-	if(unit->getType() == Unit::EG || unit->getType() == Unit::ES || unit->getType() == Unit::ET)
+	if(unit->getType() == Unit::EG || unit->getType() == Unit::ES || unit->getType() == Unit::ET|| unit->getType() == Unit::HU)
 		earthArmy->AddUnit(unit);
 	alienArmy->AddUnit(unit);
 }

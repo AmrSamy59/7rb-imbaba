@@ -36,7 +36,7 @@ public:
 	int GetHealtime() const;
 	float GetintialHeal() const;
 	Game* Getgameptr();
-	virtual void Attack(Unit*ptr) = 0 ;
+	virtual bool Attack(Unit*ptr) = 0 ;
 	UnitType getType();
 	bool operator==(Unit* unit);
 	friend ostream& operator<<(ostream& COUT, const Unit* obj);

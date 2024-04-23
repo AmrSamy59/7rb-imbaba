@@ -5,11 +5,11 @@ EarthGunnery::EarthGunnery(Game* gPtr, int id, int Tj, float health, float power
 
 }
 
-void EarthGunnery::Attack(Unit* AD)
+bool EarthGunnery::Attack(Unit* AD)
 {
 
 	float Damage = ((this->GetPower()) * (this->GetHealth() / 100)) / sqrt(AD->GetHealth());	
 	AD->TakeDamage(Damage);
-
+	return true;
 }
 

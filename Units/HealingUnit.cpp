@@ -4,17 +4,18 @@ HealingUnit::HealingUnit(Game* gPtr, int id, int Tj, float health, float power, 
 
 
 }
-void HealingUnit::Attack(Unit*dummy)
+bool HealingUnit::Attack(Unit*dummy)
 {
 	Game* ptr = this->Getgameptr();
 	LinkedQueue<Unit*>temp;
-
+	bool worked = false;
 	for (int i = 0; i < this->GetAttackCapacity(); i++) {
 		
 		Unit* p = ptr->GetFromUML(); /// dequeue from UML
 		if (p == NULL) {
 			break;
 		}
+		worked = true;
 		float heal = (this->GetPower() * this->GetHealth() / 100) / sqrtf(p->GetHealth());
 		p->Sethealth(heal + p->GetHealth());
 		if (p->GetHealth() > 0.2 * p->GetintialHeal()) {
@@ -38,5 +39,5 @@ void HealingUnit::Attack(Unit*dummy)
 
 
 	//ptr->AddToKilledList(this); /// make in the earth army attack pop from stack killed your self
-	return;
+	return worked;
 }

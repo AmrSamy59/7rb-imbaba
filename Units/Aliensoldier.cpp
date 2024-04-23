@@ -6,11 +6,11 @@ AlienSoldier::AlienSoldier(Game* gPtr, int id, int Tj, float health, float power
 
 }
 
-void AlienSoldier::Attack(Unit*ES)
+bool AlienSoldier::Attack(Unit*ES)
 {
 	float Damage = ((this->GetPower()) * (this->GetHealth() / 100)) / sqrt(ES->GetHealth());
 	ES->TakeDamage(Damage);
-	
+	return true;
 
 }
 

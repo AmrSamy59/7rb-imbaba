@@ -6,11 +6,11 @@ EarthSoldier::EarthSoldier(Game* gPtr, int id, int Tj, float health, float power
 
 }
 
-void EarthSoldier::Attack(Unit*AS)
+bool EarthSoldier::Attack(Unit*AS)
 {
 	
 	float Damage = ((this->GetPower()) * (this->GetHealth() / 100)) / sqrt(AS->GetHealth());
 	AS->TakeDamage(Damage);
-
+	return true;
 }
 
