@@ -127,6 +127,68 @@ void Game::AddToKilledList(Unit* unit)
 	Killed.enqueue(unit);
 }
 
+Unit* Game::pickAlienunit(Unit::UnitType type)
+{
+	switch (type)
+	{
+	case(Unit::AS):
+	{
+		return alienArmy->RemoveUnit(Unit::AS);
+		break;
+
+	}case(Unit::AM):
+	{
+		return alienArmy->RemoveUnit(Unit::AM);
+		break;
+	}
+	///////////// complete the drones i don't know what you need (Amr hany)
+
+	}
+
+	return nullptr;
+}
+
+void Game::ReturnAlienUnit(Unit* r)
+{
+	alienArmy->AddUnit(r);
+
+}
+
+Unit* Game::PickEarthUnit(Unit::UnitType type)
+{
+	switch (type)
+	{
+	case (Unit::EG):
+	{
+		return earthArmy->RemoveUnit(Unit::EG);
+		break;
+
+	}
+	case (Unit::ES):
+	{
+		return earthArmy->RemoveUnit(Unit::ES);
+		break;
+	}
+	case (Unit::ET):
+	{
+		return earthArmy->RemoveUnit(Unit::ET);
+		break;
+	}
+
+	}
+
+
+
+	return nullptr;
+}
+
+void Game::ReturnEarthUnit(Unit* r)
+{
+	earthArmy->AddUnit(r);
+
+}
+
+
 Unit* Game::GetFromUML()
 {
 	Unit* p;
