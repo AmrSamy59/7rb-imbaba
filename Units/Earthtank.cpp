@@ -5,7 +5,7 @@ EarthTank::EarthTank(Game* gPtr, int id, int Tj, float health, float power, int 
 {
 }
 
-bool EarthTank::Attack(Unit*AM)
+bool EarthTank::Attack()
 {
 	float Damage = ((this->GetPower()) * (this->GetHealth() / 100)) / sqrt(AM->GetHealth());
 	AM->TakeDamage(Damage);

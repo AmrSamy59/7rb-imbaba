@@ -6,7 +6,7 @@ AlienSoldier::AlienSoldier(Game* gPtr, int id, int Tj, float health, float power
 
 }
 
-bool AlienSoldier::Attack(Unit*dummy)
+bool AlienSoldier::Attack()
 {
 	
 	Game* gptr = this->Getgameptr();

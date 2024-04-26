@@ -4,7 +4,7 @@ HealingUnit::HealingUnit(Game* gPtr, int id, int Tj, float health, float power, 
 
 
 }
-bool HealingUnit::Attack(Unit*dummy)
+bool HealingUnit::Attack()
 {
 	Game* ptr = this->Getgameptr();
 	LinkedQueue<Unit*>temp;

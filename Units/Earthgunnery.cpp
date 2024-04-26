@@ -5,7 +5,7 @@ EarthGunnery::EarthGunnery(Game* gPtr, int id, int Tj, float health, float power
 
 }
 
-bool EarthGunnery::Attack(Unit* dummy)
+bool EarthGunnery::Attack()
 {
 	Game* gptr = this->Getgameptr();
 	LinkedQueue<Unit*>* temp = new LinkedQueue<Unit*>; /// dynamic list to delete it after finish

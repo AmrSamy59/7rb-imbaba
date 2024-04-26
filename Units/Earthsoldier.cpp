@@ -6,7 +6,7 @@ EarthSoldier::EarthSoldier(Game* gPtr, int id, int Tj, float health, float power
 
 }
 
-bool EarthSoldier::Attack(Unit*dummy)
+bool EarthSoldier::Attack()
 {
 	Game* gptr = this->Getgameptr();
 	LinkedQueue<Unit*>* temp = new LinkedQueue<Unit*>; /// dynamic list to delete it after finish
