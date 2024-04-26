@@ -43,7 +43,7 @@ public:
 	Unit* GetFromUML();
 	void AddToUML(Unit* unit);
 	void CheckingUML();
-
+	void ReturnToUML(Unit* unit);
 	///////////////////////////////////
 	void PrintKilledList();
 	void loadFile(int& N, int& Prob,EarthArmyConfig* eParams, AlienArmyConfig* aParams);
