@@ -33,7 +33,8 @@ bool HealingUnit::Attack(Unit*dummy)
 	{
 		Unit* p;
 		temp.dequeue(p);
-		ptr->AddToUML(p);
+		ptr->ReturnToUML(p);
+		/// make function for return to uml replace adduml
 
 	}
 

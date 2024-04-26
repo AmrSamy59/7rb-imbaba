@@ -6,10 +6,39 @@ AlienSoldier::AlienSoldier(Game* gPtr, int id, int Tj, float health, float power
 
 }
 
-bool AlienSoldier::Attack(Unit*ES)
+bool AlienSoldier::Attack(Unit*dummy)
 {
-	float Damage = ((this->GetPower()) * (this->GetHealth() / 100)) / sqrt(ES->GetHealth());
-	ES->TakeDamage(Damage);
+	
+	Game* gptr = this->Getgameptr();
+	LinkedQueue<Unit*>* temp = new LinkedQueue<Unit*>; /// dynamic list to delete it after finish
+	for (int i = 0; i < this->GetAttackCapacity(); i++) {
+		Unit* p;
+		p = gptr->PickEarthUnit(Unit::ES);
+		if (p) {
+			temp->enqueue(p);
+		}
+	}
+	while (!temp->isEmpty())
+	{
+		Unit* ES;
+		temp->dequeue(ES);
+
+		float Damage = ((this->GetPower()) * (this->GetHealth() / 100)) / sqrt(ES->GetHealth());
+		ES->TakeDamage(Damage);
+		if (ES->GetHealth() <= 0.0) {
+			gptr->AddToKilledList(ES);
+		}
+		else if(ES->GetHealth()>0 && ES->GetHealth()<0.2*ES->GetintialHeal())
+		{
+			gptr->AddToUML(ES);
+		}
+		else
+		{
+			gptr->ReturnAlienUnit(ES);
+		}
+
+	}
+	delete temp;
 	return true;
 
 }

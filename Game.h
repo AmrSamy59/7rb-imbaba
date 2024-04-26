@@ -35,11 +35,15 @@ public:
 	/////////////////////////////////////////////////////////////
 	void addUnit(Unit* unit);
 	void AddToKilledList(Unit* unit);
+	Unit* pickAlienunit(Unit::UnitType type);
+	void  ReturnAlienUnit(Unit* r);
+	Unit* PickEarthUnit(Unit::UnitType type);
+	void  ReturnEarthUnit(Unit* r);
 	//////////////////////////////////
 	Unit* GetFromUML();
 	void AddToUML(Unit* unit);
 	void CheckingUML();
-
+	void ReturnToUML(Unit* unit);
 	///////////////////////////////////
 	void PrintKilledList();
 	void loadFile(int& N, int& Prob,EarthArmyConfig* eParams, AlienArmyConfig* aParams);

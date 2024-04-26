@@ -127,6 +127,69 @@ void Game::AddToKilledList(Unit* unit)
 	Killed.enqueue(unit);
 }
 
+Unit* Game::pickAlienunit(Unit::UnitType type)
+{
+
+	switch (type)
+	{
+	case(Unit::AS):
+	{
+		return alienArmy->RemoveUnit(Unit::AS);
+		break;
+
+	}case(Unit::AM):
+	{
+		return alienArmy->RemoveUnit(Unit::AM);
+		break;
+	}
+	///////////// complete the drones i don't know what you need (Amr hany)
+
+	}
+
+	return nullptr;
+}
+
+void Game::ReturnAlienUnit(Unit* r)
+{
+	alienArmy->AddUnit(r);
+
+}
+
+Unit* Game::PickEarthUnit(Unit::UnitType type)
+{
+	switch (type)
+	{
+	case (Unit::EG):
+	{
+		return earthArmy->RemoveUnit(Unit::EG);
+		break;
+
+	}
+	case (Unit::ES):
+	{
+		return earthArmy->RemoveUnit(Unit::ES);
+		break;
+	}
+	case (Unit::ET):
+	{
+		return earthArmy->RemoveUnit(Unit::ET);
+		break;
+	}
+
+	}
+
+
+
+	return nullptr;
+}
+
+void Game::ReturnEarthUnit(Unit* r)
+{
+	earthArmy->AddUnit(r);
+
+}
+
+
 Unit* Game::GetFromUML()
 {
 	Unit* p;
@@ -135,6 +198,19 @@ Unit* Game::GetFromUML()
 	return p;
 }
 
+void Game::ReturnToUML(Unit* unit)
+{
+	//// use for tanks and earth solider only //////////
+	if (!unit) return;
+	float pri = 0;
+	if (unit->getType() == Unit::ES) {
+		pri = 100 - unit->GetHealth();
+		UML.enqueue(unit, pri);
+	}
+	if (unit->getType() == Unit::ET) {
+		UML.enqueue(unit, pri);
+	}
+}
 void Game::AddToUML(Unit* unit)
 {
 	//// use for tanks and earth solider only //////////
@@ -153,8 +229,8 @@ void Game::AddToUML(Unit* unit)
 
 void Game::CheckingUML()
 {
-	//// checking for the 10 time step ////////////////
-	/// used when you next time step ///////////////
+	/// checking for the 10 time step ////////////////
+	/// used when you next time step /////////////////
 	priQueue<Unit*>tempcheck;
 	while (!UML.isEmpty())
 	{

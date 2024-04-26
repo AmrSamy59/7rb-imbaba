@@ -56,7 +56,7 @@ public:
         if (isEmpty())
             return false;
 
-        topEntry = head->getItem();
+        topEntry = head->getItem(pri); //// Eng :eman it has mistake i have 10 hour to discover it please revise your work best regards (Eng: Amr hany)
         pri = head->getPri();
         return true;
     }
