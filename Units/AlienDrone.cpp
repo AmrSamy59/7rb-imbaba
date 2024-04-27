@@ -6,8 +6,8 @@ AlienDrone::AlienDrone(Game* gPtr, int id, int Tj, float health, float power, in
 }
 bool AlienDrone::Attack()
 {
-	float Damage = ((this->GetPower()) * (this->GetHealth() / 100)) / sqrt(EG->GetHealth());
-	EG->TakeDamage(Damage);
+	//float Damage = ((this->GetPower()) * (this->GetHealth() / 100)) / sqrt(EG->GetHealth());
+	//EG->TakeDamage(Damage);
 	return true;
 }
 

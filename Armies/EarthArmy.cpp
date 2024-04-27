@@ -92,6 +92,9 @@ void EarthArmy::Print()
 	cout << "]" << endl;
 	cout << Gunneries.GetCount() << " EG [";
 	Gunneries.Print();
+	cout << "]" << endl;
+	cout << Healinglist.GetCount() << " HU [";
+	Healinglist.Print();
 	cout << "]" << endl << endl;
 }
 EarthArmy::~EarthArmy()
@@ -100,22 +103,56 @@ EarthArmy::~EarthArmy()
 
 void EarthArmy::Attack()
 {
-	Game* gptr=NULL ;
-	gptr =gptr->getgameptr();
+	//Game* gptr =gptr->GetGamePtr();
 	//ptr->AddToKilledList(this); /// make in the earth army attack pop from stack killed your self
-	while (!Healinglist.isEmpty())
-	{
-		HealingUnit* h;
-		Unit* dummy=NULL;
-		Healinglist.peek(h);
-		bool work;
-	work = h->Attack(dummy);
-	if (work == true) {
-		RemoveUnit(Unit::HU);
-		gptr->AddToKilledList(h);
+	EarthSoldier* ES = nullptr;
+	EarthTank* ET = nullptr;
+	EarthGunnery* EG = nullptr;
+	HealingUnit* HU = nullptr;
+	int EG_Pri;
+
+	if (Soldiers.peek(ES)) {
+		ES->Attack();
 	}
 
+	if (Tanks.peek(ET)) {
+		///ET->Attack();
 	}
 
+	if (Gunneries.peek(EG, EG_Pri)) {
+		EG->Attack();
+	}
+
+	if (Healinglist.peek(HU)) {
+		HU->Attack();
+	}
+}
+
+int EarthArmy::GetArmyCount()
+{
+	return Soldiers.GetCount() + Tanks.GetCount() + Gunneries.GetCount();
+}
+
+int EarthArmy::GetUnitCount(Unit::UnitType unit_type)
+{
+	switch (unit_type) {
+		case Unit::ES:
+		{
+			return Soldiers.GetCount();
+		}
+		case Unit::ET:
+		{
+			return Tanks.GetCount();
+		}
+		case Unit::EG:
+		{
+			return Gunneries.GetCount();
+		}
+		case Unit::HU:
+		{
+			return Healinglist.GetCount();
+		}
+	}
+	return 0;
 }
 

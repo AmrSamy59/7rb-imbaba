@@ -6,7 +6,7 @@ HealingUnit::HealingUnit(Game* gPtr, int id, int Tj, float health, float power, 
 }
 bool HealingUnit::Attack()
 {
-	Game* ptr = this->Getgameptr();
+	Game* ptr = this->GetGamePtr();
 	LinkedQueue<Unit*>temp;
 	bool worked = false;
 	for (int i = 0; i < this->GetAttackCapacity(); i++) {
@@ -29,6 +29,10 @@ bool HealingUnit::Attack()
 
 
 	}
+
+	if (!temp.isEmpty())
+		PrintAttackList(temp, "heals");
+
 	while (!temp.isEmpty())
 	{
 		Unit* p;

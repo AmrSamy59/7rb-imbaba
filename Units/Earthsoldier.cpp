@@ -8,19 +8,23 @@ EarthSoldier::EarthSoldier(Game* gPtr, int id, int Tj, float health, float power
 
 bool EarthSoldier::Attack()
 {
-	Game* gptr = this->Getgameptr();
-	LinkedQueue<Unit*>* temp = new LinkedQueue<Unit*>; /// dynamic list to delete it after finish
+	Game* gptr = this->GetGamePtr();
+	LinkedQueue<Unit*> temp; /// dynamic list to delete it after finish
 	for (int i = 0; i < this->GetAttackCapacity(); i++) {
 		Unit* p;
 		p=gptr->pickAlienunit(Unit::AS);
 		if (p) {
-			temp->enqueue(p);
+			temp.enqueue(p);
 		}
 	}
-	while (!temp->isEmpty())
+
+	if (!temp.isEmpty())
+		PrintAttackList(temp);
+
+	while (!temp.isEmpty())
 	{
 		Unit* AS;
-		temp->dequeue(AS);
+		temp.dequeue(AS);
 
 		float Damage = ((this->GetPower()) * (this->GetHealth() / 100)) / sqrt(AS->GetHealth());
 		AS->TakeDamage(Damage);
@@ -33,8 +37,6 @@ bool EarthSoldier::Attack()
 		}
 		
 	}
-
-	delete temp;
 
 
 

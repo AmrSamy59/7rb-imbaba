@@ -1,4 +1,5 @@
 #include "Unit.h"
+#include"../Game.h"
 
 Unit::Unit(UnitType uType, Game* gPtr, int id , int Tj , float health , float power , int AC)
 {
@@ -107,15 +108,46 @@ float Unit::GetintialHeal() const
 
 
 
-Game* Unit::Getgameptr()
+Game* Unit::GetGamePtr()
 {
 	return GamePtr;
 }
 
 
+void Unit::PrintAttackList(LinkedQueue<Unit*>& list, string custom_action)
+{
+	if (GamePtr->GetGameMode() != 'i') return;
+	string s_type = getTypeString();
+	// custom_action defaults to shots
+	cout << endl << s_type << " " << ID << " " << custom_action << " [";
+	list.Print();
+	cout << "]" << endl;
+
+}
+
 Unit::UnitType Unit::getType()
 {
 	return type;
+}
+
+string Unit::getTypeString()
+{
+	switch (type) {
+		case AD:
+			return "AD";
+		case AM:
+			return "AM";
+		case AS:
+			return "AS";
+		case EG:
+			return "EG";
+		case ES:
+			return "ES";
+		case ET:
+			return "ET";
+		case HU:
+			return "HU";
+	}
 }
 
 bool Unit::operator==(Unit* unit)

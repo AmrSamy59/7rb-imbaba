@@ -25,6 +25,8 @@ public:
 	void Print();
 	void Attack();
 
+	int GetArmyCount();
+	int GetUnitCount(Unit::UnitType unit_type);
 	~EarthArmy();
 	
 };
