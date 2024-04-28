@@ -1,5 +1,6 @@
 #pragma once
 #include<iostream>
+#include "../DS/Queues/LinkedQueue.h"
 class Game;
 using namespace std;
 class Unit
@@ -35,9 +36,11 @@ public:
 	void SetHealtime(int t);
 	int GetHealtime() const;
 	float GetintialHeal() const;
-	Game* Getgameptr();
-	virtual bool Attack(Unit*ptr) = 0 ;
+	Game* GetGamePtr();
+	virtual bool Attack() = 0 ;
+	void PrintAttackList(LinkedQueue<Unit*>& list, string custom_action="shots");
 	UnitType getType();
+	string getTypeString();
 	bool operator==(Unit* unit);
 	friend ostream& operator<<(ostream& COUT, const Unit* obj);
 	

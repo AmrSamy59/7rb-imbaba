@@ -20,19 +20,23 @@ private:
 	EarthArmy* earthArmy;
 	AlienArmy* alienArmy;
 	randGen* randGenerator;
-	char mode; // 's' silence, 'a' active
+	char mode; // 's' silence, 'i' interactive
+	int game_status; // 0 ongoing, 1 earth won, -1 aliens won, 2 tie
 	string file;
 	int timeStep;
 public:
-	Game(char _mode ='a');
+	Game(char _mode ='i');
+	char GetGameMode();
+	int checkGameStatus();
 	void NextTimeStep();
 	void NextTimeStepTest();
 	int GetCurrentTimeStep()const;
 	//These getters for telling randgen which Id and Tj to generate Unit with
 	int getNextUnitId(char army);
 	int getTj();
-	Game* getgameptr();
+	Game* GetGamePtr();
 	/////////////////////////////////////////////////////////////
+	bool canArmiesAttack();
 	void addUnit(Unit* unit);
 	void AddToKilledList(Unit* unit);
 	Unit* pickAlienunit(Unit::UnitType type);
@@ -46,6 +50,7 @@ public:
 	void ReturnToUML(Unit* unit);
 	///////////////////////////////////
 	void PrintKilledList();
+	void PrintUML();
 	void loadFile(int& N, int& Prob,EarthArmyConfig* eParams, AlienArmyConfig* aParams);
 	~Game();
 };

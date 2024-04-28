@@ -24,6 +24,9 @@ public:
 	void Print();
 	// Attack the other army
 	void Attack();
+
+	int GetArmyCount();
+	int GetUnitCount(Unit::UnitType unit_type);
 	~AlienArmy();
 };
 

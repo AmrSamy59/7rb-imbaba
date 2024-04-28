@@ -105,8 +105,55 @@ void AlienArmy::Print()
 
 void AlienArmy::Attack()
 {
+	AlienSoldier* AS = nullptr;
+	Unit* AM = RemoveUnit(Unit::AM);
+	Unit* AD1 = RemoveUnit(Unit::AD); // from front
+	Unit* AD2 = RemoveUnit(Unit::AD, true); // from back
+
+	int EG_Pri;
+
+	if (Soldiers.peek(AS)) {
+		AS->Attack();
+	}
+
+	if (AM) {
+		AM->Attack();
+		AddUnit(AM);
+	}
+
+	if (AD1) {
+		//AD1->Attack();
+		//AddUnit(AD1);
+	}
+	if (AD2) {
+		//AD2->Attack();
+		//AddUnit(AD2);
+	}
 }
 
+int AlienArmy::GetArmyCount()
+{
+	return Soldiers.GetCount() + MonstersCount + Drones.GetCount();
+}
+
+int AlienArmy::GetUnitCount(Unit::UnitType unit_type)
+{
+	switch (unit_type) {
+	case Unit::AS:
+	{
+		return Soldiers.GetCount();
+	}
+	case Unit::AM:
+	{
+		return MonstersCount;
+	}
+	case Unit::AD:
+	{
+		return Drones.GetCount();
+	}
+	}
+	return 0;
+}
 
 
 AlienArmy::~AlienArmy()
