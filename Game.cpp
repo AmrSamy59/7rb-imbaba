@@ -37,7 +37,7 @@ void Game::NextTimeStep()
 {
 	timeStep++;
 
-	if(timeStep > 10)
+	if(timeStep >= 10)
 		CheckingUML();
 
 	randGenerator->execute();
