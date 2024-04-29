@@ -12,6 +12,7 @@ Unit::Unit(UnitType uType, Game* gPtr, int id , int Tj , float health , float po
 	Power = power;
 	AttackCapacity = AC;
 	GamePtr = gPtr;
+	IsHealed = false;
 }
 
 
@@ -99,6 +100,16 @@ void Unit::SetHealtime(int t)
 int Unit::GetHealtime() const
 {
 	return HealTime;
+}
+
+void Unit::SetIsHealed(bool x)
+{
+	IsHealed = x;
+}
+
+bool Unit::getIsHealed() const
+{
+	return IsHealed;
 }
 
 float Unit::GetintialHeal() const

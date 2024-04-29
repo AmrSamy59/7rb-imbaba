@@ -291,6 +291,14 @@ void Game::ReturnToUML(Unit* unit)
 		UML.enqueue(unit, pri);
 	}
 }
+void Game::IncrementHealedUnitCount()
+{
+	++HealedUnitCount;
+}
+int Game::GetHealedUnitCount() const
+{
+	return HealedUnitCount;
+}
 void Game::AddToUML(Unit* unit)
 {
 	//// use for tanks and earth solider only //////////

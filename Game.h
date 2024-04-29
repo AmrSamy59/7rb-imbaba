@@ -24,6 +24,7 @@ private:
 	int game_status; // 0 ongoing, 1 earth won, -1 aliens won, 2 tie
 	string file;
 	int timeStep;
+	int HealedUnitCount = 0;
 public:
 	Game(char _mode ='i');
 	char GetGameMode();
@@ -48,6 +49,8 @@ public:
 	void AddToUML(Unit* unit);
 	void CheckingUML();
 	void ReturnToUML(Unit* unit);
+	void IncrementHealedUnitCount();
+	int GetHealedUnitCount()const;
 	///////////////////////////////////
 	void PrintKilledList();
 	void PrintUML();
