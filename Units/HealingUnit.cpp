@@ -6,12 +6,12 @@ HealingUnit::HealingUnit(Game* gPtr, int id, int Tj, float health, float power, 
 }
 bool HealingUnit::Attack()
 {
-	Game* ptr = this->GetGamePtr();
+	Game* gptr = this->GetGamePtr();
 	LinkedQueue<Unit*>temp;
 	bool worked = false;
 	for (int i = 0; i < this->GetAttackCapacity(); i++) {
 		
-		Unit* p = ptr->GetFromUML(); /// dequeue from UML
+		Unit* p = gptr->GetFromUML(); /// dequeue from UML
 		if (p == NULL) {
 			break;
 		}
@@ -19,7 +19,11 @@ bool HealingUnit::Attack()
 		float heal = (this->GetPower() * this->GetHealth() / 100) / sqrtf(p->GetHealth());
 		p->Sethealth(heal + p->GetHealth());
 		if (p->GetHealth() > 0.2 * p->GetintialHeal()) {
-			ptr->addUnit(p);
+			gptr->addUnit(p);
+			if (p->getIsHealed() == false) {
+				p->SetIsHealed(true);
+				gptr->IncrementHealedUnitCount();
+			}
 			//p->SetHealtime(ptr->GetCurrentTimeStep());
 		}
 		else {
@@ -37,7 +41,7 @@ bool HealingUnit::Attack()
 	{
 		Unit* p;
 		temp.dequeue(p);
-		ptr->ReturnToUML(p);
+		gptr->ReturnToUML(p);
 		/// make function for return to uml replace adduml
 
 	}
