@@ -15,6 +15,6 @@ public:
 	void generateUnit(Unit::UnitType UnitType);
 	void execute();
 	void readParams();
-	int randInt(int ceil, int floor); // generate random int from 0 to 100
+	int randInt(int ceil, int floor);
 };
 

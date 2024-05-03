@@ -37,9 +37,10 @@ public:
 	Game* GetGamePtr();
 	/////////////////////////////////////////////////////////////
 	bool canArmiesAttack();
+	double GetRatio();
 	void addUnit(Unit* unit);
 	void AddToKilledList(Unit* unit);
-	Unit* pickAlienunit(Unit::UnitType type);
+	Unit* pickAlienunit(Unit::UnitType type, bool fromBack = false);
 	void  ReturnAlienUnit(Unit* r);
 	Unit* PickEarthUnit(Unit::UnitType type);
 	void  ReturnEarthUnit(Unit* r);

@@ -12,28 +12,36 @@ bool EarthGunnery::Attack()
 	////////////////////// AM attack ////////////////////////////////////////////////
 	for (int i = 0; i < this->GetAttackCapacity(); i++) {
 		Unit* p;
-		p = gptr->pickAlienunit(Unit::AM);
-		if (p) {
-			temp.enqueue(p);
+		if(i%3 == 0){
+			p = gptr->pickAlienunit(Unit::AM);
+			if(!p) gptr->pickAlienunit(Unit::AD);
 		}
+		else if(i%3 == 1){
+			p = gptr->pickAlienunit(Unit::AD);
+			if(!p) gptr->pickAlienunit(Unit::AM);
+		}
+		else {
+			p = gptr->pickAlienunit(Unit::AD, true);
+			if (!p) gptr->pickAlienunit(Unit::AM);
+		}
+		if (p) temp.enqueue(p);
 	}
-
 	if (!temp.isEmpty())
 		PrintAttackList(temp);
 
 	while (!temp.isEmpty())
 	{
-		Unit* AM;
-		temp.dequeue(AM);
+		Unit* target;
+		temp.dequeue(target);
 
-		float Damage = ((this->GetPower()) * (this->GetHealth() / 100)) / sqrt(AM->GetHealth());
-		AM->TakeDamage(Damage);
-		if (AM->GetHealth() <= 0.0) {
-			gptr->AddToKilledList(AM);
+		float Damage = ((this->GetPower()) * (this->GetHealth() / 100)) / sqrt(target->GetHealth());
+		target->TakeDamage(Damage);
+		if (target->GetHealth() <= 0.0) {
+			gptr->AddToKilledList(target);
 		}
 		else
 		{
-			gptr->ReturnAlienUnit(AM);
+			gptr->ReturnAlienUnit(target);
 		}
 
 	}

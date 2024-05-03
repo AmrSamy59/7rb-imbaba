@@ -17,7 +17,7 @@ private:
 public:
 	AlienArmy();
 	// Add Alien Units
-	void AddUnit(Unit* unit);
+	void AddUnit(Unit* unit, bool toFront = false);
 	// remove Alien Units
 	Unit* RemoveUnit(Unit::UnitType type, bool fromBack = false);
 	
