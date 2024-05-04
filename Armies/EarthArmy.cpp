@@ -5,6 +5,10 @@ EarthArmy::EarthArmy() : Army(1)
 
 void EarthArmy::AddUnit(Unit* unit)
 {
+	if (nextId >= 2000) {
+		delete unit;
+		return;
+	}
 	switch (unit->getType()) {
 		case Unit::ES:
 		{
@@ -116,7 +120,7 @@ void EarthArmy::Attack()
 	}
 
 	if (Tanks.peek(ET)) {
-		///ET->Attack();
+		ET->Attack();
 	}
 
 	if (Gunneries.peek(EG, EG_Pri)) {
@@ -124,9 +128,12 @@ void EarthArmy::Attack()
 	}
 
 	if (Healinglist.peek(HU)) {
-		HU->Attack();
+		if (HU->Attack())
+			Healinglist.pop(HU);
 	}
 }
+
+
 
 int EarthArmy::GetArmyCount()
 {

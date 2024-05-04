@@ -124,7 +124,7 @@ void Game::NextTimeStepTest()
 				AddToKilledList(unit);
 			}
 
-			unit = alienArmy->RemoveUnit(Unit::AD, true);
+			unit = alienArmy->RemoveUnit(Unit::AD);
 			if (unit) {
 				AddToKilledList(unit);
 			}
@@ -190,12 +190,19 @@ bool Game::canArmiesAttack()
 	return false;
 }
 
+double Game::GetRatio()
+{
+	if(alienArmy->GetUnitCount(Unit::AS) != 0.0)
+		return (earthArmy->GetUnitCount(Unit::ES) / alienArmy->GetUnitCount(Unit::AS)) * 100;
+
+}
+
 void Game::addUnit(Unit* unit)
 {
 	if (!unit) return;
 	if(unit->getType() == Unit::EG || unit->getType() == Unit::ES || unit->getType() == Unit::ET|| unit->getType() == Unit::HU)
 		earthArmy->AddUnit(unit);
-	alienArmy->AddUnit(unit);
+	else alienArmy->AddUnit(unit);
 }
 
 
@@ -205,7 +212,7 @@ void Game::AddToKilledList(Unit* unit)
 	Killed.enqueue(unit);
 }
 
-Unit* Game::pickAlienunit(Unit::UnitType type)
+Unit* Game::pickAlienunit(Unit::UnitType type,bool fromBack)
 {
 
 	switch (type)
@@ -220,8 +227,11 @@ Unit* Game::pickAlienunit(Unit::UnitType type)
 		return alienArmy->RemoveUnit(Unit::AM);
 		break;
 	}
-	///////////// complete the drones i don't know what you need (Amr hany)
-
+	case(Unit::AD):
+	{
+		return alienArmy->RemoveUnit(Unit::AD, fromBack);
+		break;
+	}
 	}
 
 	return nullptr;
@@ -363,13 +373,13 @@ void Game::loadFile(int& N, int& Prob, EarthArmyConfig* eParams, AlienArmyConfig
 {
 	cout << "Please, Enter the Name of the file: ";
 	cin >> file;
-	file += ".txt";
+	file = "Input/" + file + ".txt";
 	cin.ignore();
 	ifstream inFile(file);
 	while (!inFile.is_open()) {
 		cout << "Couldn't Find it\nPlease Enter Your File name Correctly and Without .txt: ";
 		cin >> file;
-		file += ".txt";
+		file = "Input/" + file + ".txt";
 		cin.ignore();
 		inFile.open(file);
 	}

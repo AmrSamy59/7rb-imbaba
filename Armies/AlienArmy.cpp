@@ -5,15 +5,19 @@ AlienArmy::AlienArmy() : Army(2000)
 
 	MonstersCount = 0;
 
-	Monsters = new AlienMonster * [1000];
-	for (int i = 0; i < 1000; ++i) {
+	Monsters = new AlienMonster * [2000];
+	for (int i = 0; i < 2000; ++i) {
 		Monsters[i] = nullptr;
 	}
 }
 
 
-void AlienArmy::AddUnit(Unit* unit)
+void AlienArmy::AddUnit(Unit* unit, bool toFront)
 {
+	if (nextId >= 4000) {
+		delete unit;
+		return;
+	}
 	switch (unit->getType()) {
 		case Unit::AS:
 		{
@@ -27,7 +31,8 @@ void AlienArmy::AddUnit(Unit* unit)
 		}
 		case Unit::AD:
 		{
-			Drones.enqueue(dynamic_cast<AlienDrone*>(unit));
+			if (!toFront) Drones.enqueue(dynamic_cast<AlienDrone*>(unit));
+			else Drones.enqueue_front(dynamic_cast<AlienDrone*>(unit));
 			break;
 		}
 	}
@@ -121,14 +126,12 @@ void AlienArmy::Attack()
 		AddUnit(AM);
 	}
 
-	if (AD1) {
-		//AD1->Attack();
-		//AddUnit(AD1);
+	if (AD1 && AD2) {
+		AD1->Attack();
+		AD2->Attack();
 	}
-	if (AD2) {
-		//AD2->Attack();
-		//AddUnit(AD2);
-	}
+	if(AD1) AddUnit(AD1);
+	if(AD2)	AddUnit(AD2);
 }
 
 int AlienArmy::GetArmyCount()

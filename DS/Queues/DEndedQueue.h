@@ -76,7 +76,6 @@ bool DEndedQueue<T>::enqueue(const T& newEntry)
 	if (isEmpty())	//special case if this is the first DoubleNode to insert
 	{
 		frontPtr = newNodePtr; // The queue is empty
-		newNodePtr->setPrevious(nullptr);
 	}
 	else
 	{
@@ -182,12 +181,14 @@ inline bool DEndedQueue<T>::enqueue_front(const T& newEntry)
 {
 	DoubleNode<T>* newNodePtr = new DoubleNode<T>(newEntry);
 	// Insert the new DoubleNode
-	if (!isEmpty())	//special case if this is the first DoubleNode to insert
+	if (isEmpty())	//special case if this is the first DoubleNode to insert
 	{
+		backPtr = newNodePtr;
+	}
+	else{
+		newNodePtr->setNext(frontPtr);
 		frontPtr->setPrevious(newNodePtr);
 	}
-
-	newNodePtr->setNext(frontPtr);
 
 	newNodePtr->setPrevious(nullptr);
 	frontPtr = newNodePtr; // The queue is empty

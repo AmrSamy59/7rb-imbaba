@@ -11,12 +11,6 @@ randGen::randGen(Game* GamePtr)
 	readParams();
 }
 
-//steps of generation
-	//detect ID
-	//get the current time step
-	//randomize health for unit
-	//randomize power for unit
-	//then You can add this unit
 
 
 void randGen::generateUnit(Unit::UnitType UnitType)
