@@ -48,6 +48,6 @@ bool HealingUnit::Attack()
 
 
 	if(worked)
-		ptr->AddToKilledList(this); /// make in the earth army attack pop from stack killed your self
+		gptr->AddToKilledList(this); /// make in the earth army attack pop from stack killed your self
 	return worked;
 }
