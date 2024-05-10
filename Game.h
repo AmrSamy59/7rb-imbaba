@@ -25,6 +25,7 @@ private:
 	string file;
 	int timeStep;
 	bool ETapproval = false;
+	int HealedUnitCount = 0;
 public:
 	Game(char _mode ='i');
 	char GetGameMode();
@@ -51,6 +52,8 @@ public:
 	void AddToUML(Unit* unit);
 	void CheckingUML();
 	void ReturnToUML(Unit* unit);
+	void IncrementHealedUnitCount();
+	int GetHealedUnitCount()const;
 	///////////////////////////////////
 	void PrintKilledList();
 	void PrintUML();
