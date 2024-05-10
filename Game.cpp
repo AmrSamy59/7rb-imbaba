@@ -222,6 +222,8 @@ void Game::addUnit(Unit* unit)
 void Game::AddToKilledList(Unit* unit)
 {
 	DestructedUnitsCount[unit->getType()]++;
+	if(unit->getType() == Unit::HU)
+		unit->TakeDamage(unit->GetHealth()); // to actually kill the healer
 	unit->SetDestructionTime(timeStep);
 	Killed.enqueue(unit);
 	logger->LogUnit(unit);
