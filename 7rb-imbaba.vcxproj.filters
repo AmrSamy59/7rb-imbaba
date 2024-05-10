@@ -81,6 +81,9 @@
     <ClCompile Include="Units\HealingUnit.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Utils\OutputLogger.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DS\Stacks\ArrayStack.h">
@@ -153,6 +156,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Units\HealingUnit.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils\OutputLogger.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

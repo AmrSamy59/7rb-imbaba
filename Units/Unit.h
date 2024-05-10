@@ -7,11 +7,13 @@ class Unit
 {
 public:
 
-	enum UnitType { AD, AM, AS, EG, ES, ET, HU };
+	enum UnitType { AD, AM, AS, EG, ES, ET, HU, SU, LastType };
 
 private:
 	int ID;
 	int JoinTime; // Tj
+	int FirstAttackTime; // Ta
+	int DestructionTime; // Td
 	int HealTime;  /// for healing unit phase 2
 	float IHealth; /// for healing unit phase 2
 	float Health;  
@@ -25,6 +27,9 @@ public:
 	int GetID() const;
 	void SetJoinTime(int t);
 	int GetJoinTime() const;
+	int GetFirstAttackTime() const;
+	int GetDestructionTime() const;
+	void SetDestructionTime(int t);
 	void Sethealth(float h);
 	float GetHealth() const;
 	void TakeDamage(float d);

@@ -6,6 +6,8 @@ Unit::Unit(UnitType uType, Game* gPtr, int id , int Tj , float health , float po
 	type = uType;
 	ID = id;
 	JoinTime = Tj;
+	FirstAttackTime = -1; // Default Value until first hit
+	DestructionTime = -1; // Default Value until death
 	Health = health;
 	IHealth = health;
 	HealTime = Tj;
@@ -32,6 +34,21 @@ int Unit::GetJoinTime() const
 	return JoinTime;
 }
 
+int Unit::GetFirstAttackTime() const
+{
+	return FirstAttackTime;
+}
+
+int Unit::GetDestructionTime() const
+{
+	return DestructionTime;
+}
+
+void Unit::SetDestructionTime(int t)
+{
+	DestructionTime = t;
+}
+
 void Unit::Sethealth(float h)
 {
 	if (h >= IHealth)
@@ -49,10 +66,19 @@ float Unit::GetHealth() const
 
 void Unit::TakeDamage(float d)
 {
+	if (FirstAttackTime == -1) {
+		int timeStep = GetGamePtr()->GetCurrentTimeStep();
+		FirstAttackTime = timeStep;
+	}
+
+	Health = Health - d;
 	if (Health <= 0)
+	{
 		Health = 0;
-	else
-		Health = Health - d;
+		int timeStep = GetGamePtr()->GetCurrentTimeStep();
+		DestructionTime = timeStep;
+	}
+		
 }
 
 

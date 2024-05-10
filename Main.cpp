@@ -43,6 +43,7 @@ int main()
 
         int game_status = gPtr->checkGameStatus();
 
+        gPtr->LogGameResult();
         //In Silent Don't print this
         if (game_status == 1) {
             cout << endl << "Earth Army Won" << endl;
