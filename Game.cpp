@@ -190,11 +190,23 @@ bool Game::canArmiesAttack()
 	return false;
 }
 
+bool Game::CanEtAttackAs()
+{
+	double currentRatio = GetRatio();
+	if (ETapproval) {
+		if (currentRatio >= 80.0) ETapproval = false;
+	}
+	else {
+		if (currentRatio < 30.0) ETapproval = true;
+	}
+	return ETapproval;
+}
+
 double Game::GetRatio()
 {
 	if(alienArmy->GetUnitCount(Unit::AS) != 0.0)
-		return (earthArmy->GetUnitCount(Unit::ES) / alienArmy->GetUnitCount(Unit::AS)) * 100;
-
+		return (double(earthArmy->GetUnitCount(Unit::ES)) / double(alienArmy->GetUnitCount(Unit::AS))) * 100.0;
+	return 100.0;
 }
 
 void Game::addUnit(Unit* unit)
@@ -376,8 +388,8 @@ void Game::loadFile(int& N, int& Prob, EarthArmyConfig* eParams, AlienArmyConfig
 		inFile.open(file);
 	}
 		inFile >> N
-			>> eParams->ES >> eParams->EG >> eParams->ET >> eParams->HU
-			>> aParams->AS >> aParams->AD >> aParams->AM
+			>> eParams->ES >> eParams->ET >> eParams->EG >> eParams->HU
+			>> aParams->AS >> aParams->AM >> aParams->AD
 			>> Prob
 			>> eParams->ePowCeil >> eParams->ePowFloor 
 			>> eParams->eHealCeil >> eParams->eHealFloor 

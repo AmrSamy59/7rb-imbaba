@@ -9,21 +9,18 @@ bool EarthTank::Attack()
 {
 	Game* gptr = this->GetGamePtr();
 	LinkedQueue<Unit*> temp;
-	if(gptr->GetRatio() <30.0) AttackAS = true;
-	if(gptr->GetRatio() >80.0) AttackAS = false;
-		//tank attacks AS tell GetRatio 80
 	Unit* p = nullptr;
 	for (int i = 0; i < this->GetAttackCapacity(); i++)
 	{
 		if(i%2){
-			if(AttackAS){
+			if(gptr->CanEtAttackAs()){
 				p = gptr->pickAlienunit(Unit::AS);
 				if(!p) p = gptr->pickAlienunit(Unit::AM);
 			}
 		}
 		else{
 			p = gptr->pickAlienunit(Unit::AM);
-			if(!p && AttackAS) p = gptr->pickAlienunit(Unit::AS);	
+			if(!p && gptr->CanEtAttackAs()) p = gptr->pickAlienunit(Unit::AS);
 		}
 		if(p) temp.enqueue(p);
 	}
