@@ -54,8 +54,8 @@ void Game::NextTimeStep()
 
 	// Printing ongoing fights
 	earthArmy->Attack();
+	
 	alienArmy->Attack();
-
 	// Printing dead units
 	if (mode == 'i')
 	{

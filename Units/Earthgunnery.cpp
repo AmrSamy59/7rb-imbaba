@@ -14,15 +14,15 @@ bool EarthGunnery::Attack()
 		Unit* p;
 		if(i%3 == 0){
 			p = gptr->pickAlienunit(Unit::AM);
-			if(!p) gptr->pickAlienunit(Unit::AD);
-		}
-		else if(i%3 == 1){
-			p = gptr->pickAlienunit(Unit::AD);
-			if(!p) gptr->pickAlienunit(Unit::AM);
+			if (!p) {
+				p = gptr->pickAlienunit(Unit::AD, pos);
+				if(p) pos = !pos;
+			}
 		}
 		else {
-			p = gptr->pickAlienunit(Unit::AD, true);
-			if (!p) gptr->pickAlienunit(Unit::AM);
+			p = gptr->pickAlienunit(Unit::AD, pos);
+			if(p) pos = !pos;
+			else p = gptr->pickAlienunit(Unit::AM);
 		}
 		if (p) temp.enqueue(p);
 	}

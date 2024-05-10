@@ -86,7 +86,7 @@ void randGen::execute()
 		if (B <= eParams->ES) generateUnit(Unit::ES); 
 		else if (B <= eParams->ES + eParams->ET) generateUnit(Unit::ET);
 		else if (B <= eParams->ES + eParams->ET + eParams->EG)generateUnit(Unit::EG);
-		else generateUnit(Unit::HU);
+		else if(B <= eParams->ES + eParams->ET + eParams->EG + eParams->HU) generateUnit(Unit::HU);
 	}
 	A = randInt(1, 100);
 	if (A > Prob) return;
@@ -94,7 +94,7 @@ void randGen::execute()
 		B = randInt(1, 100);
 		if (B <= aParams->AS) generateUnit(Unit::AS);
 		else if (B <= aParams->AS + aParams->AM) generateUnit(Unit::AM);
-		else generateUnit(Unit::AD);
+		else if (B <= aParams->AS + aParams->AM + aParams->AD)generateUnit(Unit::AD);
 	}
 }
 

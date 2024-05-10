@@ -14,7 +14,7 @@ AlienArmy::AlienArmy() : Army(2000)
 
 void AlienArmy::AddUnit(Unit* unit, bool toFront)
 {
-	if (nextId >= 4000) {
+	if (unit->GetID() >= 4000) {
 		delete unit;
 		return;
 	}
@@ -120,7 +120,6 @@ void AlienArmy::Attack()
 	if (Soldiers.peek(AS)) {
 		AS->Attack();
 	}
-
 	if (AM) {
 		AM->Attack();
 		AddUnit(AM);

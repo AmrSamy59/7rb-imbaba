@@ -8,9 +8,9 @@
 using namespace std;
 int main()
 {
-    // //  sound over 
-   //-//   string v = "War-strated.wav ";
-  // //    PlaySoundA(v.c_str(), NULL, SND_FILENAME);
+    // //  //\\   ||\\  || \\  //   sound over 
+   //-//  //__\\  || \\ ||  \\//    string v = "War-strated.wav ";
+  // //  //    \\ ||  \\||   ||     PlaySoundA(v.c_str(), NULL, SND_FILENAME);
  
     /////////////////////SCRIPT TESTING RANDGEN///////////////////////////
     
