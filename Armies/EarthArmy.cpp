@@ -1,11 +1,11 @@
 #include "EarthArmy.h"
 #include"../Game.h"
-EarthArmy::EarthArmy() : Army(1)
+EarthArmy::EarthArmy() : Army(0)
 {}
 
 void EarthArmy::AddUnit(Unit* unit)
 {
-	if (nextId >= 2000) {
+	if (unit->GetID() >= 2000) {
 		delete unit;
 		return;
 	}
