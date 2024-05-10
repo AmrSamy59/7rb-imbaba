@@ -17,6 +17,7 @@ bool EarthTank::Attack()
 				p = gptr->pickAlienunit(Unit::AS);
 				if(!p) p = gptr->pickAlienunit(Unit::AM);
 			}
+			else p = gptr->pickAlienunit(Unit::AM);
 		}
 		else{
 			p = gptr->pickAlienunit(Unit::AM);
