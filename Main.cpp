@@ -26,6 +26,7 @@ int main()
             cin >> game_mode;
             cout << endl;
         }
+
         if (game_mode == 's') {
             cout << "Silent Mode" << endl;
             cout << "Simulation Starts..." << endl;

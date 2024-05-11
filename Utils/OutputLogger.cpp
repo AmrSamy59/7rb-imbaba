@@ -83,13 +83,13 @@ void OutputLogger::LogEarthArmy(EarthArmy* army)
 	File << endl << "Earth Army" << endl;
 	File << "Total Units: " << total_count << endl;
 
-	File << "ES: " << total_es << " Destructed: " << total_es_d << " ";
+	File << "ES	Alive: " << total_es << " Destructed: " << total_es_d << " ";
 	File << "Percentage Destructed: " << (total_es_count != 0 ? (float)total_es_d / total_es_count : 0) * 100 << "%" << endl;
-	File << "ET: " << total_et << " Destructed: " << total_et_d << " ";
+	File << "ET	Alive: " << total_et << " Destructed: " << total_et_d << " ";
 	File << "Percentage Destructed: " << (total_et_count != 0 ? (float)total_et_d / total_et_count : 0) * 100 << "%" << endl;
-	File << "EG: " << total_eg << " Destructed: " << total_eg_d << " ";
+	File << "EG	Alive: " << total_eg << " Destructed: " << total_eg_d << " ";
 	File << "Percentage Destructed: " << (total_eg_count != 0 ? (float)total_eg_d / total_eg_count : 0) * 100 << "%" << endl;
-	File << "HU: " << total_hu << " Destructed: " << total_hu_d << " ";
+	File << "HU	Alive: " << total_hu << " Destructed: " << total_hu_d << " ";
 	File << "Percentage Destructed: " << (total_hu_count != 0 ? (float)total_hu_d / total_hu_count : 0) * 100 << "%" << endl;
 	File  << endl << "Total Destructed: " << total_d << endl;
 	File << "Percentage Destructed: " << (total_count != 0 ? (float)total_d / total_count : 0) * 100 << "%" << endl;
@@ -130,11 +130,11 @@ void OutputLogger::LogAlienArmy(AlienArmy* army)
 	File << endl << "Alien Army" << endl;
 	File << "Total Units: " << total_count << endl;
 
-	File << "AD: " << total_ad << " Destructed: " << total_ad_d << " ";
+	File << "AD	Alive: " << total_ad << " Destructed: " << total_ad_d << " ";
 	File << "Percentage Destructed: " << (total_ad_count != 0 ? (float)total_ad_d / total_ad_count : 0) * 100 << "%" << endl;
-	File << "AM: " << total_am << " Destructed: " << total_am_d << " ";
+	File << "AM	Alive: " << total_am << " Destructed: " << total_am_d << " ";
 	File << "Percentage Destructed: " << (total_am_count != 0 ? (float)total_am_d / total_am_count : 0) * 100 << "%" << endl;
-	File << "AS: " << total_as << " Destructed: " << total_as_d << " ";
+	File << "AS	Alive: " << total_as << " Destructed: " << total_as_d << " ";
 	File << "Percentage Destructed: " << (total_as_count != 0 ? (float)total_as_d / total_as_count : 0) * 100 << "%" << endl;
 	File << endl << "Total Destructed: " << total_d << endl;
 	File << "Percentage Destructed: " << (total_count != 0 ? (float)total_d / total_count : 0) * 100 << "%" << endl;
