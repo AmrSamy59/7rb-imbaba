@@ -4,6 +4,7 @@ Game::Game(char _mode)
 {
 	earthArmy = new EarthArmy();
 	alienArmy = new AlienArmy();
+	allyArmy = new AllyArmy();
 	randGenerator = new randGen(this);
 	mode = _mode;
 	game_status = 0;
@@ -50,7 +51,9 @@ void Game::NextTimeStep()
 
 	if(timeStep >= 10)
 		CheckingUML();
-
+	if (this->GetInfectedRatio()==0) {
+		allyArmy->Armyretreat();
+	}
 	randGenerator->execute();
 	// Printing
 	if (mode == 'i') {
@@ -58,6 +61,7 @@ void Game::NextTimeStep()
 		// Printing alive lists
 		earthArmy->Print();
 		alienArmy->Print();
+		allyArmy->Print();
 
 		cout << "============================== Units Fighting At Current Step ======================" << endl;
 	}
@@ -65,8 +69,9 @@ void Game::NextTimeStep()
 
 	// Printing ongoing fights
 	earthArmy->Attack();
-	
+	allyArmy->Attack();
 	alienArmy->Attack();
+	
 	// Printing dead units
 	if (mode == 'i')
 	{
@@ -156,6 +161,10 @@ int Game::getNextUnitId(char army)
 {
 	if (army == 'a')
 		return alienArmy->getNextUnitId();
+	else if(army=='s')
+	{
+		return allyArmy->getNextUnitId();
+	}
 	return earthArmy->getNextUnitId();
 }
 
@@ -225,7 +234,14 @@ void Game::addUnit(Unit* unit)
 	if (!unit) return;
 	if(unit->getType() == Unit::EG || unit->getType() == Unit::ES || unit->getType() == Unit::ET|| unit->getType() == Unit::HU)
 		earthArmy->AddUnit(unit);
+	else if (unit->getType() == Unit::SU) {
+
+		allyArmy->AddUnit(unit);
+	}
 	else alienArmy->AddUnit(unit);
+
+	////// add saver units
+
 }
 
 
@@ -308,6 +324,33 @@ void Game::ReturnEarthUnit(Unit* r)
 {
 	earthArmy->AddUnit(r);
 
+}
+
+Unit* Game::PickAllyUnit()
+{
+	Unit *unit =nullptr;
+	unit=allyArmy->RemoveUnit();
+	return unit;
+}
+
+void Game::ReturnAllyUnit(Unit* r)
+{
+	allyArmy->AddUnit(r);
+}
+
+double Game::GetInfectedRatio()
+{
+	int escount = earthArmy->GetUnitCount(Unit::ES);
+	int infectedcount = earthArmy->GetInfectedCount();
+	if (escount == 0)
+		return 0.0;
+	else
+	{
+		double ratio = double(infectedcount) / double(escount);
+		//return ratio*100.0;
+		return 50.0;
+	}
+	
 }
 
 
@@ -402,7 +445,7 @@ void Game::PrintUML() {
 	cout << "] " << endl << endl;
 }
 
-void Game::loadFile(int& N, int& Prob, EarthArmyConfig* eParams, AlienArmyConfig* aParams)
+void Game::loadFile(int& N, int& Prob, EarthArmyConfig* eParams, AlienArmyConfig* aParams, AllyArmyConfig* allyParams)
 {
 	cout << "Please, Enter the Name of the input file: ";
 	cin >> file;
@@ -426,19 +469,25 @@ void Game::loadFile(int& N, int& Prob, EarthArmyConfig* eParams, AlienArmyConfig
 		inFile >> N
 			>> eParams->ES >> eParams->ET >> eParams->EG >> eParams->HU
 			>> aParams->AS >> aParams->AM >> aParams->AD
-			>> Prob
+			>> Prob >>allyParams->threshold
 			>> eParams->ePowCeil >> eParams->ePowFloor 
 			>> eParams->eHealCeil >> eParams->eHealFloor 
 			>> eParams->eCapCeil >> eParams->eCapFloor
 			>> aParams->aPowCeil >> aParams->aPowFloor 
 			>> aParams->aHealCeil >> aParams->aHealFloor 
-			>> aParams->aCapCeil >> aParams->aCapFloor;
+			>> aParams->aCapCeil >> aParams->aCapFloor
+			>>allyParams->allyPowCeil >> allyParams->allyPowFloor
+			>> allyParams->allyHealCeil >> allyParams->allyHealFloor
+			>> allyParams->allyCapCeil >> allyParams->allyCapFloor;
 		eParams->ePowFloor *= -1;
 		eParams->eHealFloor *= -1;
 		eParams->eCapFloor *= -1;
 		aParams->aPowFloor *= -1;
 		aParams->aHealFloor *= -1;
 		aParams->aCapFloor *= -1;
+		allyParams->allyPowFloor *= -1;
+		allyParams->allyHealFloor *= -1;
+		allyParams->allyCapFloor *= -1;
 	inFile.close();
 
 	string output_file;

@@ -8,6 +8,8 @@ randGen::randGen(Game* GamePtr)
 	pGame = GamePtr;
 	eParams = new EarthArmyConfig();
 	aParams = new AlienArmyConfig();
+	allyParams = new AllyArmyConfig();
+
 	readParams();
 }
 
@@ -23,6 +25,13 @@ void randGen::generateUnit(Unit::UnitType UnitType)
 			health = randInt(eParams->eHealCeil, eParams->eHealFloor),
 			Cap = randInt(eParams->eCapCeil, eParams->eCapFloor),
 			Id = pGame->getNextUnitId('e');
+	}
+	else if(UnitType == Unit::SU)
+	{
+		pow = randInt(allyParams->allyPowCeil, allyParams->allyPowFloor),
+			health = randInt(allyParams->allyHealCeil, allyParams->allyHealFloor),
+			Cap = randInt(allyParams->allyCapCeil, allyParams->allyCapFloor),
+			Id = pGame->getNextUnitId('s');
 	}
 	else {
 		pow = randInt(aParams->aPowCeil, aParams->aPowFloor),
@@ -69,6 +78,11 @@ void randGen::generateUnit(Unit::UnitType UnitType)
 			unit = new HealingUnit(pGame, Id, Tj, health, pow, Cap);
 			break;
 		}
+		case Unit::SU:
+		{
+			unit = new SaverUnit(pGame, Id, Tj, health, pow, Cap);
+			break;
+		}
 	}
 	
 	pGame->addUnit(unit);
@@ -79,28 +93,38 @@ void randGen::generateUnit(Unit::UnitType UnitType)
 void randGen::execute()
 {
 	int A = randInt(1, 100);
-	if (A > Prob) return;
-	int B;
-	for (int i = 0; i < N; i++) {
-		B = randInt(1, 100);
-		if (B <= eParams->ES) generateUnit(Unit::ES); 
-		else if (B <= eParams->ES + eParams->ET) generateUnit(Unit::ET);
-		else if (B <= eParams->ES + eParams->ET + eParams->EG)generateUnit(Unit::EG);
-		else if(B <= eParams->ES + eParams->ET + eParams->EG + eParams->HU) generateUnit(Unit::HU);
+	if (A <= Prob) {
+		int B;
+		for (int i = 0; i < N; i++) {
+			B = randInt(1, 100);
+			if (B <= eParams->ES) generateUnit(Unit::ES);
+			else if (B <= eParams->ES + eParams->ET) generateUnit(Unit::ET);
+			else if (B <= eParams->ES + eParams->ET + eParams->EG)generateUnit(Unit::EG);
+			else if (B <= eParams->ES + eParams->ET + eParams->EG + eParams->HU) generateUnit(Unit::HU);
+		}
 	}
+
 	A = randInt(1, 100);
-	if (A > Prob) return;
-	for (int i = 0; i < N; i++) {
-		B = randInt(1, 100);
-		if (B <= aParams->AS) generateUnit(Unit::AS);
-		else if (B <= aParams->AS + aParams->AM) generateUnit(Unit::AM);
-		else if (B <= aParams->AS + aParams->AM + aParams->AD)generateUnit(Unit::AD);
+	if (A <= Prob) {
+		int B;
+		for (int i = 0; i < N; i++) {
+			B = randInt(1, 100);
+			if (B <= aParams->AS) generateUnit(Unit::AS);
+			else if (B <= aParams->AS + aParams->AM) generateUnit(Unit::AM);
+			else if (B <= aParams->AS + aParams->AM + aParams->AD)generateUnit(Unit::AD);
+		}
+	}
+
+	if (pGame->GetInfectedRatio() >= allyParams->threshold) {
+		for (int i = 0; i < N; i++) {
+			generateUnit(Unit::SU);
+		}
 	}
 }
 
 void randGen::readParams()
 {
-	pGame->loadFile(N, Prob, eParams, aParams);
+	pGame->loadFile(N, Prob, eParams, aParams,allyParams);
 }
 
 int randGen::randInt(int ceil, int floor)

@@ -15,6 +15,8 @@ Unit::Unit(UnitType uType, Game* gPtr, int id , int Tj , float health , float po
 	AttackCapacity = AC;
 	GamePtr = gPtr;
 	IsHealed = false;
+	Immunity = false;
+	Infected = false;
 }
 
 
@@ -118,6 +120,26 @@ bool Unit::IsDead() const
 	return false;
 }
 
+void Unit::SetImmune()
+{
+	Immunity = true;
+}
+
+bool Unit::GetImmunity() const
+{
+	return Immunity;
+}
+
+void Unit::SetInfected(bool s)
+{
+	Infected = s;
+}
+
+bool Unit::GetInfected() const
+{
+	return Infected;
+}
+
 void Unit::SetHealtime(int t)
 {
 	HealTime = t;
@@ -184,6 +206,8 @@ string Unit::getTypeString()
 			return "ET";
 		case HU:
 			return "HU";
+		case SU:
+			return "SU";
 	}
 }
 

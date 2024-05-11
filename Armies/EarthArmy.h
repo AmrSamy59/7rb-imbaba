@@ -26,6 +26,7 @@ public:
 	void Attack();
 	int GetArmyCount();
 	int GetUnitCount(Unit::UnitType unit_type);
+	int GetInfectedCount();
 	~EarthArmy();
 	
 };

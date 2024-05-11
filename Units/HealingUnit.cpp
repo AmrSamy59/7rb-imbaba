@@ -20,6 +20,12 @@ bool HealingUnit::Attack()
 		p->Sethealth(heal + p->GetHealth());
 		if (p->GetHealth() > 0.2 * p->GetintialHeal()) {
 			gptr->addUnit(p);
+			if (p->getType() == Unit::ES) {
+				p->SetImmune();
+				p->SetInfected(false);
+			}
+
+			/////////////// check type for solider and use
 			if (p->getIsHealed() == false) {
 				p->SetIsHealed(true);
 				gptr->IncrementHealedUnitCount();

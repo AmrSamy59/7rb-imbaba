@@ -11,11 +11,24 @@ bool AlienSoldier::Attack()
 	
 	Game* gptr = this->GetGamePtr();
 	LinkedQueue<Unit*> temp; /// dynamic list to delete it after finish
+	Unit* p=nullptr ;
 	for (int i = 0; i < this->GetAttackCapacity(); i++) {
-		Unit* p;
-		p = gptr->PickEarthUnit(Unit::ES);
-		if (p) {
-			temp.enqueue(p);
+		if (i % 2 == 0) {
+			p = gptr->PickEarthUnit(Unit::ES);
+			if (p) {
+				temp.enqueue(p);
+			}
+		}
+		else
+		{
+			p = gptr->PickAllyUnit();
+			if (!p) {
+				p = gptr->PickEarthUnit(Unit::ES);
+			}
+			if (p) {
+				temp.enqueue(p);
+			}
+			
 		}
 	}
 
@@ -32,13 +45,18 @@ bool AlienSoldier::Attack()
 		if (ES->GetHealth() <= 0.0) {
 			gptr->AddToKilledList(ES);
 		}
-		else if(ES->GetHealth()>0 && ES->GetHealth()<0.2*ES->GetintialHeal())
+		else if(ES->getType()==Unit::ES && ES->GetHealth()>0 && ES->GetHealth()<0.2 * ES->GetintialHeal())
 		{
 			gptr->AddToUML(ES);
 		}
 		else
 		{
+			if(ES->getType() == Unit::ES)
 			gptr->ReturnEarthUnit(ES);
+			else
+			{
+				gptr->ReturnAllyUnit(ES);
+			}
 		}
 
 	}
