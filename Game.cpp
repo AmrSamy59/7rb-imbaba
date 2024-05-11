@@ -5,7 +5,6 @@ Game::Game(char _mode)
 	earthArmy = new EarthArmy();
 	alienArmy = new AlienArmy();
 	randGenerator = new randGen(this);
-	logger = new OutputLogger("Output.txt", this);
 	mode = _mode;
 	game_status = 0;
 	timeStep = 0;
@@ -405,15 +404,22 @@ void Game::PrintUML() {
 
 void Game::loadFile(int& N, int& Prob, EarthArmyConfig* eParams, AlienArmyConfig* aParams)
 {
-	cout << "Please, Enter the Name of the file: ";
+	cout << "Please, Enter the Name of the input file: ";
 	cin >> file;
-	file = "Input/" + file + ".txt";
+	// check if the file name has .txt extension
+	if (file.find(".txt") == string::npos) {
+		file += ".txt";
+	}
+	file = "Input/" + file;
 	cin.ignore();
 	ifstream inFile(file);
 	while (!inFile.is_open()) {
-		cout << "Couldn't Find it\nPlease Enter Your File name Correctly and Without .txt: ";
+		cout << "Couldn't Find it\nPlease Enter Your File name Correctly: ";
 		cin >> file;
-		file = "Input/" + file + ".txt";
+		if (file.find(".txt") == string::npos) {
+			file += ".txt";
+		}
+		file = "Input/" + file;
 		cin.ignore();
 		inFile.open(file);
 	}
@@ -434,6 +440,17 @@ void Game::loadFile(int& N, int& Prob, EarthArmyConfig* eParams, AlienArmyConfig
 		aParams->aHealFloor *= -1;
 		aParams->aCapFloor *= -1;
 	inFile.close();
+
+	string output_file;
+	cout << "Enter Output File Name: ";
+	cin >> output_file;
+
+	// check if the file name has .txt extension
+	if (output_file.find(".txt") == string::npos) {
+		output_file += ".txt";
+	}
+
+	logger = new OutputLogger("Output/" + output_file, this);
 }
 
 Game::~Game()

@@ -26,6 +26,9 @@ public:
 	void LogEarthArmy(EarthArmy* army);
 	void LogAlienArmy(AlienArmy* army);
 
+	// TODO: LogSaverArmy
+	// void LogSaverArmy(SaverArmy* army);
+
 	void LogGameStatus();
 
 	~OutputLogger();
