@@ -8,9 +8,11 @@
 #include "Armies/AlienArmyConfig.h"
 #include "Armies/EarthArmyConfig.h"
 #include "Utils/randGen.h"
+#include "Utils/OutputLogger.h"
 #include <string>
 #include <fstream>
 class randGen;
+class OutputLogger;
 
 class Game
 {
@@ -20,14 +22,17 @@ private:
 	EarthArmy* earthArmy;
 	AlienArmy* alienArmy;
 	randGen* randGenerator;
+	OutputLogger* logger;
 	char mode; // 's' silence, 'i' interactive
 	int game_status; // 0 ongoing, 1 earth won, -1 aliens won, 2 tie
 	string file;
 	int timeStep;
 	bool ETapproval = false;
 	int HealedUnitCount = 0;
+	int DestructedUnitsCount[Unit::LastType];
 public:
 	Game(char _mode ='i');
+	void LogGameResult();
 	char GetGameMode();
 	int checkGameStatus();
 	void NextTimeStep();
@@ -43,6 +48,7 @@ public:
 	double GetRatio();
 	void addUnit(Unit* unit);
 	void AddToKilledList(Unit* unit);
+	int GetDestructedUnitCount(Unit::UnitType type);
 	Unit* pickAlienunit(Unit::UnitType type, bool fromBack = false);
 	void  ReturnAlienUnit(Unit* r);
 	Unit* PickEarthUnit(Unit::UnitType type);

@@ -5,9 +5,21 @@ Game::Game(char _mode)
 	earthArmy = new EarthArmy();
 	alienArmy = new AlienArmy();
 	randGenerator = new randGen(this);
+	logger = new OutputLogger("Output.txt", this);
 	mode = _mode;
 	game_status = 0;
 	timeStep = 0;
+
+	for (int i = 0; i < Unit::LastType; ++i) {
+		DestructedUnitsCount[i] = 0;
+	}
+}
+
+void Game::LogGameResult()
+{
+	logger->LogEarthArmy(earthArmy);
+	logger->LogAlienArmy(alienArmy);
+	logger->LogGameStatus();
 }
 
 
@@ -221,7 +233,17 @@ void Game::addUnit(Unit* unit)
 
 void Game::AddToKilledList(Unit* unit)
 {
+	DestructedUnitsCount[unit->getType()]++;
+	if(unit->getType() == Unit::HU)
+		unit->TakeDamage(unit->GetHealth()); // to actually kill the healer
+	unit->SetDestructionTime(timeStep);
 	Killed.enqueue(unit);
+	logger->LogUnit(unit);
+}
+
+int Game::GetDestructedUnitCount(Unit::UnitType type)
+{
+	return DestructedUnitsCount[type];
 }
 
 Unit* Game::pickAlienunit(Unit::UnitType type,bool fromBack)
@@ -419,6 +441,7 @@ Game::~Game()
 	delete earthArmy;
 	delete alienArmy;
 	delete randGenerator;
+	delete logger;
 }
 
 
