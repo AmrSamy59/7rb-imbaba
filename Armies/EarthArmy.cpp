@@ -1,11 +1,11 @@
 #include "EarthArmy.h"
 #include"../Game.h"
-EarthArmy::EarthArmy() : Army(0)
+EarthArmy::EarthArmy() : Army(1)
 {}
 
 void EarthArmy::AddUnit(Unit* unit)
 {
-	if (unit->GetID() >= 2000) {
+	if (unit->GetID() >= 1000) {
 		delete unit;
 		return;
 	}
@@ -107,8 +107,6 @@ EarthArmy::~EarthArmy()
 
 void EarthArmy::Attack()
 {
-	//Game* gptr =gptr->GetGamePtr();
-	//ptr->AddToKilledList(this); /// make in the earth army attack pop from stack killed your self
 	EarthSoldier* ES = nullptr;
 	EarthTank* ET = nullptr;
 	EarthGunnery* EG = nullptr;

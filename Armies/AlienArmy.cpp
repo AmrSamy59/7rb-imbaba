@@ -5,8 +5,8 @@ AlienArmy::AlienArmy() : Army(2000)
 
 	MonstersCount = 0;
 
-	Monsters = new AlienMonster * [2000];
-	for (int i = 0; i < 2000; ++i) {
+	Monsters = new AlienMonster * [1000];
+	for (int i = 0; i < 1000; ++i) {
 		Monsters[i] = nullptr;
 	}
 }
@@ -14,7 +14,7 @@ AlienArmy::AlienArmy() : Army(2000)
 
 void AlienArmy::AddUnit(Unit* unit, bool toFront)
 {
-	if (unit->GetID() >= 4000) {
+	if (unit->GetID() >= 3000) {
 		delete unit;
 		return;
 	}
