@@ -33,10 +33,24 @@ bool AlienMonster::Attack()
 	}
 	for (int i = 0; i < s_cap; i++) {
 		Unit* p;
-		p = gptr->PickEarthUnit(Unit::ES);
-		if (p) {
-			es_temp.enqueue(p);
+		if (i % 2 == 0) {
+			p = gptr->PickEarthUnit(Unit::ES);
+			if (p) {
+				es_temp.enqueue(p);
+			}
 		}
+		else
+		{
+			p = gptr->PickAllyUnit();
+			if (!p) {
+				p = gptr->PickEarthUnit(Unit::ES);
+			}
+			if (p) {
+				es_temp.enqueue(p);
+			}
+
+		}
+
 	}
 
 	if (!et_temp.isEmpty())
@@ -75,13 +89,18 @@ bool AlienMonster::Attack()
 		if (ES->GetHealth() <= 0.0) {
 			gptr->AddToKilledList(ES);
 		}
-		else if (ES->GetHealth() > 0 && ES->GetHealth() < 0.2 * ES->GetintialHeal())
+		else if (ES->getType() == Unit::ES && ES->GetHealth() > 0 && ES->GetHealth() < 0.2 * ES->GetintialHeal())
 		{
 			gptr->AddToUML(ES);
 		}
 		else
 		{
-			gptr->ReturnEarthUnit(ES);
+			if (ES->getType() == Unit::ES)
+				gptr->ReturnEarthUnit(ES);
+			else
+			{
+				gptr->ReturnAllyUnit(ES);
+			}
 		}
 
 	}

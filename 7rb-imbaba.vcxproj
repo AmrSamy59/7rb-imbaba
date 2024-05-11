@@ -127,6 +127,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Armies\AllyArmy.cpp" />
+    <ClCompile Include="Units\SaverUnit.cpp" />
     <ClCompile Include="Utils\OutputLogger.cpp" />
     <ClCompile Include="Units\HealingUnit.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -143,8 +145,10 @@
     <ClCompile Include="Units\Unit.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Armies\AllyArmy.h" />
     <ClInclude Include="Armies\AlienArmyConfig.h" />
     <ClInclude Include="Armies\AlienArmy.h" />
+    <ClInclude Include="Armies\AllyArmyConfig.h" />
     <ClInclude Include="Armies\Army.h" />
     <ClInclude Include="DS\PriorityQueue\priNode.h" />
     <ClInclude Include="DS\PriorityQueue\priQueue.h" />
@@ -158,6 +162,7 @@
     <ClInclude Include="Armies\EarthArmy.h" />
     <ClInclude Include="Armies\EarthArmyConfig.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="Units\SaverUnit.h" />
     <ClInclude Include="Utils\OutputLogger.h" />
     <ClInclude Include="Units\HealingUnit.h" />
     <ClInclude Include="Utils\randGen.h" />

@@ -9,6 +9,7 @@ private:
 	Game* pGame;
 	EarthArmyConfig* eParams;
 	AlienArmyConfig* aParams;
+	AllyArmyConfig* allyParams;
 	int N, Prob;
 public:
 	randGen(Game*);

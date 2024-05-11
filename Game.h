@@ -5,8 +5,10 @@
 #include"DS/PriorityQueue/priQueue.h"
 #include "Armies/EarthArmy.h"
 #include "Armies/AlienArmy.h"
+#include"Armies/AllyArmy.h"
 #include "Armies/AlienArmyConfig.h"
 #include "Armies/EarthArmyConfig.h"
+#include"Armies/AllyArmyConfig.h"
 #include "Utils/randGen.h"
 #include "Utils/OutputLogger.h"
 #include <string>
@@ -21,6 +23,7 @@ private:
 	priQueue<Unit*> UML;
 	EarthArmy* earthArmy;
 	AlienArmy* alienArmy;
+	AllyArmy* allyArmy;
 	randGen* randGenerator;
 	OutputLogger* logger;
 	char mode; // 's' silence, 'i' interactive
@@ -49,11 +52,17 @@ public:
 	void addUnit(Unit* unit);
 	void AddToKilledList(Unit* unit);
 	int GetDestructedUnitCount(Unit::UnitType type);
+	////////////////////////////////////////////////////////////////
 	Unit* pickAlienunit(Unit::UnitType type, bool fromBack = false);
 	void  ReturnAlienUnit(Unit* r);
+	///////////////////////////////////////////
 	Unit* PickEarthUnit(Unit::UnitType type);
 	void  ReturnEarthUnit(Unit* r);
 	//////////////////////////////////
+	Unit* PickAllyUnit();
+	void  ReturnAllyUnit(Unit* r);
+	double GetInfectedRatio();
+	/////////////////////////////////
 	Unit* GetFromUML();
 	void AddToUML(Unit* unit);
 	void CheckingUML();
@@ -63,6 +72,6 @@ public:
 	///////////////////////////////////
 	void PrintKilledList();
 	void PrintUML();
-	void loadFile(int& N, int& Prob,EarthArmyConfig* eParams, AlienArmyConfig* aParams);
+	void loadFile(int& N, int& Prob,EarthArmyConfig* eParams, AlienArmyConfig* aParams, AllyArmyConfig* allyParams);
 	~Game();
 };

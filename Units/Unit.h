@@ -20,6 +20,8 @@ private:
 	float Power;
 	int AttackCapacity; // AC
 	bool IsHealed;
+	bool Immunity;
+	bool Infected;
 	UnitType type;
 	Game* GamePtr;
 public:
@@ -43,7 +45,10 @@ public:
 	bool getIsHealed()const;
 	void PrintInfo() const;
 	bool IsDead() const;
-
+	void SetImmune();
+	bool GetImmunity() const;
+	void SetInfected(bool s);
+	bool GetInfected() const;
 	float GetintialHeal() const;
 	Game* GetGamePtr();
 	virtual bool Attack() = 0 ;

@@ -161,3 +161,8 @@ int EarthArmy::GetUnitCount(Unit::UnitType unit_type)
 	return 0;
 }
 
+int EarthArmy::GetInfectedCount()
+{
+	return 0;
+}
+
