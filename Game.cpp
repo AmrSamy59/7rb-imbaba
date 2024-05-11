@@ -406,13 +406,20 @@ void Game::loadFile(int& N, int& Prob, EarthArmyConfig* eParams, AlienArmyConfig
 {
 	cout << "Please, Enter the Name of the input file: ";
 	cin >> file;
-	file = "Input/" + file + ".txt";
+	// check if the file name has .txt extension
+	if (file.find(".txt") == string::npos) {
+		file += ".txt";
+	}
+	file = "Input/" + file;
 	cin.ignore();
 	ifstream inFile(file);
 	while (!inFile.is_open()) {
-		cout << "Couldn't Find it\nPlease Enter Your File name Correctly and Without .txt: ";
+		cout << "Couldn't Find it\nPlease Enter Your File name Correctly: ";
 		cin >> file;
-		file = "Input/" + file + ".txt";
+		if (file.find(".txt") == string::npos) {
+			file += ".txt";
+		}
+		file = "Input/" + file;
 		cin.ignore();
 		inFile.open(file);
 	}
