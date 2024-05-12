@@ -17,6 +17,8 @@ bool HealingUnit::Attack()
 		}
 		worked = true;
 		float heal = (this->GetPower() * this->GetHealth() / 100) / sqrtf(p->GetHealth());
+		if(p->GetInfected())
+			heal = 0.5 * heal;
 		p->Sethealth(heal + p->GetHealth());
 		if (p->GetHealth() > 0.2 * p->GetintialHeal()) {
 			gptr->addUnit(p);

@@ -1,9 +1,10 @@
 #include "AlienArmy.h"
 
-AlienArmy::AlienArmy() : Army(2000)
+AlienArmy::AlienArmy() : Army(2000, 3000)
 {
 
 	MonstersCount = 0;
+	infectionProb = 0.0;
 
 	Monsters = new AlienMonster * [1000];
 	for (int i = 0; i < 1000; ++i) {
@@ -14,8 +15,9 @@ AlienArmy::AlienArmy() : Army(2000)
 
 void AlienArmy::AddUnit(Unit* unit, bool toFront)
 {
-	if (unit->GetID() >= 3000) {
+	if (unit->GetID() >= maxId) {
 		delete unit;
+		//cout << endl << "No IDs available to add more alien units!" << endl;
 		return;
 	}
 	switch (unit->getType()) {
@@ -86,6 +88,16 @@ Unit* AlienArmy::RemoveUnit(Unit::UnitType type, bool fromBack)
 		}
 	}
 	return unit;
+}
+
+void AlienArmy::SetInfectionProb(double prob)
+{
+	infectionProb = prob;
+}
+
+double AlienArmy::GetInfectionProb()
+{
+	return infectionProb;
 }
 
 

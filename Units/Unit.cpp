@@ -133,6 +133,7 @@ bool Unit::GetImmunity() const
 void Unit::SetInfected(bool s)
 {
 	Infected = s;
+	GamePtr->AddInfectedCountTotal();
 }
 
 bool Unit::GetInfected() const
@@ -184,6 +185,14 @@ void Unit::PrintAttackList(LinkedQueue<Unit*>& list, string custom_action)
 
 }
 
+void Unit::PrintStatus(string custom_action)
+{
+	if (GamePtr->GetGameMode() != 'i') return;
+	string s_type = getTypeString();
+	// custom_action defaults to status
+	cout << endl << s_type << " " << ID << " " << custom_action << endl;
+}
+
 Unit::UnitType Unit::getType()
 {
 	return type;
@@ -218,6 +227,9 @@ bool Unit::operator==(Unit* unit)
 
 ostream& operator<<(std::ostream& COUT, const Unit* obj)
 {
+	if (obj->GetInfected()) {
+		COUT << '*';
+	}
 	COUT << obj->GetID();
 	return COUT;
 }

@@ -79,21 +79,27 @@ void OutputLogger::LogEarthArmy(EarthArmy* army)
 	int total_hu_count = total_hu + total_hu_d;
 	int total_count = total_d + total_alive;
 
+	int total_infected = army->GetTotalInfectedCount();
+	float infected_percentage = total_es_count != 0 ? (float)total_infected / total_es_count : 0;
+	
 
-	File << endl << "Earth Army" << endl;
+
+	File << endl << "Earth Army" << endl << endl;
 	File << "Total Units: " << total_count << endl;
 
-	File << "ES	Alive: " << total_es << " Destructed: " << total_es_d << " ";
+	File << "ES	Total: " << total_es_count << " Alive: " << total_es << " Destructed: " << total_es_d << " ";
 	File << "Percentage Destructed: " << (total_es_count != 0 ? (float)total_es_d / total_es_count : 0) * 100 << "%" << endl;
-	File << "ET	Alive: " << total_et << " Destructed: " << total_et_d << " ";
+	File << "ET	Total: " << total_et_count << " Alive: " << total_et << " Destructed: " << total_et_d << " ";
 	File << "Percentage Destructed: " << (total_et_count != 0 ? (float)total_et_d / total_et_count : 0) * 100 << "%" << endl;
-	File << "EG	Alive: " << total_eg << " Destructed: " << total_eg_d << " ";
+	File << "EG	Total: " << total_eg_count << " Alive: " << total_eg << " Destructed: " << total_eg_d << " ";
 	File << "Percentage Destructed: " << (total_eg_count != 0 ? (float)total_eg_d / total_eg_count : 0) * 100 << "%" << endl;
-	File << "HU	Alive: " << total_hu << " Destructed: " << total_hu_d << " ";
+	File << "HU	Total: " << total_hu_count << " Alive: " << total_hu << " Destructed: " << total_hu_d << " ";
 	File << "Percentage Destructed: " << (total_hu_count != 0 ? (float)total_hu_d / total_hu_count : 0) * 100 << "%" << endl;
+
 	File  << endl << "Total Destructed: " << total_d << endl;
 	File << "Percentage Destructed: " << (total_count != 0 ? (float)total_d / total_count : 0) * 100 << "%" << endl;
 
+	File << "Total Infected: " << total_infected << " Percentage Infected: " << infected_percentage * 100 << "%" << endl << endl;
 
 	File << "Average Df: " << avg_df << endl;
 	File << "Average Dd: " << avg_dd << endl;
@@ -127,17 +133,18 @@ void OutputLogger::LogAlienArmy(AlienArmy* army)
 	int total_as_count = total_as + total_as_d;
 	int total_count = total_d + total_alive;
 
-	File << endl << "Alien Army" << endl;
+	File << endl << "Alien Army" << endl << endl;
 	File << "Total Units: " << total_count << endl;
 
-	File << "AD	Alive: " << total_ad << " Destructed: " << total_ad_d << " ";
+	File << "AD	Total: " << total_ad_count << " Alive: " << total_ad << " Destructed: " << total_ad_d << " ";
 	File << "Percentage Destructed: " << (total_ad_count != 0 ? (float)total_ad_d / total_ad_count : 0) * 100 << "%" << endl;
-	File << "AM	Alive: " << total_am << " Destructed: " << total_am_d << " ";
+	File << "AM	Total: " << total_am_count << " Alive: " << total_am << " Destructed: " << total_am_d << " ";
 	File << "Percentage Destructed: " << (total_am_count != 0 ? (float)total_am_d / total_am_count : 0) * 100 << "%" << endl;
-	File << "AS	Alive: " << total_as << " Destructed: " << total_as_d << " ";
+	File << "AS	Total: " << total_as_count << " Alive: " << total_as << " Destructed: " << total_as_d << " ";
 	File << "Percentage Destructed: " << (total_as_count != 0 ? (float)total_as_d / total_as_count : 0) * 100 << "%" << endl;
+	
 	File << endl << "Total Destructed: " << total_d << endl;
-	File << "Percentage Destructed: " << (total_count != 0 ? (float)total_d / total_count : 0) * 100 << "%" << endl;
+	File << "Percentage Destructed: " << (total_count != 0 ? (float)total_d / total_count : 0) * 100 << "%" << endl << endl;
 
 	File << "Average Df: " << avg_df << endl;
 	File << "Average Dd: " << avg_dd << endl;
@@ -147,10 +154,12 @@ void OutputLogger::LogAlienArmy(AlienArmy* army)
 	File << "------------------------------------------------------" << endl;
 }
 
+
 void OutputLogger::LogGameStatus()
 {
 	int status = gptr->checkGameStatus();
 	File << endl << "Battle Results: ";
+	File << endl << "Finish Timestep: " << gptr->GetCurrentTimeStep() << endl;
 	if (status == 1)
 	{
 		File << "Earth Won" << endl;

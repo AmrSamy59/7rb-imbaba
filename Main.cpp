@@ -33,31 +33,7 @@ int main()
         }
         Game* gPtr = new Game(game_mode);
 
-        while (gPtr->GetCurrentTimeStep() < 40 || gPtr->checkGameStatus() == 0) {
-            gPtr->NextTimeStep();
-            if (game_mode == 'i') {
-                cout << "Press Enter to continue..." << endl;
-                string s;
-                getline(cin, s);
-            }
-        }
-
-        int game_status = gPtr->checkGameStatus();
-
-        gPtr->LogGameResult();
-        //In Silent Don't print this
-        if (game_status == 1) {
-            cout << endl << "Earth Army Won" << endl;
-        }
-        else if (game_status == -1) {
-            cout << endl << "Aliens Army Won" << endl;
-        }
-        else if (game_status == 2) {
-            cout << endl << "TIE" << endl;
-        }
-
-        if (game_mode == 's')
-            cout << "Simulation ends, Output file is created" << endl;
+        gPtr->PlayGame(game_mode);
 
         delete gPtr;
         cin >> game_mode;  //For Testing 

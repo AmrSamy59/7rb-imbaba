@@ -1,18 +1,24 @@
 #include "EarthArmy.h"
 #include"../Game.h"
-EarthArmy::EarthArmy() : Army(1)
-{}
+EarthArmy::EarthArmy() : Army(1, 1000)
+{
+	InfectedCount = 0;
+	TotalInfectedCount = 0;
+}
 
 void EarthArmy::AddUnit(Unit* unit)
 {
-	if (unit->GetID() >= 1000) {
+	if (unit->GetID() >= maxId) {
 		delete unit;
+		//cout << endl << "No IDs available to add more earth units!" << endl;
 		return;
 	}
 	switch (unit->getType()) {
 		case Unit::ES:
 		{
 			Soldiers.enqueue(dynamic_cast<EarthSoldier*>(unit));
+			if(unit->GetInfected())
+				InfectedCount++;
 			break;
 		}
 		case Unit::ET:
@@ -47,6 +53,8 @@ Unit* EarthArmy::RemoveUnit(Unit::UnitType type)
 			EarthSoldier* es = nullptr;
 			Soldiers.dequeue(es);
 			unit = es;
+			if(unit->GetInfected())
+				InfectedCount--;
 			break;
 		}
 		case Unit::ET:
@@ -87,10 +95,14 @@ Unit* EarthArmy::RemoveUnit(Unit::UnitType type)
 
 void EarthArmy::Print()
 {
+	float infRatio = 0;
+	if(Soldiers.GetCount() != 0)
+		infRatio = float(InfectedCount * 100) / Soldiers.GetCount();
 	cout << "============================== Earth Army Alive Units ==============================" << endl;
 	cout << Soldiers.GetCount() << " ES [";
 	Soldiers.Print();
 	cout << "]" << endl;
+	cout << "Total Infected: " << InfectedCount << " Infected Ratio: " << infRatio << "%" << endl;
 	cout << Tanks.GetCount() << " ET [";
 	Tanks.Print();
 	cout << "]" << endl;
@@ -100,6 +112,7 @@ void EarthArmy::Print()
 	cout << Healinglist.GetCount() << " HU [";
 	Healinglist.Print();
 	cout << "]" << endl << endl;
+
 }
 EarthArmy::~EarthArmy()
 {
@@ -163,6 +176,45 @@ int EarthArmy::GetUnitCount(Unit::UnitType unit_type)
 
 int EarthArmy::GetInfectedCount()
 {
-	return 0;
+	return InfectedCount;
 }
 
+void EarthArmy::SpreadInfection()
+{
+
+	EarthSoldier* ES = nullptr;
+	int count = Soldiers.GetCount();
+	double prob = rand() % 100;
+	if (InfectedCount < count && prob <= 2)
+	{
+		int random = rand() % (count);
+		bool infected = false;
+		for (int i = 0; i < count; i++)
+		{
+			Soldiers.dequeue(ES);
+			if (!ES->GetInfected() && !infected)
+			{
+				if (i >= random)
+				{
+					ES->SetInfected(true);
+					InfectedCount++;
+					infected = true;
+					ES->PrintStatus("Got infected by another infected solider!");
+				}
+			}
+			Soldiers.enqueue(ES);
+		}
+		
+	}
+
+}
+
+void EarthArmy::AddInfectedCountTotal()
+{
+	++TotalInfectedCount;
+}
+
+int EarthArmy::GetTotalInfectedCount()
+{
+	return TotalInfectedCount;
+}
