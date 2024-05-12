@@ -15,6 +15,8 @@ private:
 	ArrayStack<EarthTank*>Tanks;
 	priQueue<EarthGunnery*>Gunneries;
 	ArrayStack<HealingUnit*>Healinglist;
+	int InfectedCount;
+	int TotalInfectedCount;
 public:
 	EarthArmy();
 	// remove Add Units
@@ -27,6 +29,9 @@ public:
 	int GetArmyCount();
 	int GetUnitCount(Unit::UnitType unit_type);
 	int GetInfectedCount();
+	void SpreadInfection();
+	void AddInfectedCountTotal();
+	int GetTotalInfectedCount();
 	~EarthArmy();
 	
 };

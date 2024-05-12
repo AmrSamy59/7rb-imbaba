@@ -1,6 +1,6 @@
 #include "AllyArmy.h"
 
-AllyArmy::AllyArmy() : Army(4000)
+AllyArmy::AllyArmy() : Army(4000, 4250)
 {
 
 
@@ -10,8 +10,9 @@ void AllyArmy::AddUnit(Unit* unit)
 {
 	 /// max nuber for saver units is 250 ///
 
-	if (unit->GetID() >= 4250) {
+	if (unit->GetID() >= maxId) {
 		delete unit;
+		//cout << endl << "No IDs available to add more ally units!" << endl;
 		return;
 	}
 	else

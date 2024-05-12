@@ -15,6 +15,56 @@ Game::Game(char _mode)
 	}
 }
 
+void Game::PlayGame(char game_mode)
+{
+	while (GetCurrentTimeStep() < 40 || checkGameStatus() == 0) {
+		NextTimeStep();
+		if (game_mode == 'i') {
+			cout << "Press Enter to continue..." << endl;
+			string s;
+			getline(cin, s);
+		}
+	}
+
+	int game_status = checkGameStatus();
+
+	if (game_status == -1) {
+		// Kill all units in UML
+		while (!UML.isEmpty()) {
+			Unit* unit = nullptr;
+			int p;
+			UML.dequeue(unit, p);
+			AddToKilledList(unit);
+		}
+			
+	}
+	else if (game_status == 1 || game_status == 2) {
+	// Return all units in UML to earth army
+		while (!UML.isEmpty()) {
+			Unit* unit = nullptr;
+			int p;
+			UML.dequeue(unit, p);
+			earthArmy->AddUnit(unit);
+		}
+	}
+
+	LogGameResult();
+	//In Silent Don't print this
+	if (game_status == 1) {
+		cout << endl << "Earth Army Won" << endl;
+	}
+	else if (game_status == -1) {
+		cout << endl << "Aliens Army Won" << endl;
+	}
+	else if (game_status == 2) {
+		cout << endl << "TIE" << endl;
+	}
+
+	if (game_mode == 's')
+		cout << "Simulation ends, Output file is created" << endl;
+
+}
+
 void Game::LogGameResult()
 {
 	logger->LogEarthArmy(earthArmy);
@@ -63,12 +113,13 @@ void Game::NextTimeStep()
 		alienArmy->Print();
 		allyArmy->Print();
 
-		cout << "============================== Units Fighting At Current Step ======================" << endl;
+		cout << "============================== Units Fighting At Current Step =====================" << endl;
 	}
 
 
 	// Printing ongoing fights
 	earthArmy->Attack();
+	earthArmy->SpreadInfection();
 	allyArmy->Attack();
 	alienArmy->Attack();
 	
@@ -79,76 +130,6 @@ void Game::NextTimeStep()
 		PrintUML();
 		PrintKilledList();
 	}
-
-}
-
-void Game::NextTimeStepTest()
-{ 
-	// for phase 1.2 only
-
-	timeStep++;
-	
-	randGenerator->execute();
-
-	int x = rand() % 100 + 1;
-	Unit* unit = nullptr;
-	cout << endl << "X = " << x << endl;
-	if (x < 10) {
-		unit = earthArmy->RemoveUnit(Unit::ES);
-		if(unit)
-			earthArmy->AddUnit(unit);
-	}
-	else if (x < 20) {
-		unit = earthArmy->RemoveUnit(Unit::ET);
-		if (unit)
-			AddToKilledList(unit);
-	}
-	else if (x < 30) {
-		unit = earthArmy->RemoveUnit(Unit::EG);
-		if (unit) {
-			unit->TakeDamage(unit->GetHealth() / 2);
-			earthArmy->AddUnit(unit);
-		}
-	}
-	else if (x < 40) {
-		LinkedQueue<Unit*> Temp;
-		for (int i = 0; i < 5; ++i) {
-			unit = alienArmy->RemoveUnit(Unit::AS);
-			if (unit) {
-				unit->TakeDamage(unit->GetHealth() / 2);
-				Temp.enqueue(unit);
-			}
-		}
-		while (!Temp.isEmpty()) {
-			Temp.dequeue(unit);
-			alienArmy->AddUnit(unit);
-		}
-
-	}
-	else if (x < 50) {
-		for (int i = 0; i < 5; ++i) {
-			unit = alienArmy->RemoveUnit(Unit::AM);
-			if (unit) {
-				alienArmy->AddUnit(unit);
-			}
-		}
-	}
-	else if (x < 60) {
-		for (int i = 0; i < 3; ++i) {
-			unit = alienArmy->RemoveUnit(Unit::AD);
-			if (unit) {
-				AddToKilledList(unit);
-			}
-
-			unit = alienArmy->RemoveUnit(Unit::AD);
-			if (unit) {
-				AddToKilledList(unit);
-			}
-		}
-	}
-	earthArmy->Print(); 
-	alienArmy->Print();
-	PrintKilledList();
 }
 
 int Game::GetCurrentTimeStep() const
@@ -240,8 +221,6 @@ void Game::addUnit(Unit* unit)
 	}
 	else alienArmy->AddUnit(unit);
 
-	////// add saver units
-
 }
 
 
@@ -292,6 +271,30 @@ void Game::ReturnAlienUnit(Unit* r)
 
 }
 
+double Game::GetInfectionProb()
+{
+	return alienArmy->GetInfectionProb();
+}
+
+void Game::AddInfectedCountTotal()
+{
+	earthArmy->AddInfectedCountTotal();
+}
+
+double Game::GetInfectedRatio()
+{
+	int escount = earthArmy->GetUnitCount(Unit::ES);
+	int infectedcount = earthArmy->GetInfectedCount();
+	if (escount == 0)
+		return 0.0;
+	else
+	{
+		double ratio = double(infectedcount) / double(escount);
+		return ratio*100.0;
+	}
+
+}
+
 Unit* Game::PickEarthUnit(Unit::UnitType type)
 {
 	switch (type)
@@ -338,20 +341,7 @@ void Game::ReturnAllyUnit(Unit* r)
 	allyArmy->AddUnit(r);
 }
 
-double Game::GetInfectedRatio()
-{
-	int escount = earthArmy->GetUnitCount(Unit::ES);
-	int infectedcount = earthArmy->GetInfectedCount();
-	if (escount == 0)
-		return 0.0;
-	else
-	{
-		double ratio = double(infectedcount) / double(escount);
-		//return ratio*100.0;
-		return 50.0;
-	}
-	
-}
+
 
 
 Unit* Game::GetFromUML()
@@ -466,10 +456,11 @@ void Game::loadFile(int& N, int& Prob, EarthArmyConfig* eParams, AlienArmyConfig
 		cin.ignore();
 		inFile.open(file);
 	}
+	double infectionProb;
 		inFile >> N
 			>> eParams->ES >> eParams->ET >> eParams->EG >> eParams->HU
 			>> aParams->AS >> aParams->AM >> aParams->AD
-			>> Prob >>allyParams->threshold
+			>> Prob >> allyParams->threshold >> infectionProb
 			>> eParams->ePowCeil >> eParams->ePowFloor 
 			>> eParams->eHealCeil >> eParams->eHealFloor 
 			>> eParams->eCapCeil >> eParams->eCapFloor
@@ -490,6 +481,7 @@ void Game::loadFile(int& N, int& Prob, EarthArmyConfig* eParams, AlienArmyConfig
 		allyParams->allyCapFloor *= -1;
 	inFile.close();
 
+	alienArmy->SetInfectionProb(infectionProb);
 	string output_file;
 	cout << "Enter Output File Name: ";
 	cin >> output_file;
@@ -498,7 +490,7 @@ void Game::loadFile(int& N, int& Prob, EarthArmyConfig* eParams, AlienArmyConfig
 	if (output_file.find(".txt") == string::npos) {
 		output_file += ".txt";
 	}
-
+	cin.ignore();
 	logger = new OutputLogger("Output/" + output_file, this);
 }
 

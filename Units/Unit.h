@@ -53,6 +53,7 @@ public:
 	Game* GetGamePtr();
 	virtual bool Attack() = 0 ;
 	void PrintAttackList(LinkedQueue<Unit*>& list, string custom_action="shots");
+	void PrintStatus(string custom_action);
 	UnitType getType();
 	string getTypeString();
 	bool operator==(Unit* unit);

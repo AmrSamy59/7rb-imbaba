@@ -14,12 +14,16 @@ private:
 	AlienMonster** Monsters;
 	DEndedQueue<AlienDrone*> Drones;
 	int MonstersCount;
+	double infectionProb;
 public:
 	AlienArmy();
 	// Add Alien Units
 	void AddUnit(Unit* unit, bool toFront = false);
 	// remove Alien Units
 	Unit* RemoveUnit(Unit::UnitType type, bool fromBack = false);
+
+	void SetInfectionProb(double prob);
+	double GetInfectionProb();
 	
 	void Print();
 	// Attack the other army

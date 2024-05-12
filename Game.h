@@ -35,11 +35,12 @@ private:
 	int DestructedUnitsCount[Unit::LastType];
 public:
 	Game(char _mode ='i');
+	void PlayGame(char game_mode);
 	void LogGameResult();
 	char GetGameMode();
 	int checkGameStatus();
 	void NextTimeStep();
-	void NextTimeStepTest();
+
 	int GetCurrentTimeStep()const;
 	//These getters for telling randgen which Id and Tj to generate Unit with
 	int getNextUnitId(char army);
@@ -55,13 +56,15 @@ public:
 	////////////////////////////////////////////////////////////////
 	Unit* pickAlienunit(Unit::UnitType type, bool fromBack = false);
 	void  ReturnAlienUnit(Unit* r);
+	double GetInfectionProb();
+	void AddInfectedCountTotal();
+	double GetInfectedRatio();
 	///////////////////////////////////////////
 	Unit* PickEarthUnit(Unit::UnitType type);
 	void  ReturnEarthUnit(Unit* r);
 	//////////////////////////////////
 	Unit* PickAllyUnit();
 	void  ReturnAllyUnit(Unit* r);
-	double GetInfectedRatio();
 	/////////////////////////////////
 	Unit* GetFromUML();
 	void AddToUML(Unit* unit);
