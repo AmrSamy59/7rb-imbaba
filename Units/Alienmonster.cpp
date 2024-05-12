@@ -18,9 +18,13 @@ bool AlienMonster::Attack()
 	for (int i = 0; i < this->GetAttackCapacity(); i++) {
 		if (i % 2 == 0) {
 			p = gptr->PickEarthUnit(Unit::ET);
-			if (p) {
-				temp.enqueue(p);
+			if (!p) {
+				p = gptr->PickAllyUnit();
 			}
+			if (!p) {
+				p = gptr->PickEarthUnit(Unit::ES);
+			}
+			
 		}
 		else
 		{
@@ -28,10 +32,12 @@ bool AlienMonster::Attack()
 			if (!p) {
 				p = gptr->PickEarthUnit(Unit::ES);
 			}
-			if (p) {
-				temp.enqueue(p);
+			if (!p) {
+				p = gptr->PickEarthUnit(Unit::ET);
 			}
-
+		}
+		if (p) {
+			temp.enqueue(p);
 		}
 	}
 

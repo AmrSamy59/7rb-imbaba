@@ -11,5 +11,6 @@ public:
 	virtual void Attack() = 0;
 	virtual int GetArmyCount() = 0;
 	virtual int GetUnitCount(Unit::UnitType unit_type) = 0;
+	bool canAddUnit() { return nextId < maxId; };
 };
 

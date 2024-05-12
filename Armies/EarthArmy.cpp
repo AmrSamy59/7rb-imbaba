@@ -6,11 +6,10 @@ EarthArmy::EarthArmy() : Army(1, 1000)
 	TotalInfectedCount = 0;
 }
 
-void EarthArmy::AddUnit(Unit* unit)
+void EarthArmy::AddUnit(Unit* unit, bool newUnit)
 {
 	if (unit->GetID() >= maxId) {
 		delete unit;
-		//cout << endl << "No IDs available to add more earth units!" << endl;
 		return;
 	}
 	switch (unit->getType()) {
@@ -38,7 +37,8 @@ void EarthArmy::AddUnit(Unit* unit)
 			break;
 		}
 	}
-	nextId++;
+	if (newUnit)
+		nextId++;
 }
 
 Unit* EarthArmy::RemoveUnit(Unit::UnitType type)

@@ -6,7 +6,7 @@ AllyArmy::AllyArmy() : Army(4000, 4250)
 
 }
 
-void AllyArmy::AddUnit(Unit* unit)
+void AllyArmy::AddUnit(Unit* unit, bool newUnit)
 {
 	 /// max nuber for saver units is 250 ///
 
@@ -18,7 +18,8 @@ void AllyArmy::AddUnit(Unit* unit)
 	else
 	{
 		SUlist.enqueue(dynamic_cast<SaverUnit*>(unit));
-		nextId++;
+		if (newUnit)
+			nextId++;
 	}
 		
 }

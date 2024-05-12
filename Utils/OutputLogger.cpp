@@ -106,7 +106,7 @@ void OutputLogger::LogEarthArmy(EarthArmy* army)
 	File << "Average Db: " << avg_db << endl;
 	File << "Df/Db Ratio: " << df_db_ratio * 100 << "%" << endl;
 	File << "Dd/Db Ratio: " << dd_db_ratio * 100 << "%" << endl;
-	File << "------------------------------------------------------" << endl;
+	File << endl << "------------------------------------------------------" << endl;
 }
 
 void OutputLogger::LogAlienArmy(AlienArmy* army)
@@ -151,15 +151,15 @@ void OutputLogger::LogAlienArmy(AlienArmy* army)
 	File << "Average Db: " << avg_db << endl;
 	File << "Df/Db Ratio: " << df_db_ratio * 100 << "%" << endl;
 	File << "Dd/Db Ratio: " << dd_db_ratio * 100 << "%" << endl;
-	File << "------------------------------------------------------" << endl;
+	File << endl << "------------------------------------------------------" << endl;
 }
 
 
 void OutputLogger::LogGameStatus()
 {
 	int status = gptr->checkGameStatus();
-	File << endl << "Battle Results: ";
-	File << endl << "Finish Timestep: " << gptr->GetCurrentTimeStep() << endl;
+	File << endl << "Battle Results" << endl;
+	File << endl << "Finish Timestep: " << gptr->GetCurrentTimeStep() << endl << endl;
 	if (status == 1)
 	{
 		File << "Earth Won" << endl;
@@ -172,7 +172,7 @@ void OutputLogger::LogGameStatus()
 	{
 		File << "Tie" << endl;
 	}
-	File << "------------------------------------------------------" << endl;
+	File << endl << "------------------------------------------------------" << endl;
 }
 
 OutputLogger::~OutputLogger()
