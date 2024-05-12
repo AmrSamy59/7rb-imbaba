@@ -13,6 +13,7 @@ private:
 	int N, Prob;
 public:
 	randGen(Game*);
+	~randGen();
 	void generateUnit(Unit::UnitType UnitType);
 	void execute();
 	void readParams();

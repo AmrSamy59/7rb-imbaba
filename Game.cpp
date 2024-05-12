@@ -498,6 +498,7 @@ Game::~Game()
 {
 	delete earthArmy;
 	delete alienArmy;
+	delete allyArmy;
 	delete randGenerator;
 	delete logger;
 }
