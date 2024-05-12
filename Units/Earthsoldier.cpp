@@ -15,7 +15,7 @@ bool EarthSoldier::Attack()
 		if (GetInfected())
 			p = gptr->PickEarthUnit(Unit::ES);
 		else
-			p=gptr->pickAlienunit(Unit::AS);
+			p = gptr->pickAlienunit(Unit::AS);
 		if (p) {
 			temp.enqueue(p);
 		}
@@ -39,7 +39,14 @@ bool EarthSoldier::Attack()
 			if(AS->getType() == Unit::AS)
 				gptr->ReturnAlienUnit(AS);
 			else
-				gptr->ReturnEarthUnit(AS);
+			{
+				if (AS->GetHealth() > 0 && AS->GetHealth() < 0.2 * AS->GetintialHeal())
+				{
+					gptr->AddToUML(AS);
+				}
+				else
+					gptr->ReturnEarthUnit(AS);
+			}
 		}
 		
 	}

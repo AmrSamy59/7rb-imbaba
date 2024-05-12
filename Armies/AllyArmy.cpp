@@ -61,15 +61,18 @@ int AllyArmy::GetUnitCount(Unit::UnitType dummy)
 	return SUlist.GetCount();
 }
 
-void AllyArmy::Armyretreat()
+bool AllyArmy::ArmyRetreat()
 {
 	SaverUnit* su = nullptr;
+	bool retreated = false;
 	while (!SUlist.isEmpty())
 	{
-
 		SUlist.dequeue(su);
 
+		retreated = true;
 	}
+
+	return retreated;
 
 }
 

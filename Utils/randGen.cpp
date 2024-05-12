@@ -115,16 +115,19 @@ void randGen::execute()
 		}
 	}
 
-	if (pGame->GetInfectedRatio() >= allyParams->threshold) {
-		for (int i = 0; i < N; i++) {
-			generateUnit(Unit::SU);
+	A = randInt(1, 100);
+	if (A <= Prob) {
+		if (pGame->GetInfectedRatio() >= allyParams->threshold) {
+			for (int i = 0; i < N; i++) {
+				generateUnit(Unit::SU);
+			}
 		}
 	}
 }
 
 void randGen::readParams()
 {
-	pGame->loadFile(N, Prob, eParams, aParams,allyParams);
+	pGame->loadFile(N, Prob, eParams, aParams, allyParams);
 }
 
 int randGen::randInt(int ceil, int floor)

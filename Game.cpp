@@ -101,13 +101,18 @@ void Game::NextTimeStep()
 
 	if(timeStep >= 10)
 		CheckingUML();
-	if (this->GetInfectedRatio()==0) {
-		allyArmy->Armyretreat();
+
+	bool retreated = false;
+	if (earthArmy->GetInfectedCount() == 0) {
+		retreated = allyArmy->ArmyRetreat();
 	}
 	randGenerator->execute();
 	// Printing
 	if (mode == 'i') {
 		cout << "\nCurrent Timestep " << timeStep << endl;
+		if (retreated) {
+			cout << endl << "Ally Army retreated" << endl << endl;
+		}
 		// Printing alive lists
 		earthArmy->Print();
 		alienArmy->Print();

@@ -133,7 +133,8 @@ bool Unit::GetImmunity() const
 void Unit::SetInfected(bool s)
 {
 	Infected = s;
-	GamePtr->AddInfectedCountTotal();
+	if (s)
+		GamePtr->AddInfectedCountTotal();
 }
 
 bool Unit::GetInfected() const

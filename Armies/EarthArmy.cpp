@@ -120,14 +120,15 @@ EarthArmy::~EarthArmy()
 
 void EarthArmy::Attack()
 {
-	EarthSoldier* ES = nullptr;
+	Unit* ES = RemoveUnit(Unit::ES);
 	EarthTank* ET = nullptr;
 	EarthGunnery* EG = nullptr;
 	HealingUnit* HU = nullptr;
 	int EG_Pri;
 
-	if (Soldiers.peek(ES)) {
+	if (ES) {
 		ES->Attack();
+		AddUnit(ES);
 	}
 
 	if (Tanks.peek(ET)) {
@@ -181,6 +182,8 @@ int EarthArmy::GetInfectedCount()
 
 void EarthArmy::SpreadInfection()
 {
+	if(InfectedCount == 0)
+		return;
 
 	EarthSoldier* ES = nullptr;
 	int count = Soldiers.GetCount();
@@ -198,6 +201,7 @@ void EarthArmy::SpreadInfection()
 				{
 					ES->SetInfected(true);
 					InfectedCount++;
+					TotalInfectedCount++;
 					infected = true;
 					ES->PrintStatus("Got infected by another infected solider!");
 				}
