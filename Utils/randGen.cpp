@@ -13,6 +13,13 @@ randGen::randGen(Game* GamePtr)
 	readParams();
 }
 
+randGen::~randGen()
+{
+	delete eParams;
+	delete aParams;
+	delete allyParams;
+}
+
 
 
 void randGen::generateUnit(Unit::UnitType UnitType)
