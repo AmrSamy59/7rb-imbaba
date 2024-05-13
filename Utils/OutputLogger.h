@@ -17,9 +17,6 @@ private:
 	int alienDf;
 	int alienDd;
 	int alienDb;
-	int saverDf;
-	int saverDd;
-	int saverDb;
 public:
 	OutputLogger(string fname, Game* gamePtr);
 

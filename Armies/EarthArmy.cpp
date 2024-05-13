@@ -16,7 +16,7 @@ void EarthArmy::AddUnit(Unit* unit, bool newUnit)
 		case Unit::ES:
 		{
 			Soldiers.enqueue(dynamic_cast<EarthSoldier*>(unit));
-			if(unit->GetInfected())
+			if(unit->IsInfected())
 				InfectedCount++;
 			break;
 		}
@@ -53,7 +53,7 @@ Unit* EarthArmy::RemoveUnit(Unit::UnitType type)
 			EarthSoldier* es = nullptr;
 			Soldiers.dequeue(es);
 			unit = es;
-			if(unit->GetInfected())
+			if(unit->IsInfected())
 				InfectedCount--;
 			break;
 		}
@@ -195,7 +195,7 @@ void EarthArmy::SpreadInfection()
 		for (int i = 0; i < count; i++)
 		{
 			Soldiers.dequeue(ES);
-			if (!ES->GetInfected() && !infected)
+			if (!ES->IsInfected() && !infected)
 			{
 				if (i >= random)
 				{

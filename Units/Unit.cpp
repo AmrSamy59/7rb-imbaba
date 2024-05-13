@@ -138,7 +138,7 @@ void Unit::SetInfected(bool s)
 		GamePtr->AddInfectedCountTotal();
 }
 
-bool Unit::GetInfected() const
+bool Unit::IsInfected() const
 {
 	return Infected;
 }
@@ -229,12 +229,12 @@ bool Unit::operator==(Unit* unit)
 
 ostream& operator<<(std::ostream& COUT, const Unit* obj)
 {
-	if (obj->GetInfected()) {
+	if (obj->IsInfected()) {
 		COUT << "\033[1;31m";
 		COUT << '*';
 	}
 	COUT << obj->GetID();
-	if(obj->GetInfected())
+	if(obj->IsInfected())
 		COUT << "\033[0m";
 	return COUT;
 }

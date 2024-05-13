@@ -12,7 +12,7 @@ bool EarthSoldier::Attack()
 	LinkedQueue<Unit*> temp; /// dynamic list to delete it after finish
 	for (int i = 0; i < this->GetAttackCapacity(); i++) {
 		Unit* p;
-		if (GetInfected())
+		if (IsInfected())
 			p = gptr->PickEarthUnit(Unit::ES);
 		else
 			p = gptr->pickAlienunit(Unit::AS);

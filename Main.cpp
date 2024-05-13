@@ -33,7 +33,7 @@ int main()
         }
         Game* gPtr = new Game(game_mode);
 
-        gPtr->PlayGame(game_mode);
+        gPtr->PlayGame();
 
         delete gPtr;
         cin >> game_mode;  //For Testing 

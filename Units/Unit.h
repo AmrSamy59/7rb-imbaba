@@ -48,7 +48,7 @@ public:
 	void SetImmune();
 	bool GetImmunity() const;
 	void SetInfected(bool s);
-	bool GetInfected() const;
+	bool IsInfected() const;
 	float GetintialHeal() const;
 	Game* GetGamePtr();
 	virtual bool Attack() = 0 ;

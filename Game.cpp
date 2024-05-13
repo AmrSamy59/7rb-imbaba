@@ -15,13 +15,16 @@ Game::Game(char _mode)
 	}
 }
 
-void Game::PlayGame(char game_mode)
+void Game::PlayGame()
 {
+	string s = "";
 	while (GetCurrentTimeStep() < 40 || checkGameStatus() == 0) {
+		if (s == "skip") {
+			mode = 's';
+		}
 		NextTimeStep();
-		if (game_mode == 'i') {
-			cout << "Press any key to move to next timestep" << endl;
-			string s;
+		if (mode == 'i') {
+			cout << "Press any key to move to next timestep (type skip to switch to silence mode)" << endl;
 			getline(cin, s);
 		}
 	}
@@ -60,8 +63,8 @@ void Game::PlayGame(char game_mode)
 		cout << endl << "TIE" << endl;
 	}
 
-	if (game_mode == 's')
-		cout << "Simulation ends, Output file is created" << endl;
+
+	cout << "Simulation ends, Output file is created" << endl;
 
 }
 

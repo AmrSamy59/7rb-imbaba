@@ -55,7 +55,7 @@ bool AlienMonster::Attack()
 		if (unit->getType() == Unit::ES) {
 			double infectionProb = gptr->GetInfectionProb();
 			double prob = rand() % 100;
-			if (prob <= infectionProb && !unit->GetInfected() && !unit->GetImmunity()) {
+			if (prob <= infectionProb && !unit->IsInfected() && !unit->GetImmunity()) {
 				unit->SetInfected(true);
 				temp_infected.enqueue(unit);
 			}

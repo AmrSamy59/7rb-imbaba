@@ -35,7 +35,7 @@ private:
 	int DestructedUnitsCount[Unit::LastType];
 public:
 	Game(char _mode ='i');
-	void PlayGame(char game_mode);
+	void PlayGame();
 	void LogGameResult();
 	char GetGameMode();
 	int checkGameStatus();
