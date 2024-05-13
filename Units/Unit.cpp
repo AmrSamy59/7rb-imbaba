@@ -123,6 +123,7 @@ bool Unit::IsDead() const
 void Unit::SetImmune()
 {
 	Immunity = true;
+	Infected = false;
 }
 
 bool Unit::GetImmunity() const
@@ -229,8 +230,11 @@ bool Unit::operator==(Unit* unit)
 ostream& operator<<(std::ostream& COUT, const Unit* obj)
 {
 	if (obj->GetInfected()) {
+		COUT << "\033[1;31m";
 		COUT << '*';
 	}
 	COUT << obj->GetID();
+	if(obj->GetInfected())
+		COUT << "\033[0m";
 	return COUT;
 }
