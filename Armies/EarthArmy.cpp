@@ -6,18 +6,17 @@ EarthArmy::EarthArmy() : Army(1, 1000)
 	TotalInfectedCount = 0;
 }
 
-void EarthArmy::AddUnit(Unit* unit)
+void EarthArmy::AddUnit(Unit* unit, bool newUnit)
 {
 	if (unit->GetID() >= maxId) {
 		delete unit;
-		//cout << endl << "No IDs available to add more earth units!" << endl;
 		return;
 	}
 	switch (unit->getType()) {
 		case Unit::ES:
 		{
 			Soldiers.enqueue(dynamic_cast<EarthSoldier*>(unit));
-			if(unit->GetInfected())
+			if(unit->IsInfected())
 				InfectedCount++;
 			break;
 		}
@@ -38,7 +37,8 @@ void EarthArmy::AddUnit(Unit* unit)
 			break;
 		}
 	}
-	nextId++;
+	if (newUnit)
+		nextId++;
 }
 
 Unit* EarthArmy::RemoveUnit(Unit::UnitType type)
@@ -53,7 +53,7 @@ Unit* EarthArmy::RemoveUnit(Unit::UnitType type)
 			EarthSoldier* es = nullptr;
 			Soldiers.dequeue(es);
 			unit = es;
-			if(unit->GetInfected())
+			if(unit->IsInfected())
 				InfectedCount--;
 			break;
 		}
@@ -120,14 +120,15 @@ EarthArmy::~EarthArmy()
 
 void EarthArmy::Attack()
 {
-	EarthSoldier* ES = nullptr;
+	Unit* ES = RemoveUnit(Unit::ES);
 	EarthTank* ET = nullptr;
 	EarthGunnery* EG = nullptr;
 	HealingUnit* HU = nullptr;
 	int EG_Pri;
 
-	if (Soldiers.peek(ES)) {
+	if (ES) {
 		ES->Attack();
+		AddUnit(ES);
 	}
 
 	if (Tanks.peek(ET)) {
@@ -181,6 +182,8 @@ int EarthArmy::GetInfectedCount()
 
 void EarthArmy::SpreadInfection()
 {
+	if(InfectedCount == 0)
+		return;
 
 	EarthSoldier* ES = nullptr;
 	int count = Soldiers.GetCount();
@@ -192,12 +195,13 @@ void EarthArmy::SpreadInfection()
 		for (int i = 0; i < count; i++)
 		{
 			Soldiers.dequeue(ES);
-			if (!ES->GetInfected() && !infected)
+			if (!ES->IsInfected() && !infected)
 			{
 				if (i >= random)
 				{
 					ES->SetInfected(true);
 					InfectedCount++;
+					TotalInfectedCount++;
 					infected = true;
 					ES->PrintStatus("Got infected by another infected solider!");
 				}

@@ -12,7 +12,7 @@ private:
 	
 public:
 	AllyArmy();
-	void AddUnit(Unit* unit);
+	void AddUnit(Unit* unit, bool newUnit = false);
 	// remove Ally Units
 	Unit* RemoveUnit();
 
@@ -20,7 +20,7 @@ public:
 	void Attack();
 	int GetArmyCount();
 	int GetUnitCount(Unit::UnitType unit_type);
-	void Armyretreat();
+	bool ArmyRetreat();
 
 };
 

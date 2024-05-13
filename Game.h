@@ -35,7 +35,7 @@ private:
 	int DestructedUnitsCount[Unit::LastType];
 public:
 	Game(char _mode ='i');
-	void PlayGame(char game_mode);
+	void PlayGame();
 	void LogGameResult();
 	char GetGameMode();
 	int checkGameStatus();
@@ -50,7 +50,7 @@ public:
 	bool canArmiesAttack();
 	bool CanEtAttackAs();
 	double GetRatio();
-	void addUnit(Unit* unit);
+	void addUnit(Unit* unit, bool newUnit=false);
 	void AddToKilledList(Unit* unit);
 	int GetDestructedUnitCount(Unit::UnitType type);
 	////////////////////////////////////////////////////////////////
@@ -72,6 +72,7 @@ public:
 	void ReturnToUML(Unit* unit);
 	void IncrementHealedUnitCount();
 	int GetHealedUnitCount()const;
+	bool canAddUnit(char army);
 	///////////////////////////////////
 	void PrintKilledList();
 	void PrintUML();

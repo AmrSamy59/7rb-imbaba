@@ -18,9 +18,13 @@ bool AlienMonster::Attack()
 	for (int i = 0; i < this->GetAttackCapacity(); i++) {
 		if (i % 2 == 0) {
 			p = gptr->PickEarthUnit(Unit::ET);
-			if (p) {
-				temp.enqueue(p);
+			if (!p) {
+				p = gptr->PickAllyUnit();
 			}
+			if (!p) {
+				p = gptr->PickEarthUnit(Unit::ES);
+			}
+			
 		}
 		else
 		{
@@ -28,10 +32,12 @@ bool AlienMonster::Attack()
 			if (!p) {
 				p = gptr->PickEarthUnit(Unit::ES);
 			}
-			if (p) {
-				temp.enqueue(p);
+			if (!p) {
+				p = gptr->PickEarthUnit(Unit::ET);
 			}
-
+		}
+		if (p) {
+			temp.enqueue(p);
 		}
 	}
 
@@ -48,8 +54,8 @@ bool AlienMonster::Attack()
 		float Damage = ((this->GetPower()) * (this->GetHealth() / 100)) / sqrt(unit->GetHealth());
 		if (unit->getType() == Unit::ES) {
 			double infectionProb = gptr->GetInfectionProb();
-			double prob = rand() % 100 + 1;
-			if (prob <= infectionProb && !unit->GetInfected() && !unit->GetImmunity()) {
+			double prob = rand() % 100;
+			if (prob <= infectionProb && !unit->IsInfected() && !unit->GetImmunity()) {
 				unit->SetInfected(true);
 				temp_infected.enqueue(unit);
 			}
@@ -68,18 +74,14 @@ bool AlienMonster::Attack()
 		if (unit->GetHealth() <= 0.0) {
 			gptr->AddToKilledList(unit);
 		}
-		else if (unit->getType() == Unit::ES && unit->GetHealth() > 0 && unit->GetHealth() < 0.2 * unit->GetintialHeal())
+		else if ((unit->getType() == Unit::ES || unit->getType() == Unit::ET) && unit->GetHealth() > 0 && unit->GetHealth() < 0.2 * unit->GetintialHeal())
 		{
 			gptr->AddToUML(unit);
 		}
 		else
 		{
-			if (unit->getType() == Unit::ES)
+			if (unit->getType() == Unit::ES || unit->getType() == Unit::ET)
 				gptr->ReturnEarthUnit(unit);
-			else if (unit->getType() == Unit::ET)
-			{
-				gptr->ReturnEarthUnit(unit);
-			}
 			else
 			{
 				gptr->ReturnAllyUnit(unit);

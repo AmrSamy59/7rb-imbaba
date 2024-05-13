@@ -92,7 +92,7 @@ void randGen::generateUnit(Unit::UnitType UnitType)
 		}
 	}
 	
-	pGame->addUnit(unit);
+	pGame->addUnit(unit, true);
 }
 
 
@@ -101,37 +101,61 @@ void randGen::execute()
 {
 	int A = randInt(1, 100);
 	if (A <= Prob) {
-		int B;
-		for (int i = 0; i < N; i++) {
-			B = randInt(1, 100);
-			if (B <= eParams->ES) generateUnit(Unit::ES);
-			else if (B <= eParams->ES + eParams->ET) generateUnit(Unit::ET);
-			else if (B <= eParams->ES + eParams->ET + eParams->EG)generateUnit(Unit::EG);
-			else if (B <= eParams->ES + eParams->ET + eParams->EG + eParams->HU) generateUnit(Unit::HU);
+		if (!pGame->canAddUnit('e'))
+		{
+			if (pGame->GetGameMode() == 'i')
+				cout << endl << "No IDs available to add more earth units!" << endl;
+		}
+		else {
+			int B;
+			for (int i = 0; i < N; i++) {
+				B = randInt(1, 100);
+				if (B <= eParams->ES) generateUnit(Unit::ES);
+				else if (B <= eParams->ES + eParams->ET) generateUnit(Unit::ET);
+				else if (B <= eParams->ES + eParams->ET + eParams->EG)generateUnit(Unit::EG);
+				else if (B <= eParams->ES + eParams->ET + eParams->EG + eParams->HU) generateUnit(Unit::HU);
+			}
 		}
 	}
 
 	A = randInt(1, 100);
 	if (A <= Prob) {
-		int B;
-		for (int i = 0; i < N; i++) {
-			B = randInt(1, 100);
-			if (B <= aParams->AS) generateUnit(Unit::AS);
-			else if (B <= aParams->AS + aParams->AM) generateUnit(Unit::AM);
-			else if (B <= aParams->AS + aParams->AM + aParams->AD)generateUnit(Unit::AD);
+		if (!pGame->canAddUnit('a'))
+		{
+			if (pGame->GetGameMode() == 'i')
+				cout << endl << "No IDs available to add more alien units!" << endl;
+		}
+		else {
+			int B;
+			for (int i = 0; i < N; i++) {
+				B = randInt(1, 100);
+				if (B <= aParams->AS) generateUnit(Unit::AS);
+				else if (B <= aParams->AS + aParams->AM) generateUnit(Unit::AM);
+				else if (B <= aParams->AS + aParams->AM + aParams->AD)generateUnit(Unit::AD);
+			}
 		}
 	}
 
-	if (pGame->GetInfectedRatio() >= allyParams->threshold) {
-		for (int i = 0; i < N; i++) {
-			generateUnit(Unit::SU);
+	A = randInt(1, 100);
+	if (A <= Prob) {
+		if (!pGame->canAddUnit('s'))
+		{
+			if(pGame->GetGameMode() == 'i')
+				cout << endl << "No IDs available to add more ally units!" << endl;
+		}
+		else {
+			if (pGame->GetInfectedRatio() >= allyParams->threshold) {
+				for (int i = 0; i < N; i++) {
+					generateUnit(Unit::SU);
+				}
+			}
 		}
 	}
 }
 
 void randGen::readParams()
 {
-	pGame->loadFile(N, Prob, eParams, aParams,allyParams);
+	pGame->loadFile(N, Prob, eParams, aParams, allyParams);
 }
 
 int randGen::randInt(int ceil, int floor)

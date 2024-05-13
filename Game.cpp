@@ -15,13 +15,16 @@ Game::Game(char _mode)
 	}
 }
 
-void Game::PlayGame(char game_mode)
+void Game::PlayGame()
 {
+	string s = "";
 	while (GetCurrentTimeStep() < 40 || checkGameStatus() == 0) {
+		if (s == "skip") {
+			mode = 's';
+		}
 		NextTimeStep();
-		if (game_mode == 'i') {
-			cout << "Press Enter to continue..." << endl;
-			string s;
+		if (mode == 'i') {
+			cout << "Press any key to move to next timestep (type skip to switch to silence mode)" << endl;
 			getline(cin, s);
 		}
 	}
@@ -39,7 +42,7 @@ void Game::PlayGame(char game_mode)
 			
 	}
 	else if (game_status == 1 || game_status == 2) {
-	// Return all units in UML to earth army
+		// Return all units in UML to earth army
 		while (!UML.isEmpty()) {
 			Unit* unit = nullptr;
 			int p;
@@ -60,8 +63,8 @@ void Game::PlayGame(char game_mode)
 		cout << endl << "TIE" << endl;
 	}
 
-	if (game_mode == 's')
-		cout << "Simulation ends, Output file is created" << endl;
+
+	cout << "Simulation ends, Output file is created" << endl;
 
 }
 
@@ -101,13 +104,18 @@ void Game::NextTimeStep()
 
 	if(timeStep >= 10)
 		CheckingUML();
-	if (this->GetInfectedRatio()==0) {
-		allyArmy->Armyretreat();
+
+	bool retreated = false;
+	if (earthArmy->GetInfectedCount() == 0) {
+		retreated = allyArmy->ArmyRetreat();
 	}
 	randGenerator->execute();
 	// Printing
 	if (mode == 'i') {
 		cout << "\nCurrent Timestep " << timeStep << endl;
+		if (retreated) {
+			cout << endl << "Ally Army retreated" << endl << endl;
+		}
 		// Printing alive lists
 		earthArmy->Print();
 		alienArmy->Print();
@@ -210,16 +218,16 @@ double Game::GetRatio()
 	return 100.0;
 }
 
-void Game::addUnit(Unit* unit)
+void Game::addUnit(Unit* unit, bool newUnit)
 {
 	if (!unit) return;
 	if(unit->getType() == Unit::EG || unit->getType() == Unit::ES || unit->getType() == Unit::ET|| unit->getType() == Unit::HU)
-		earthArmy->AddUnit(unit);
+		earthArmy->AddUnit(unit, newUnit);
 	else if (unit->getType() == Unit::SU) {
 
-		allyArmy->AddUnit(unit);
+		allyArmy->AddUnit(unit, newUnit);
 	}
-	else alienArmy->AddUnit(unit);
+	else alienArmy->AddUnit(unit, false, newUnit);
 
 }
 
@@ -374,6 +382,15 @@ void Game::IncrementHealedUnitCount()
 int Game::GetHealedUnitCount() const
 {
 	return HealedUnitCount;
+}
+bool Game::canAddUnit(char army)
+{
+	if(army == 'a')
+		return alienArmy->canAddUnit();
+	else if(army == 'e')
+		return earthArmy->canAddUnit();
+	else
+		return allyArmy->canAddUnit();
 }
 void Game::AddToUML(Unit* unit)
 {

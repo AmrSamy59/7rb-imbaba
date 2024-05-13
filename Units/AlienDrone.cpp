@@ -11,13 +11,13 @@ bool AlienDrone::Attack()
 	for (int i = 0; i < this->GetAttackCapacity() ; i++)
 	{
 		Unit* p;
-		if(i%2){
+		if(i % 2 == 0){
 			p = gptr->PickEarthUnit(Unit::ET);
-			if(!p) gptr->PickEarthUnit(Unit::EG);
+			if(!p) p = gptr->PickEarthUnit(Unit::EG);
 		}
 		else{
 			p = gptr->PickEarthUnit(Unit::EG);
-			if(!p) gptr->PickEarthUnit(Unit::ET);
+			if(!p) p = gptr->PickEarthUnit(Unit::ET);
 		}
 		if(p) temp.enqueue(p);
 	}
