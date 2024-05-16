@@ -19,9 +19,11 @@ private:
 	int TotalInfectedCount;
 public:
 	EarthArmy();
+
 	~EarthArmy();
 	void AddUnit(Unit* unit, bool newUnit=false);
 	// remove Add Units
+	void AddUnit(Unit* unit, bool newUnit=false);
 	// remove Earth Units
 	Unit* RemoveUnit(Unit::UnitType type);
 	

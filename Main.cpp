@@ -1,23 +1,17 @@
 ﻿#include <iostream>
 #include"Game.h"
 #include<string>
-#include<windows.h>
-#include<mmsystem.h>
-#include<string>
-#pragma comment (lib,"winmm.lib")
+
+
 using namespace std;
 int main()
 {
-    // //  //\\   ||\\  || \\  //   sound over 
-   //-//  //__\\  || \\ ||  \\//    string v = "War-strated.wav ";
-  // //  //    \\ ||  \\||   ||     PlaySoundA(v.c_str(), NULL, SND_FILENAME);
- 
-    /////////////////////SCRIPT TESTING RANDGEN///////////////////////////
+  
     
   
 
     char game_mode;
-    cout << "Enter Game Mode (i for interactive, s for silent): ";
+    cout << "Enter Game Mode (i for interactive, s for silent, q to quit): ";
     cin >> game_mode;
     while (game_mode != 'q') {
         cout << endl;
@@ -36,7 +30,8 @@ int main()
         gPtr->PlayGame();
 
         delete gPtr;
-        cin >> game_mode;  //For Testing 
+        cout << "Enter Game Mode (i for interactive, s for silent, q to quit): ";
+        cin >> game_mode;  
     }
 
 }

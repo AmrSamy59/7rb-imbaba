@@ -8,7 +8,7 @@ AlienMonster::AlienMonster(Game* gPtr, int id, int Tj, float health, float power
 
 bool AlienMonster::Attack()
 {
-	// Attacks Tanks & ES
+	// Attacks ET & ES
 	Game* gptr = this->GetGamePtr();
 
 	LinkedQueue<Unit*> temp;
