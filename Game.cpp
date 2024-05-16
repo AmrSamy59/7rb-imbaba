@@ -31,7 +31,7 @@ void Game::PlayGame()
 
 	int game_status = checkGameStatus();
 
-	if (game_status == -1) {
+	if (game_status != 0) {
 		// Kill all units in UML
 		while (!UML.isEmpty()) {
 			Unit* unit = nullptr;
@@ -40,15 +40,6 @@ void Game::PlayGame()
 			AddToKilledList(unit);
 		}
 			
-	}
-	else if (game_status == 1 || game_status == 2) {
-		// Return all units in UML to earth army
-		while (!UML.isEmpty()) {
-			Unit* unit = nullptr;
-			int p;
-			UML.dequeue(unit, p);
-			earthArmy->AddUnit(unit);
-		}
 	}
 
 	LogGameResult();
