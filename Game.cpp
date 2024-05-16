@@ -15,6 +15,19 @@ Game::Game(char _mode)
 	}
 }
 
+Game::~Game()
+{
+	delete earthArmy;
+	delete alienArmy;
+	delete allyArmy;
+	delete randGenerator;
+	delete logger;
+	Unit* unit;
+	int dummy;
+	while (Killed.dequeue(unit) && unit) delete unit;
+	while (UML.dequeue(unit, dummy) && unit) delete unit;
+}
+
 void Game::PlayGame()
 {
 	string s = "";
@@ -511,13 +524,5 @@ void Game::loadFile(int& N, int& Prob, EarthArmyConfig* eParams, AlienArmyConfig
 	logger = new OutputLogger("Output/" + output_file, this);
 }
 
-Game::~Game()
-{
-	delete earthArmy;
-	delete alienArmy;
-	delete allyArmy;
-	delete randGenerator;
-	delete logger;
-}
 
 

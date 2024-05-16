@@ -6,6 +6,19 @@ EarthArmy::EarthArmy() : Army(1, 1000)
 	TotalInfectedCount = 0;
 }
 
+EarthArmy::~EarthArmy()
+{
+	EarthSoldier* Soldier;
+	EarthTank* Tank;
+	EarthGunnery* Gunnery;
+	int dummy;
+	HealingUnit* HealUnit;
+	while (Soldiers.dequeue(Soldier) && Soldier) delete Soldier;
+	while (Tanks.pop(Tank) && Tank) delete Tank;
+	while (Gunneries.dequeue(Gunnery, dummy) && Gunnery) delete Gunnery;
+	while (Healinglist.pop(HealUnit) && HealUnit) delete HealUnit;
+}
+
 void EarthArmy::AddUnit(Unit* unit, bool newUnit)
 {
 	if (unit->GetID() >= maxId) {
@@ -113,9 +126,6 @@ void EarthArmy::Print()
 	Healinglist.Print();
 	cout << "]" << endl << endl;
 
-}
-EarthArmy::~EarthArmy()
-{
 }
 
 void EarthArmy::Attack()

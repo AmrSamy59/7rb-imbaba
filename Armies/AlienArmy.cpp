@@ -12,6 +12,14 @@ AlienArmy::AlienArmy() : Army(2000, 3000)
 	}
 }
 
+AlienArmy::~AlienArmy()
+{	
+	AlienSoldier* Soldier;
+	AlienDrone* Drone;
+	delete[] Monsters;
+	while (Soldiers.dequeue(Soldier) && Soldier) delete Soldier;
+	while (Drones.dequeue(Drone) && Drone) delete Drone;
+}
 
 void AlienArmy::AddUnit(Unit* unit, bool toFront, bool newUnit)
 {
@@ -169,9 +177,5 @@ int AlienArmy::GetUnitCount(Unit::UnitType unit_type)
 }
 
 
-AlienArmy::~AlienArmy()
-{
-	delete[] Monsters;
-}
 
 
