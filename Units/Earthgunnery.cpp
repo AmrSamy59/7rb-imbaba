@@ -10,6 +10,7 @@ bool EarthGunnery::Attack()
 	Game* gptr = this->GetGamePtr();
 	LinkedQueue<Unit*> temp; /// dynamic list to delete it after finish
 	////////////////////// AM attack ////////////////////////////////////////////////
+	pos = false;
 	for (int i = 0; i < this->GetAttackCapacity(); i++) {
 		Unit* p;
 		if(i%3 == 0){

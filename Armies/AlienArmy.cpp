@@ -125,8 +125,8 @@ void AlienArmy::Attack()
 {
 	AlienSoldier* AS = nullptr;
 	Unit* AM = RemoveUnit(Unit::AM);
-	Unit* AD1 = RemoveUnit(Unit::AD); // from front
-	Unit* AD2 = RemoveUnit(Unit::AD, true); // from back
+	AlienDrone* AD1 = nullptr; // from front
+	AlienDrone* AD2 = nullptr; // from back
 
 	int EG_Pri;
 
@@ -138,15 +138,10 @@ void AlienArmy::Attack()
 		AddUnit(AM);
 	}
 
-	if (AD1 && AD2) {
+	if(Drones.peek(AD1) && Drones.peek_back(AD2)) {
 		AD1->Attack();
 		AD2->Attack();
 	}
-
-	if(AD1)
-		AddUnit(AD1, true);
-	if(AD2)
-		AddUnit(AD2);
 }
 
 int AlienArmy::GetArmyCount()
