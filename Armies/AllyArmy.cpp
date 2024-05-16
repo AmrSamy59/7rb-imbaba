@@ -6,6 +6,12 @@ AllyArmy::AllyArmy() : Army(4000, 4250)
 
 }
 
+AllyArmy::~AllyArmy()
+{
+	SaverUnit* unit;
+	while (SUlist.dequeue(unit) && unit) delete unit;
+}
+
 void AllyArmy::AddUnit(Unit* unit, bool newUnit)
 {
 	 /// max nuber for saver units is 250 ///

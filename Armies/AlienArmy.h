@@ -17,6 +17,7 @@ private:
 	double infectionProb;
 public:
 	AlienArmy();
+	~AlienArmy();
 	// Add Alien Units
 	void AddUnit(Unit* unit, bool toFront = false, bool newUnit = false);
 	// remove Alien Units
@@ -31,6 +32,5 @@ public:
 
 	int GetArmyCount();
 	int GetUnitCount(Unit::UnitType unit_type);
-	~AlienArmy();
 };
 

@@ -12,7 +12,7 @@ private:
 	
 public:
 	AllyArmy();
-
+	~AllyArmy();
 	// Add Ally Units
 	void AddUnit(Unit* unit, bool newUnit = false);
 	// remove Ally Units

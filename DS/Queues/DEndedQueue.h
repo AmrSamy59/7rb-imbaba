@@ -169,7 +169,7 @@ bool DEndedQueue<T>::dequeue_back(T& backEntry)
 template <typename T>
 bool DEndedQueue<T>::peek_back(T& backEntry) const
 {
-	if (isEmpty())
+	if (isEmpty() || GetCount() == 1)
 		return false;
 
 	backEntry = backPtr->getItem();

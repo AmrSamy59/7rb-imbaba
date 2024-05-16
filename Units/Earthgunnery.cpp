@@ -9,7 +9,8 @@ bool EarthGunnery::Attack()
 {
 	Game* gptr = this->GetGamePtr();
 	LinkedQueue<Unit*> temp; 
-	
+  pos = false;
+
 	for (int i = 0; i < this->GetAttackCapacity(); i++) {
 		Unit* p;
 		if(i%3 == 0){
