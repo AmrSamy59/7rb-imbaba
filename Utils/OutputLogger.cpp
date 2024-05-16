@@ -80,7 +80,8 @@ void OutputLogger::LogEarthArmy(EarthArmy* army)
 	int total_infected = army->GetTotalInfectedCount();
 	float infected_percentage = total_es_count != 0 ? (float)total_infected / total_es_count : 0;
 	
-
+	int healed_count = gptr->GetHealedUnitCount();
+	float healed_percentage = total_count != 0 ? (float)healed_count / total_count : 0;
 
 	File << endl << "Earth Army" << endl << endl;
 	File << "Total Units: " << total_count << endl;
@@ -97,6 +98,7 @@ void OutputLogger::LogEarthArmy(EarthArmy* army)
 	File  << endl << "Total Destructed: " << total_d << endl;
 	File << "Percentage Destructed: " << (total_count != 0 ? (float)total_d / total_count : 0) * 100 << "%" << endl;
 
+	File << endl << "Total Healed: " << healed_count << " Percentage Healed: " << healed_percentage * 100 << "%" << endl;
 	File << "Total Infected: " << total_infected << " Percentage Infected: " << infected_percentage * 100 << "%" << endl << endl;
 
 	File << "Average Df: ";
