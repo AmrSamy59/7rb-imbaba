@@ -17,7 +17,7 @@ void AlienArmy::AddUnit(Unit* unit, bool toFront, bool newUnit)
 {
 	if (unit->GetID() >= maxId) {
 		delete unit;
-		//cout << endl << "No IDs available to add more alien units!" << endl;
+	
 		return;
 	}
 	switch (unit->getType()) {

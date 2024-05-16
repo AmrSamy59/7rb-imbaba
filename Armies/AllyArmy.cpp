@@ -12,7 +12,6 @@ void AllyArmy::AddUnit(Unit* unit, bool newUnit)
 
 	if (unit->GetID() >= maxId) {
 		delete unit;
-		//cout << endl << "No IDs available to add more ally units!" << endl;
 		return;
 	}
 	else

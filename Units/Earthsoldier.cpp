@@ -9,9 +9,10 @@ EarthSoldier::EarthSoldier(Game* gPtr, int id, int Tj, float health, float power
 bool EarthSoldier::Attack()
 {
 	Game* gptr = this->GetGamePtr();
-	LinkedQueue<Unit*> temp; /// dynamic list to delete it after finish
+	LinkedQueue<Unit*> temp;
 	for (int i = 0; i < this->GetAttackCapacity(); i++) {
 		Unit* p;
+		//////////////// Bouns ////////////////////////////
 		if (IsInfected())
 			p = gptr->PickEarthUnit(Unit::ES);
 		else
