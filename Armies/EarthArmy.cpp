@@ -205,15 +205,14 @@ void EarthArmy::SpreadInfection()
 		for (int i = 0; i < count; i++)
 		{
 			Soldiers.dequeue(ES);
-			if (!ES->IsInfected() && !infected)
+			if (!ES->IsInfected() && !ES->GetImmunity()  && !infected)
 			{
 				if (i >= random)
 				{
 					ES->SetInfected(true);
 					InfectedCount++;
-					TotalInfectedCount++;
 					infected = true;
-					ES->PrintStatus("Got infected by another infected solider!");
+					ES->PrintStatus("Got infected by another infected soldier!");
 				}
 			}
 			Soldiers.enqueue(ES);
