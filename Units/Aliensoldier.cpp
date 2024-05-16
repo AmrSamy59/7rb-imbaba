@@ -10,7 +10,7 @@ bool AlienSoldier::Attack()
 {
 	
 	Game* gptr = this->GetGamePtr();
-	LinkedQueue<Unit*> temp; /// dynamic list to delete it after finish
+	LinkedQueue<Unit*> temp; 
 	Unit* p=nullptr ;
 	for (int i = 0; i < this->GetAttackCapacity(); i++) {
 		if (i % 2 == 0) {
@@ -21,6 +21,7 @@ bool AlienSoldier::Attack()
 		}
 		else
 		{
+			//////////////////////////////// Bouns /////////////////////////////////////////////////
 			p = gptr->PickAllyUnit();
 			if (!p) {
 				p = gptr->PickEarthUnit(Unit::ES);

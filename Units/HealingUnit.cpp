@@ -7,8 +7,8 @@ HealingUnit::HealingUnit(Game* gPtr, int id, int Tj, float health, float power, 
 bool HealingUnit::Attack()
 {
 	Game* gptr = this->GetGamePtr();
-	LinkedQueue<Unit*> healed_temp;
-	LinkedQueue<Unit*> back_temp;
+	LinkedQueue<Unit*> healed_temp; /// for printing use only
+	LinkedQueue<Unit*> back_temp;   /// orginal temp list 
 	bool worked = false;
 	for (int i = 0; i < this->GetAttackCapacity(); i++) {
 		
@@ -18,24 +18,26 @@ bool HealingUnit::Attack()
 		}
 		worked = true;
 		float heal = (this->GetPower() * this->GetHealth() / 100) / sqrtf(p->GetHealth());
+		/////////////////////////////////////// Bouns /////////////////////////////////////////
 		if (p->getType() == Unit::ES && p->IsInfected()) {
 			heal = 0.5 * heal;
 			p->SetImmune();
 			p->SetInfected(false);
 		}
+		//////////////////////////////////////////////////////////////////////////////////////
 		p->Sethealth(heal + p->GetHealth());
 
-		healed_temp.enqueue(p);
+		healed_temp.enqueue(p); /// for printing use only
 
 		if (p->GetHealth() > 0.2 * p->GetintialHeal()) {
 			gptr->addUnit(p);
 
-			/////////////// check type for solider and use
+			/// for output file 
 			if (p->getIsHealed() == false) {
 				p->SetIsHealed(true);
 				gptr->IncrementHealedUnitCount();
 			}
-			//p->SetHealtime(ptr->GetCurrentTimeStep());
+			
 		}
 		else {
 			back_temp.enqueue(p);
@@ -56,13 +58,13 @@ bool HealingUnit::Attack()
 		Unit* p2;
 		back_temp.dequeue(p2);
 		gptr->ReturnToUML(p2);
-		/// make function for return to uml replace adduml
+		
 
 	}
 
-
+	/// now we will add the unit to the killed list if it is heals unit  
 	if(worked)
-		gptr->AddToKilledList(this); /// make in the earth army attack pop from stack killed your self
-
+		gptr->AddToKilledList(this); 
+	
 	return worked;
 }

@@ -7,6 +7,7 @@ SaverUnit::SaverUnit(Game* gPtr, int id, int Tj, float health, float power, int 
 
 bool SaverUnit::Attack()
 {
+	//// Attack same as ES //////////////////////////
 	Game* gptr = this->GetGamePtr();
 	LinkedQueue<Unit*>temp;
 	for (int i = 0; i < this->GetAttackCapacity(); i++) {
