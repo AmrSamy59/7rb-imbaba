@@ -174,9 +174,6 @@
     <ClInclude Include="Units\EarthSoldier.h" />
     <ClInclude Include="Units\Unit.h" />
   </ItemGroup>
-  <ItemGroup>
-    <Text Include="Input\medhat.txt" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
